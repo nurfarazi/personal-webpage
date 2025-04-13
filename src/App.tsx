@@ -105,8 +105,8 @@ function App() {
         loaded={particlesLoaded}
         options={particlesOptions}
       />
-      <Navbar />
-      <Routes>
+      <Navbar key="navbar"/>
+      <Routes key="routes">
         <Route path="/contact" element={<Contact />} />
         <Route path="/" element={<HomePage />} />
       </Routes>

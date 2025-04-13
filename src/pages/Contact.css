@@ -62,35 +62,44 @@
 }
 
 .social-links {
-  margin-top: 30px; /* Increased spacing */
-  text-align: center; /* Center social links */
-  padding-top: 20px; /* Add padding above */
-  border-top: 1px solid var(--border-color, #444); /* Adjust border color for dark theme */
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color, #444);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .social-links a {
-  display: inline-block;
-  margin: 5px 15px; /* Adjusted margin */
-  padding: 12px 25px; /* Adjusted padding */
-  border-radius: 5px;
+  padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #fff; /* Keep white text for buttons */
-  font-weight: 500; /* Slightly less bold */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 1em; /* Adjusted font size */
+  color: #646cff;
+  border: 1px solid #646cff;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background: none;
+  font-weight: normal;
 }
 
 .social-links a:hover {
-  opacity: 0.85; /* Adjusted hover opacity */
-  transform: translateY(-2px);
+  background-color: #646cff;
+  color: #000000;
+  transform: none;
+  opacity: 1;
 }
 
-/* Specific styles for social links - using theme colors if available */
-.social-links a[href*="linkedin.com"] {
-  background-color: var(--linkedin-color, #0077b5); /* LinkedIn blue or theme variable */
-}
-
+/* Remove specific styles for social platforms as we want consistent styling */
+.social-links a[href*="linkedin.com"],
 .social-links a.github {
-  background-color: var(--github-color, #555); /* GitHub grey or theme variable - lighter than black */
-  color: #fff; /* Ensure text is white */
+  background-color: transparent;
+  color: #646cff;
+}
+
+.social-links a[href*="linkedin.com"]:hover,
+.social-links a.github:hover {
+  background-color: #646cff;
+  color: #000000;
 }

@@ -79,26 +79,6 @@ const HomePage: React.FC = () => {
         </ul>
       </section>
 
-      <section className="section skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>
-            <strong>Paradigm:</strong> SOLID, OOP, TDD, Clean Architecture,
-            CQRS, Mediator, Hexagonal, Observer, Singleton, Factory, Module,
-            Dynamic import, Functional, Reactive, Lazy Loading
-          </li>
-          <li>
-            <strong>Development Stack:</strong> .NET, Entity Framework, Node,
-            Express, Angular, Ionic, RxJs, Bootstrap, MySQL, PostgreSQL, Redis,
-            MongoDB, Firebase, AWS, gRPC, Blazor, CI/CD, SignalR, TypeScript
-          </li>
-          <li>
-            <strong>Cloud Services:</strong> Firebase, AWS (Lambda, S3, EC2,
-            Beanstalk, SAM, VPN, Lightsail, API Gateway, Route 53, RDS)
-          </li>
-        </ul>
-      </section>
-
       <section className="section tools-methods">
         <h2>Tools & Methods</h2>
         <ul>
@@ -150,48 +130,212 @@ const HomePage: React.FC = () => {
         <ul>
           <li>
             <strong>Kaz Software (July 2022 - Current)</strong>
-            <br />
-            Principal Software Engineer - Developed and managed scalable SaaS
-            products, led a global team, and implemented best practices for
-            software development.
+            <ul>
+              <li>
+                Principal Software Engineer - Architected and launched a scalable
+                SaaS platform, managing end-to-end delivery across product
+                requirements, team capacity, and Agile sprint cycles.
+              </li>
+              <li>
+                Shipped the platform within 2 months, enabling $50K/year in
+                client expansion and reducing AWS infrastructure costs by 40%.
+              </li>
+              <li>
+                Led a globally distributed team of 12 engineers and QA
+                professionals, fostering collaboration and accountability.
+              </li>
+              <li>
+                Standardized coding and documentation practices, improving
+                engineering consistency and onboarding speed by 30%.
+              </li>
+              <li>
+                Partnered with stakeholders to define scope, prioritize
+                backlogs, and align delivery with evolving business goals.
+              </li>
+              <li>
+                Conducted regular code reviews and mentorship sessions to
+                elevate team performance and cross-skill development.
+              </li>
+              <li>
+                Enforced best practices for software reliability, security, and
+                scalability across the SDLC.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>CholPori (Oct 2020 - June 2022)</strong>
-            <br />
-            Technical Lead - Developed no-code multimedia lesson builder and led
-            a software and UX team to build an education platform.
+            <ul>
+              <li>
+                Technical Lead - Resolved critical infrastructure and delivery
+                bottlenecks under tight deadlines, ensuring on-time launches and
+                maintaining stakeholder confidence.
+              </li>
+              <li>
+                Led a 12-member cross-functional team to design and deliver a
+                kid-friendly digital education platform from the ground up.
+              </li>
+              <li>
+                Spearheaded development of a no-code, drag-and-drop lesson
+                builder and a read-aloud book creation tool with interactive
+                MCQs.
+              </li>
+              <li>
+                Engineered a real-time content-serving system providing live
+                insights into student performance for teachers and parents.
+              </li>
+              <li>
+                Oversaw the full SDLC — from architecture to DevOps — across
+                web, mobile, and backend using .NET Core, Angular, Firebase, and
+                Docker.
+              </li>
+              <li>
+                Designed and implemented a flexible software engineer
+                evaluation and growth framework adopted company-wide.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>Jeeon Bangladesh Ltd (June 2016 - Sept 2020)</strong>
-            <br />
-            Senior Software Engineer - Designed and developed an SMS-based
-            ordering system and worked on all aspects of development including
-            front-end, back-end, database, and mobile app.
+            <ul>
+              <li>
+                Senior Software Engineer - Designed and launched an SMS-based
+                medicine ordering system that enabled offline access for 10,000+
+                users, increasing daily active users (DAU) by 55%.
+              </li>
+              <li>
+                Delivered full-stack solutions across web, mobile, and backend,
+                using Node.js, .NET Core, Kotlin, Angular, and Firebase.
+              </li>
+              <li>
+                Built and maintained an eHealth payments platform, earning a
+                reputation for delivering reliable, cost-effective digital
+                health tools.
+              </li>
+              <li>
+                Led development of scalable systems for high-availability
+                environments, with end-to-end responsibility across database
+                design, API integration, and mobile UX.
+              </li>
+              <li>
+                Established build sequences and testing pipelines using Docker
+                and CI/CD, significantly reducing regression bugs and deployment
+                friction.
+              </li>
+              <li>
+                Played a key role in refining product workflows and data
+                pipelines that supported real-time communication via Socket.IO
+                and RxJS.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>AGD IT SOLUTION Sdn Bhd (April 2015 - May 2016)</strong>
-            <br />
-            Senior Software Engineer - Led a team in the design and development
-            of a vehicle tracking solution and implemented a robust software
-            data architecture.
+            <ul>
+              <li>
+                Senior Software Engineer - Led a team of 6 engineers and UX
+                designers to develop a scalable vehicle tracking system using
+                Node.js, Express, MongoDB, AWS, and Google Maps API.
+              </li>
+              <li>
+                Architected and implemented a robust microservices-based backend
+                to ensure seamless data flow and fault tolerance.
+              </li>
+              <li>
+                Built automated deployment pipelines with a unified build script,
+                reducing deployment time by 50% and eliminating manual errors.
+              </li>
+              <li>
+                Integrated real-time location tracking and mapping features for
+                fleet management using Ionic, Objective-C, and Heroku.
+              </li>
+              <li>
+                Collaborated with product owners and designers to ensure smooth
+                integration across web and mobile platforms.
+              </li>
+              <li>
+                Maintained comprehensive documentation, enabling smooth knowledge
+                transfer and onboarding across cross-functional teams.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>Dream71 Bangladesh Ltd (Oct 2014 - April 2015)</strong>
-            <br />
-            Senior Software Engineer - Developed a real-time cricket dashboard
-            app and led a team of game developers in Unity3D.
+            <ul>
+              <li>
+                Senior Software Engineer - Developed a real-time cricket
+                dashboard using Node.js, Socket.IO, and Android, delivering
+                live match analytics with minimal latency.
+              </li>
+              <li>
+                Led a Unity3D (C#) game development team, launching multiple
+                engaging titles with high download rates and strong user
+                retention.
+              </li>
+              <li>
+                Conducted rapid prototyping to validate game mechanics and
+                technical feasibility, accelerating project go/no-go decisions.
+              </li>
+              <li>
+                Implemented efficient pipelines for asset integration, build
+                automation, and cross-platform deployment.
+              </li>
+              <li>
+                Created and maintained detailed technical documentation to
+                support knowledge sharing and future development cycles.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>Independent Game Developer (April 2013 - Sept 2014)</strong>
-            <br />
-            Game Programmer - Developed games for international clients and
-            ensured error-free code and sound design.
+            <ul>
+              <li>
+                Independent Developer - Designed and developed 2D games for
+                international clients using Objective-C (iOS), C#, Cocos2D, and
+                Box2D.
+              </li>
+              <li>
+                Delivered custom game mechanics, UI, and animations based on
+                unique client requirements across multiple genres.
+              </li>
+              <li>
+                Ensured high code quality and performance through rigorous
+                testing, debugging, and optimization.
+              </li>
+              <li>
+                Managed the full development cycle independently, including
+                client communication, time estimation, and delivery.
+              </li>
+              <li>
+                Built strong client relationships through transparent
+                communication and consistent high-quality delivery.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>Rise Up Labs (Nov 2011 - Sept 2012)</strong>
-            <br />
-            Creative Director - Led game logic design team and created immersive
-            game environments.
+            <ul>
+              <li>
+                Creative Director - Directed the game logic and level design
+                team, ensuring alignment between creative vision and technical
+                execution.
+              </li>
+              <li>
+                Conceptualized and developed immersive game environments and
+                mechanics that enhanced user engagement.
+              </li>
+              <li>
+                Collaborated with cross-functional teams to prototype and refine
+                innovative gameplay features.
+              </li>
+              <li>
+                Oversaw project timelines and quality benchmarks, consistently
+                delivering polished game titles on schedule.
+              </li>
+              <li>
+                Championed user experience improvements, contributing to
+                increased player retention and satisfaction.
+              </li>
+            </ul>
           </li>
         </ul>
       </section>

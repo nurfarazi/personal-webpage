@@ -55,15 +55,6 @@ const HomePage: React.FC = () => {
         </ul>
       </section>
 
-      <section className="section skills">
-        <h2>Skills</h2>
-        <ul>
-          <li><strong>Paradigm:</strong> SOLID, OOP, TDD, Clean Architecture, CQRS, Mediator, Hexagonal, Observer, Singleton, Factory, Module, Dynamic import, Functional, Reactive, Lazy Loading</li>
-          <li><strong>Development Stack:</strong> .NET, Entity Framework, Node, Express, Angular, Ionic, RxJs, Bootstrap, MySQL, PostgreSQL, Redis, MongoDB, Firebase, AWS, gRPC, Blazor, CI/CD, SignalR, TypeScript</li>
-          <li><strong>Cloud Services:</strong> Firebase, AWS (Lambda, S3, EC2, Beanstalk, SAM, VPN, Lightsail, API Gateway, Route 53, RDS)</li>
-        </ul>
-      </section>
-
       <section className="section tools-methods">
         <h2>Tools & Methods</h2>
         <ul>

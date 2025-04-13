@@ -1,19 +1,20 @@
 .contact {
-  padding: 40px 0; /* Adjusted padding */
-  /* Removed background-color, border-radius, box-shadow */
-  max-width: 700px; /* Slightly wider */
+  padding: 40px 0;
+  max-width: 700px;
   margin: 40px auto;
-  text-align: left; /* Align section content left */
+  text-align: left;
+  color: var(--text-color);
+  background-color: var(--section-bg);
 }
 
 .contact h2 {
   margin-bottom: 30px;
-  color: var(--text-color, #eee); /* Use CSS variable or lighter default */
-  font-size: 2.2em; /* Slightly larger */
-  text-align: center; /* Center heading */
-  border-bottom: 2px solid var(--primary-color, #007bff); /* Keep primary color or adjust if needed */
+  color: var(--text-color);
+  font-size: clamp(1.8rem, 5vw, 2.2em);
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 10px;
-  display: inline-block; /* Make border fit content */
+  display: inline-block;
 }
 
 .contact-info {
@@ -22,9 +23,10 @@
 }
 
 .contact-info p {
-  font-size: 1.1em;
-  color: var(--text-secondary-color, #ccc); /* Use CSS variable or lighter default */
-  margin-bottom: 20px; /* Increased spacing */
+  font-size: clamp(1rem, 3vw, 1.1em);
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 20px;
 }
 
 .contact-info ul {
@@ -34,63 +36,88 @@
 }
 
 .contact-info li {
-  margin-bottom: 18px; /* Increased spacing */
-  font-size: 1.1em;
-  color: var(--text-color, #eee); /* Use CSS variable or lighter default */
+  margin-bottom: 18px;
+  font-size: clamp(0.9rem, 3vw, 1.1em);
+  color: var(--text-color);
   display: flex;
-  align-items: center;
-  line-height: 1.6; /* Improved readability */
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 480px) {
+  .contact-info li {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .contact-info li strong {
-  min-width: 90px; /* Adjusted width */
-  display: inline-block;
-  color: var(--primary-color, #4dabf7); /* Use theme color or a lighter blue */
-  margin-right: 10px; /* Add spacing */
+  min-width: 90px;
+  color: var(--primary-color);
+  margin-right: 10px;
 }
 
 .contact-info li a {
-  color: var(--link-color, #69b7ff); /* Use theme link color or a lighter blue */
+  color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s ease;
-  word-break: break-all; /* Prevent long emails/links from overflowing */
+  word-break: break-all;
 }
 
 .contact-info li a:hover {
-  color: var(--link-hover-color, #a3d3ff); /* Use theme hover color or an even lighter blue */
+  color: var(--secondary-color);
   text-decoration: underline;
 }
 
 .social-links {
-  margin-top: 30px; /* Increased spacing */
-  text-align: center; /* Center social links */
-  padding-top: 20px; /* Add padding above */
-  border-top: 1px solid var(--border-color, #444); /* Adjust border color for dark theme */
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
 }
 
 .social-links a {
   display: inline-block;
-  margin: 5px 15px; /* Adjusted margin */
-  padding: 12px 25px; /* Adjusted padding */
+  margin: 5px;
+  padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
   border-radius: 5px;
   text-decoration: none;
-  color: #fff; /* Keep white text for buttons */
-  font-weight: 500; /* Slightly less bold */
+  color: #f5f5f5; /* Use a fixed light color for better contrast */
+  font-weight: 500;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 1em; /* Adjusted font size */
+  font-size: clamp(0.9rem, 2.5vw, 1em);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 480px) {
+  .social-links a {
+    width: auto;
+    margin: 5px 15px;
+  }
 }
 
 .social-links a:hover {
-  opacity: 0.85; /* Adjusted hover opacity */
+  opacity: 0.85;
   transform: translateY(-2px);
 }
 
-/* Specific styles for social links - using theme colors if available */
 .social-links a[href*="linkedin.com"] {
-  background-color: var(--linkedin-color, #0077b5); /* LinkedIn blue or theme variable */
+  background-color: #0077b5;
 }
 
 .social-links a.github {
-  background-color: var(--github-color, #555); /* GitHub grey or theme variable - lighter than black */
-  color: #fff; /* Ensure text is white */
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    margin: 20px auto;
+    padding: 20px 15px;
+  }
+  
+  .contact h2 {
+    margin-bottom: 20px;
+  }
 }

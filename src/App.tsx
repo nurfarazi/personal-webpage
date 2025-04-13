@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { DarkModeProvider, useDarkMode } from './contexts/DarkModeContext';
 import Navbar from './components/Navbar'
 import Contact from './pages/Contact'
 import HomePage from './pages/HomePage';
@@ -93,25 +94,71 @@ function App() {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (_container: Container | undefined) => {
-    // Callback when particles are loaded
+  const particlesLoaded = useCallback(async () => {
+    // Container loaded, no action needed
+    return Promise.resolve();
   }, []);
 
   return (
-    <Router>
+    <DarkModeProvider>
+      <Router>
+        <AppContent 
+          particlesInit={particlesInit} 
+          particlesLoaded={particlesLoaded}
+          particlesOptions={particlesOptions} 
+        />
+      </Router>
+    </DarkModeProvider>
+  )
+}
+
+interface AppContentProps {
+  particlesInit: (engine: Engine) => Promise<void>;
+  particlesLoaded: (container: Container | undefined) => Promise<void>;
+  particlesOptions: ISourceOptions;
+}
+
+const AppContent = ({ particlesInit, particlesLoaded, particlesOptions }: AppContentProps) => {
+  const { darkMode } = useDarkMode();
+
+  const themeAwareParticlesOptions: ISourceOptions = {
+    ...particlesOptions,
+    background: {
+      color: {
+        value: darkMode ? "#121212" : "#ffffff",
+      },
+    },
+    particles: {
+      ...particlesOptions.particles,
+      color: {
+        value: darkMode ? "#ffffff" : "#646cff",
+      },
+      links: {
+        ...(particlesOptions.particles?.links ?? {}),
+        color: darkMode ? "#ffffff" : "#646cff",
+        distance: 150,
+        enable: true,
+        opacity: 0.5,
+        width: 1,
+      },
+    },
+  };
+
+  return (
+    <div className={darkMode ? 'app dark-mode' : 'app'}>
       <Particles
         id="tsparticles"
         init={particlesInit}
         loaded={particlesLoaded}
-        options={particlesOptions}
+        options={themeAwareParticlesOptions}
       />
       <Navbar />
       <Routes>
         <Route path="/contact" element={<Contact />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
-    </Router>
-  )
-}
+    </div>
+  );
+};
 
 export default App

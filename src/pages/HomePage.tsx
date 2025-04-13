@@ -7,6 +7,14 @@ interface ContactLink {
   className?: string;
 }
 
+interface WorkExperience {
+  company: string;
+  position: string;
+  duration: string;
+  description: string;
+  achievements: string[];
+}
+
 const HomePage: React.FC = () => {
   const contactLinks: ContactLink[] = [
     { url: "https://www.linkedin.com/in/nurfarazi/", text: "LinkedIn" },
@@ -15,6 +23,94 @@ const HomePage: React.FC = () => {
       text: "GitHub",
       className: "github",
     },
+  ];
+
+  const workExperiences: WorkExperience[] = [
+    {
+      company: "Kaz Software",
+      position: "Principal Software Engineer",
+      duration: "July 2022 - Current",
+      description: "Architected and launched a scalable SaaS platform, managing end-to-end delivery across product requirements, team capacity, and Agile sprint cycles.",
+      achievements: [
+        "Shipped the platform within 2 months, enabling $50K/year in client expansion and reducing AWS infrastructure costs by 40%",
+        "Led a globally distributed team of 12 engineers and QA professionals, fostering collaboration and accountability",
+        "Standardized coding and documentation practices, improving engineering consistency and onboarding speed by 30%",
+        "Partnered with stakeholders to define scope, prioritize backlogs, and align delivery with evolving business goals",
+        "Conducted regular code reviews and mentorship sessions to elevate team performance",
+        "Enforced best practices for software reliability, security, and scalability across the SDLC"
+      ]
+    },
+    {
+      company: "CholPori",
+      position: "Technical Lead",
+      duration: "Oct 2020 - June 2022",
+      description: "Led critical infrastructure development and resolved delivery bottlenecks for a kid-friendly digital education platform.",
+      achievements: [
+        "Led a 12-member cross-functional team to design and deliver an education platform from ground up",
+        "Developed a no-code, drag-and-drop lesson builder with interactive features",
+        "Engineered a real-time content-serving system with live student performance insights",
+        "Managed full SDLC using .NET Core, Angular, Firebase, and Docker",
+        "Implemented a company-wide software engineer evaluation framework"
+      ]
+    },
+    {
+      company: "Jeeon Bangladesh Ltd",
+      position: "Senior Software Engineer",
+      duration: "June 2016 - Sept 2020",
+      description: "Developed innovative healthcare solutions focusing on accessibility and offline capabilities.",
+      achievements: [
+        "Launched an SMS-based medicine ordering system, increasing DAU by 55% with 10,000+ users",
+        "Built and maintained a reliable eHealth payments platform",
+        "Led development of high-availability systems with end-to-end responsibility",
+        "Established efficient build and testing pipelines using Docker and CI/CD",
+        "Enhanced product workflows with real-time features using Socket.IO and RxJS"
+      ]
+    },
+    {
+      company: "AGD IT SOLUTION Sdn Bhd",
+      position: "Senior Software Engineer",
+      duration: "April 2015 - May 2016",
+      description: "Led development of a scalable vehicle tracking system with real-time capabilities.",
+      achievements: [
+        "Led a team of 6 engineers to build a tracking system using Node.js and Google Maps API",
+        "Designed microservices architecture for improved fault tolerance",
+        "Reduced deployment time by 50% through automated pipelines",
+        "Integrated real-time tracking features using Ionic and Objective-C"
+      ]
+    },
+    {
+      company: "Dream71 Bangladesh Ltd",
+      position: "Senior Software Engineer",
+      duration: "Oct 2014 - April 2015",
+      description: "Specialized in real-time applications and game development.",
+      achievements: [
+        "Built a real-time cricket dashboard with minimal latency",
+        "Led Unity3D game development with successful user retention",
+        "Streamlined asset integration and build automation"
+      ]
+    },
+    {
+      company: "Independent Game Developer",
+      position: "Freelance Developer",
+      duration: "April 2013 - Sept 2014",
+      description: "Developed custom 2D games for international clients.",
+      achievements: [
+        "Created games using Objective-C, C#, Cocos2D, and Box2D",
+        "Delivered high-quality solutions across multiple game genres",
+        "Managed full development cycles independently"
+      ]
+    },
+    {
+      company: "Rise Up Labs",
+      position: "Creative Director",
+      duration: "Nov 2011 - Sept 2012",
+      description: "Led game design and development direction.",
+      achievements: [
+        "Directed game logic and level design teams",
+        "Created engaging game mechanics and environments",
+        "Delivered polished games on schedule"
+      ]
+    }
   ];
 
   return (
@@ -127,217 +223,26 @@ const HomePage: React.FC = () => {
 
       <section className="section work-experience">
         <h2>Work Experience</h2>
-        <ul>
-          <li>
-            <strong>Kaz Software (July 2022 - Current)</strong>
-            <ul>
-              <li>
-                Principal Software Engineer - Architected and launched a scalable
-                SaaS platform, managing end-to-end delivery across product
-                requirements, team capacity, and Agile sprint cycles.
-              </li>
-              <li>
-                Shipped the platform within 2 months, enabling $50K/year in
-                client expansion and reducing AWS infrastructure costs by 40%.
-              </li>
-              <li>
-                Led a globally distributed team of 12 engineers and QA
-                professionals, fostering collaboration and accountability.
-              </li>
-              <li>
-                Standardized coding and documentation practices, improving
-                engineering consistency and onboarding speed by 30%.
-              </li>
-              <li>
-                Partnered with stakeholders to define scope, prioritize
-                backlogs, and align delivery with evolving business goals.
-              </li>
-              <li>
-                Conducted regular code reviews and mentorship sessions to
-                elevate team performance and cross-skill development.
-              </li>
-              <li>
-                Enforced best practices for software reliability, security, and
-                scalability across the SDLC.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>CholPori (Oct 2020 - June 2022)</strong>
-            <ul>
-              <li>
-                Technical Lead - Resolved critical infrastructure and delivery
-                bottlenecks under tight deadlines, ensuring on-time launches and
-                maintaining stakeholder confidence.
-              </li>
-              <li>
-                Led a 12-member cross-functional team to design and deliver a
-                kid-friendly digital education platform from the ground up.
-              </li>
-              <li>
-                Spearheaded development of a no-code, drag-and-drop lesson
-                builder and a read-aloud book creation tool with interactive
-                MCQs.
-              </li>
-              <li>
-                Engineered a real-time content-serving system providing live
-                insights into student performance for teachers and parents.
-              </li>
-              <li>
-                Oversaw the full SDLC — from architecture to DevOps — across
-                web, mobile, and backend using .NET Core, Angular, Firebase, and
-                Docker.
-              </li>
-              <li>
-                Designed and implemented a flexible software engineer
-                evaluation and growth framework adopted company-wide.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Jeeon Bangladesh Ltd (June 2016 - Sept 2020)</strong>
-            <ul>
-              <li>
-                Senior Software Engineer - Designed and launched an SMS-based
-                medicine ordering system that enabled offline access for 10,000+
-                users, increasing daily active users (DAU) by 55%.
-              </li>
-              <li>
-                Delivered full-stack solutions across web, mobile, and backend,
-                using Node.js, .NET Core, Kotlin, Angular, and Firebase.
-              </li>
-              <li>
-                Built and maintained an eHealth payments platform, earning a
-                reputation for delivering reliable, cost-effective digital
-                health tools.
-              </li>
-              <li>
-                Led development of scalable systems for high-availability
-                environments, with end-to-end responsibility across database
-                design, API integration, and mobile UX.
-              </li>
-              <li>
-                Established build sequences and testing pipelines using Docker
-                and CI/CD, significantly reducing regression bugs and deployment
-                friction.
-              </li>
-              <li>
-                Played a key role in refining product workflows and data
-                pipelines that supported real-time communication via Socket.IO
-                and RxJS.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>AGD IT SOLUTION Sdn Bhd (April 2015 - May 2016)</strong>
-            <ul>
-              <li>
-                Senior Software Engineer - Led a team of 6 engineers and UX
-                designers to develop a scalable vehicle tracking system using
-                Node.js, Express, MongoDB, AWS, and Google Maps API.
-              </li>
-              <li>
-                Architected and implemented a robust microservices-based backend
-                to ensure seamless data flow and fault tolerance.
-              </li>
-              <li>
-                Built automated deployment pipelines with a unified build script,
-                reducing deployment time by 50% and eliminating manual errors.
-              </li>
-              <li>
-                Integrated real-time location tracking and mapping features for
-                fleet management using Ionic, Objective-C, and Heroku.
-              </li>
-              <li>
-                Collaborated with product owners and designers to ensure smooth
-                integration across web and mobile platforms.
-              </li>
-              <li>
-                Maintained comprehensive documentation, enabling smooth knowledge
-                transfer and onboarding across cross-functional teams.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Dream71 Bangladesh Ltd (Oct 2014 - April 2015)</strong>
-            <ul>
-              <li>
-                Senior Software Engineer - Developed a real-time cricket
-                dashboard using Node.js, Socket.IO, and Android, delivering
-                live match analytics with minimal latency.
-              </li>
-              <li>
-                Led a Unity3D (C#) game development team, launching multiple
-                engaging titles with high download rates and strong user
-                retention.
-              </li>
-              <li>
-                Conducted rapid prototyping to validate game mechanics and
-                technical feasibility, accelerating project go/no-go decisions.
-              </li>
-              <li>
-                Implemented efficient pipelines for asset integration, build
-                automation, and cross-platform deployment.
-              </li>
-              <li>
-                Created and maintained detailed technical documentation to
-                support knowledge sharing and future development cycles.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Independent Game Developer (April 2013 - Sept 2014)</strong>
-            <ul>
-              <li>
-                Independent Developer - Designed and developed 2D games for
-                international clients using Objective-C (iOS), C#, Cocos2D, and
-                Box2D.
-              </li>
-              <li>
-                Delivered custom game mechanics, UI, and animations based on
-                unique client requirements across multiple genres.
-              </li>
-              <li>
-                Ensured high code quality and performance through rigorous
-                testing, debugging, and optimization.
-              </li>
-              <li>
-                Managed the full development cycle independently, including
-                client communication, time estimation, and delivery.
-              </li>
-              <li>
-                Built strong client relationships through transparent
-                communication and consistent high-quality delivery.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Rise Up Labs (Nov 2011 - Sept 2012)</strong>
-            <ul>
-              <li>
-                Creative Director - Directed the game logic and level design
-                team, ensuring alignment between creative vision and technical
-                execution.
-              </li>
-              <li>
-                Conceptualized and developed immersive game environments and
-                mechanics that enhanced user engagement.
-              </li>
-              <li>
-                Collaborated with cross-functional teams to prototype and refine
-                innovative gameplay features.
-              </li>
-              <li>
-                Oversaw project timelines and quality benchmarks, consistently
-                delivering polished game titles on schedule.
-              </li>
-              <li>
-                Championed user experience improvements, contributing to
-                increased player retention and satisfaction.
-              </li>
-            </ul>
-          </li>
-        </ul>
+        {workExperiences.map((experience, index) => (
+          <div key={index} className="experience-item">
+            <div className="experience-header">
+              <h3>{experience.company}</h3>
+              <div className="position-meta">
+                <span className="position">{experience.position}</span>
+                <span className="duration">{experience.duration}</span>
+              </div>
+            </div>
+            <p className="experience-description">{experience.description}</p>
+            <div className="achievements">
+              <p>Key Achievements:</p>
+              <ul>
+                {experience.achievements.map((achievement, i) => (
+                  <li key={i}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </section>
 
       <section className="section education">

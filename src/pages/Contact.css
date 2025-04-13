@@ -1,0 +1,96 @@
+.contact {
+  padding: 40px 0; /* Adjusted padding */
+  /* Removed background-color, border-radius, box-shadow */
+  max-width: 700px; /* Slightly wider */
+  margin: 40px auto;
+  text-align: left; /* Align section content left */
+}
+
+.contact h2 {
+  margin-bottom: 30px;
+  color: var(--text-color, #eee); /* Use CSS variable or lighter default */
+  font-size: 2.2em; /* Slightly larger */
+  text-align: center; /* Center heading */
+  border-bottom: 2px solid var(--primary-color, #007bff); /* Keep primary color or adjust if needed */
+  padding-bottom: 10px;
+  display: inline-block; /* Make border fit content */
+}
+
+.contact-info {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.contact-info p {
+  font-size: 1.1em;
+  color: var(--text-secondary-color, #ccc); /* Use CSS variable or lighter default */
+  margin-bottom: 20px; /* Increased spacing */
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.contact-info li {
+  margin-bottom: 18px; /* Increased spacing */
+  font-size: 1.1em;
+  color: var(--text-color, #eee); /* Use CSS variable or lighter default */
+  display: flex;
+  align-items: center;
+  line-height: 1.6; /* Improved readability */
+}
+
+.contact-info li strong {
+  min-width: 90px; /* Adjusted width */
+  display: inline-block;
+  color: var(--primary-color, #4dabf7); /* Use theme color or a lighter blue */
+  margin-right: 10px; /* Add spacing */
+}
+
+.contact-info li a {
+  color: var(--link-color, #69b7ff); /* Use theme link color or a lighter blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  word-break: break-all; /* Prevent long emails/links from overflowing */
+}
+
+.contact-info li a:hover {
+  color: var(--link-hover-color, #a3d3ff); /* Use theme hover color or an even lighter blue */
+  text-decoration: underline;
+}
+
+.social-links {
+  margin-top: 30px; /* Increased spacing */
+  text-align: center; /* Center social links */
+  padding-top: 20px; /* Add padding above */
+  border-top: 1px solid var(--border-color, #444); /* Adjust border color for dark theme */
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 5px 15px; /* Adjusted margin */
+  padding: 12px 25px; /* Adjusted padding */
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff; /* Keep white text for buttons */
+  font-weight: 500; /* Slightly less bold */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1em; /* Adjusted font size */
+}
+
+.social-links a:hover {
+  opacity: 0.85; /* Adjusted hover opacity */
+  transform: translateY(-2px);
+}
+
+/* Specific styles for social links - using theme colors if available */
+.social-links a[href*="linkedin.com"] {
+  background-color: var(--linkedin-color, #0077b5); /* LinkedIn blue or theme variable */
+}
+
+.social-links a.github {
+  background-color: var(--github-color, #555); /* GitHub grey or theme variable - lighter than black */
+  color: #fff; /* Ensure text is white */
+}

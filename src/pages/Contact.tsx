@@ -1,3 +1,5 @@
+import './Contact.css'; // Import the CSS file
+
 const Contact = () => {
   return (
     <div className="container">

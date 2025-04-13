@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
@@ -95,7 +95,6 @@ function App() {
   }, []);
 
   const particlesLoaded = useCallback(async () => {
-    // Container loaded, no action needed
     return Promise.resolve();
   }, []);
 
@@ -121,6 +120,14 @@ interface AppContentProps {
 const AppContent = ({ particlesInit, particlesLoaded, particlesOptions }: AppContentProps) => {
   const { darkMode } = useDarkMode();
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [darkMode])
+
   const themeAwareParticlesOptions: ISourceOptions = {
     ...particlesOptions,
     background: {
@@ -145,18 +152,20 @@ const AppContent = ({ particlesInit, particlesLoaded, particlesOptions }: AppCon
   };
 
   return (
-    <div className={darkMode ? 'app dark-mode' : 'app'}>
+    <div className={darkMode ? 'app dark' : 'app'}>
       <Particles
         id="tsparticles"
         init={particlesInit}
         loaded={particlesLoaded}
         options={themeAwareParticlesOptions}
       />
-      <Navbar />
-      <Routes>
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <div className="content-wrapper">
+        <Navbar />
+        <Routes>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </div>
     </div>
   );
 };

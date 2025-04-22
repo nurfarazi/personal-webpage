@@ -119,9 +119,6 @@ const HomePage: React.FC = () => {
     },
   ];
 
-  // Placeholder logo URL
-  const placeholderLogo = "https://placehold.co/64x64";
-
   return (
     <div className="container">
       <header className="header header-row">
@@ -244,7 +241,7 @@ const HomePage: React.FC = () => {
           {workExperiences.map((experience, index) => (
             <div key={index} className="bento-card">
               <div className="bento-card-logo">
-                <img src={placeholderLogo} alt={experience.company + " logo"} />
+                <img src="https://placehold.co/64x64" alt={experience.company + " logo"} />
               </div>
               <div className="bento-card-content">
                 <div className="experience-header">

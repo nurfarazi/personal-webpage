@@ -100,30 +100,32 @@ body {
   padding: 0;
 }
 
-.skills li, .work-experience li, .education li {
+.skills li, .education li {
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
 
-.skills li:hover, .work-experience li:hover, .education li:hover {
+.skills li:hover, .education li:hover {
   transform: translateX(10px);
 }
 
+/* Remove styles for .work-experience li that affect achievements */
 .work-experience li {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 3px solid #646cff;
-  border-radius: 0 8px 8px 0;
-  transition: all 0.3s ease;
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  transition: none !important;
+  box-shadow: none !important;
 }
 
 .work-experience li:hover {
-  transform: translateX(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border-left-color: #8288ff;
+  transform: none !important;
+  background: none !important;
+  border-left-color: inherit !important;
 }
 
 .work-experience li strong {

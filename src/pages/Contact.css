@@ -2,7 +2,7 @@
   padding: 40px 0; /* Adjusted padding */
   /* Removed background-color, border-radius, box-shadow */
   max-width: 700px; /* Slightly wider */
-  margin: 40px auto;
+  margin: 0 auto; /* Centered within its parent */
   text-align: left; /* Align section content left */
 }
 
@@ -102,4 +102,22 @@
 .social-links a.github:hover {
   background-color: #646cff;
   color: #000000;
+}
+
+.contact-center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* Add or update the container class to ensure perfect centering */
+.container {
+  margin: 0 auto;
+  /* Optionally, set a max-width if not already set elsewhere */
+  /* max-width: 700px; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,7 +8,10 @@ const Contact = () => {
         <section className="section contact">
           <h2>Contact</h2>
           <div className="contact-info">
-            <div className="social-links">
+            <div
+              className="social-links"
+              style={{ borderTop: 'none', paddingTop: 0, marginTop: 0 }}
+            >
               <a
                 href="https://www.linkedin.com/in/nurfarazi/"
                 target="_blank"

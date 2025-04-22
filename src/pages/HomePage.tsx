@@ -30,64 +30,69 @@ const HomePage: React.FC = () => {
       company: "Kaz Software",
       position: "Principal Software Engineer",
       duration: "July 2022 - Current",
-      description: "Architected and launched a scalable SaaS platform, managing end-to-end delivery across product requirements, team capacity, and Agile sprint cycles.",
+      description:
+        "Architected and launched a scalable SaaS platform, managing end-to-end delivery across product requirements, team capacity, and Agile sprint cycles.",
       achievements: [
         "Shipped the platform within 2 months, enabling $50K/year in client expansion and reducing AWS infrastructure costs by 40%",
         "Led a globally distributed team of 12 engineers and QA professionals, fostering collaboration and accountability",
         "Standardized coding and documentation practices, improving engineering consistency and onboarding speed by 30%",
         "Partnered with stakeholders to define scope, prioritize backlogs, and align delivery with evolving business goals",
         "Conducted regular code reviews and mentorship sessions to elevate team performance",
-        "Enforced best practices for software reliability, security, and scalability across the SDLC"
-      ]
+        "Enforced best practices for software reliability, security, and scalability across the SDLC",
+      ],
     },
     {
       company: "CholPori",
       position: "Technical Lead",
       duration: "Oct 2020 - June 2022",
-      description: "Led critical infrastructure development and resolved delivery bottlenecks for a kid-friendly digital education platform.",
+      description:
+        "Led critical infrastructure development and resolved delivery bottlenecks for a kid-friendly digital education platform.",
       achievements: [
         "Led a 12-member cross-functional team to design and deliver an education platform from ground up",
         "Developed a no-code, drag-and-drop lesson builder with interactive features",
         "Engineered a real-time content-serving system with live student performance insights",
         "Managed full SDLC using .NET Core, Angular, Firebase, and Docker",
-        "Implemented a company-wide software engineer evaluation framework"
-      ]
+        "Implemented a company-wide software engineer evaluation framework",
+      ],
     },
     {
       company: "Jeeon Bangladesh Ltd",
       position: "Senior Software Engineer",
       duration: "June 2016 - Sept 2020",
-      description: "Developed innovative healthcare solutions focusing on accessibility and offline capabilities.",
+      description:
+        "Developed innovative healthcare solutions focusing on accessibility and offline capabilities.",
       achievements: [
         "Launched an SMS-based medicine ordering system, increasing DAU by 55% with 10,000+ users",
         "Built and maintained a reliable eHealth payments platform",
         "Led development of high-availability systems with end-to-end responsibility",
         "Established efficient build and testing pipelines using Docker and CI/CD",
-        "Enhanced product workflows with real-time features using Socket.IO and RxJS"
-      ]
+        "Enhanced product workflows with real-time features using Socket.IO and RxJS",
+      ],
     },
     {
       company: "AGD IT SOLUTION Sdn Bhd",
       position: "Senior Software Engineer",
       duration: "April 2015 - May 2016",
-      description: "Led development of a scalable vehicle tracking system with real-time capabilities.",
+      description:
+        "Led development of a scalable vehicle tracking system with real-time capabilities.",
       achievements: [
         "Led a team of 6 engineers to build a tracking system using Node.js and Google Maps API",
         "Designed microservices architecture for improved fault tolerance",
         "Reduced deployment time by 50% through automated pipelines",
-        "Integrated real-time tracking features using Ionic and Objective-C"
-      ]
+        "Integrated real-time tracking features using Ionic and Objective-C",
+      ],
     },
     {
       company: "Dream71 Bangladesh Ltd",
       position: "Senior Software Engineer",
       duration: "Oct 2014 - April 2015",
-      description: "Specialized in real-time applications and game development.",
+      description:
+        "Specialized in real-time applications and game development.",
       achievements: [
         "Built a real-time cricket dashboard with minimal latency",
         "Led Unity3D game development with successful user retention",
-        "Streamlined asset integration and build automation"
-      ]
+        "Streamlined asset integration and build automation",
+      ],
     },
     {
       company: "Independent Game Developer",
@@ -97,8 +102,8 @@ const HomePage: React.FC = () => {
       achievements: [
         "Created games using Objective-C, C#, Cocos2D, and Box2D",
         "Delivered high-quality solutions across multiple game genres",
-        "Managed full development cycles independently"
-      ]
+        "Managed full development cycles independently",
+      ],
     },
     {
       company: "Rise Up Labs",
@@ -108,9 +113,9 @@ const HomePage: React.FC = () => {
       achievements: [
         "Directed game logic and level design teams",
         "Created engaging game mechanics and environments",
-        "Delivered polished games on schedule"
-      ]
-    }
+        "Delivered polished games on schedule",
+      ],
+    },
   ];
 
   // Placeholder logo URL
@@ -152,7 +157,10 @@ const HomePage: React.FC = () => {
         </p>
       </section>
 
-      <section className="section project-management" style={{ textAlign: "left" }}>
+      <section
+        className="section project-management"
+        style={{ textAlign: "left" }}
+      >
         <h2>Project Management & Leadership</h2>
         <ul>
           <li>
@@ -230,7 +238,7 @@ const HomePage: React.FC = () => {
           {workExperiences.map((experience, index) => (
             <div key={index} className="bento-card">
               <div className="bento-card-logo">
-                <img src={placeholderLogo} alt={experience.company + ' logo'} />
+                <img src={placeholderLogo} alt={experience.company + " logo"} />
               </div>
               <div className="bento-card-content">
                 <div className="experience-header">
@@ -240,12 +248,14 @@ const HomePage: React.FC = () => {
                     <span className="duration">{experience.duration}</span>
                   </div>
                 </div>
-                <p className="experience-description">{experience.description}</p>
-                <div className="achievements">
-                    {experience.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
-                    ))}
-                </div>
+                <p className="experience-description">
+                  {experience.description}
+                </p>
+                <ul>
+                  {experience.achievements.map((achievement, i) => (
+                    <li key={i}>{achievement}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

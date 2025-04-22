@@ -15,7 +15,7 @@ const particlesOptions: ISourceOptions = {
       value: "#000000",
     },
   },
-  fpsLimit: 120,
+  fpsLimit: 300,
   interactivity: {
     events: {
       onClick: {
@@ -27,8 +27,8 @@ const particlesOptions: ISourceOptions = {
         mode: "repulse",
         parallax: {
           enable: true,
-          force: 60,
-          smooth: 10
+          force: 10,
+          smooth: 20
         }
       },
       resize: true,
@@ -40,22 +40,22 @@ const particlesOptions: ISourceOptions = {
       repulse: {
         distance: 150,
         duration: 0.4,
-        factor: 100,
+        factor: 30,
         speed: 1,
-        maxSpeed: 50,
+        maxSpeed: 20,
         easing: "ease-out-quad"
       },
     },
   },
   particles: {
     color: {
-      value: "#ffffff",
+      value: "#646cff", // purple
     },
     links: {
-      color: "#ffffff",
+      color: "#a259ff", // purple
       distance: 150,
       enable: true,
-      opacity: 0.5,
+      opacity: 0.2,
       width: 1,
     },
     move: {
@@ -71,7 +71,7 @@ const particlesOptions: ISourceOptions = {
     number: {
       density: {
         enable: true,
-        area: 800,
+        area: 500,
       },
       value: 80,
     },

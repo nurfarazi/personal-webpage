@@ -1,4 +1,5 @@
 import React from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "../App.css"; // Assuming styles are in App.css or adjust as needed
 
 interface ContactLink {
@@ -123,25 +124,30 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container">
-      <header className="header">
-        <h1>Nur Mohammad Farazi</h1>
-        <h2>Principal Software Engineer</h2>
-        <p>
-          Dhaka, Bangladesh | +8801717369188 |{" "}
-          <a href="mailto:nur369188@gmail.com">nur369188@gmail.com</a>
-        </p>
-        <div className="contact-info">
-          {contactLinks.map((link) => (
-            <a
-              key={link.text}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={link.className}
-            >
-              {link.text}
-            </a>
-          ))}
+      <header className="header header-row">
+        <div className="header-left">
+          <h1>Nur Mohammad Farazi</h1>
+          <h2>Principal Software Engineer</h2>
+          <p>
+            Dhaka, Bangladesh | +8801717369188 |{" "}
+            <a href="mailto:nur369188@gmail.com">nur369188@gmail.com</a>
+          </p>
+          <div className="contact-info">
+            {contactLinks.map((link) => (
+              <a
+                key={link.text}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={link.className}
+              >
+                {link.text}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="header-right">
+          <video src="working.webm" autoPlay loop muted playsInline style={{ width: "200px" }} />
         </div>
       </header>
 

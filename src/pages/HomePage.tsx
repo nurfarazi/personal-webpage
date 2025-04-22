@@ -113,6 +113,9 @@ const HomePage: React.FC = () => {
     }
   ];
 
+  // Placeholder logo URL
+  const placeholderLogo = "https://placehold.co/64x64";
+
   return (
     <div className="container">
       <header className="header">
@@ -149,7 +152,7 @@ const HomePage: React.FC = () => {
         </p>
       </section>
 
-      <section className="section project-management">
+      <section className="section project-management" style={{ textAlign: "left" }}>
         <h2>Project Management & Leadership</h2>
         <ul>
           <li>
@@ -223,26 +226,30 @@ const HomePage: React.FC = () => {
 
       <section className="section work-experience">
         <h2>Work Experience</h2>
-        {workExperiences.map((experience, index) => (
-          <div key={index} className="experience-item">
-            <div className="experience-header">
-              <h3>{experience.company}</h3>
-              <div className="position-meta">
-                <span className="position">{experience.position}</span>
-                <span className="duration">{experience.duration}</span>
+        <div className="work-experience-list">
+          {workExperiences.map((experience, index) => (
+            <div key={index} className="bento-card">
+              <div className="bento-card-logo">
+                <img src={placeholderLogo} alt={experience.company + ' logo'} />
+              </div>
+              <div className="bento-card-content">
+                <div className="experience-header">
+                  <h3>{experience.company}</h3>
+                  <div className="position-meta">
+                    <span className="position">{experience.position}</span>
+                    <span className="duration">{experience.duration}</span>
+                  </div>
+                </div>
+                <p className="experience-description">{experience.description}</p>
+                <div className="achievements">
+                    {experience.achievements.map((achievement, i) => (
+                      <li key={i}>{achievement}</li>
+                    ))}
+                </div>
               </div>
             </div>
-            <p className="experience-description">{experience.description}</p>
-            <div className="achievements">
-              <p>Key Achievements:</p>
-              <ul>
-                {experience.achievements.map((achievement, i) => (
-                  <li key={i}>{achievement}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       <section className="section education">

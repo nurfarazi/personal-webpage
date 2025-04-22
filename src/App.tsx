@@ -15,7 +15,7 @@ const particlesOptions: ISourceOptions = {
       value: "#000000",
     },
   },
-  fpsLimit: 300,
+  fpsLimit: 60,
   interactivity: {
     events: {
       onClick: {
@@ -38,8 +38,8 @@ const particlesOptions: ISourceOptions = {
         quantity: 4,
       },
       repulse: {
-        distance: 150,
-        duration: 0.4,
+        distance: 300,
+        duration: 1,
         factor: 30,
         speed: 1,
         maxSpeed: 20,
@@ -93,7 +93,7 @@ function App() {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (_container: Container | undefined) => {
+  const particlesLoaded = useCallback(async () => {
     // Callback when particles are loaded
   }, []);
 

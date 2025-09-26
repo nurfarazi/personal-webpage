@@ -1,8 +1,15 @@
-import React from "react";
-import { motion, useReducedMotion } from "motion/react";
-import type { MotionProps } from "motion/react";
+import React, { useRef } from "react";
+import { 
+  motion, 
+  useReducedMotion, 
+  useMotionValue, 
+  useSpring, 
+  useMotionTemplate 
+} from "motion/react";
+import type { Variants } from "motion/react";
 import { Link } from "react-router-dom";
-import "../App.css"; // Assuming styles are in App.css or adjust as needed
+import "./HomePage.css";
+import "../App.css";
 
 
 
@@ -14,8 +21,101 @@ interface WorkExperience {
   achievements: string[];
 }
 
+// Motion variants for staggered animations
+
+const heroVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const heroItemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
+
+const listItemVariants: Variants = {
+  hidden: { opacity: 0, x: -16 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
+};
+
 const HomePage: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Mouse tracking for glow effect
+  const glowX = useMotionValue(50);
+  const glowY = useMotionValue(50);
+  const glowXSpring = useSpring(glowX, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.8,
+  });
+  const glowYSpring = useSpring(glowY, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.8,
+  });
+  const glowBackground = useMotionTemplate`
+    radial-gradient(300px circle at ${glowXSpring}% ${glowYSpring}%, rgba(100, 108, 255, 0.15), transparent 70%)
+  `;
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (shouldReduceMotion || !sectionRef.current) return;
+    
+    const bounds = sectionRef.current.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+    
+    glowX.set(Math.min(100, Math.max(0, x)));
+    glowY.set(Math.min(100, Math.max(0, y)));
+  };
+
+  const handlePointerLeave = () => {
+    if (shouldReduceMotion) return;
+    glowX.set(50);
+    glowY.set(50);
+  };
 
 
 
@@ -112,62 +212,91 @@ const HomePage: React.FC = () => {
     },
   ];
 
-  // Shared animation presets for hero and section titles
-  const heroTitleMotion: MotionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.8, ease: "easeOut" },
-      };
 
-  const heroSubtitleMotion: MotionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
-      };
 
-  const getSectionTitleMotion = (delay = 0): MotionProps =>
-    shouldReduceMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 24 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, amount: 0.6 },
-          transition: { duration: 0.6, ease: "easeOut", delay },
-        };
+  const sectionInitial = shouldReduceMotion ? false : 'hidden';
+  const sectionAnimate = shouldReduceMotion ? false : 'show';
 
   return (
-    <div className="container">
-      <header className="header header-row">
+    <motion.div 
+      className="container"
+      ref={sectionRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
+      {/* Interactive glow effect */}
+      {!shouldReduceMotion && (
+        <motion.span
+          className="home-glow"
+          style={{ background: glowBackground }}
+          aria-hidden="true"
+          animate={{ 
+            opacity: [0.2, 0.4, 0.2], 
+            scale: [0.98, 1.02, 0.98] 
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            repeatType: 'mirror',
+            ease: 'easeInOut',
+          }}
+        />
+      )}
+
+      <motion.header 
+        className="header header-row"
+        variants={heroVariants}
+        initial={sectionInitial}
+        animate={sectionAnimate}
+      >
         <div className="header-left">
-          <motion.h1 className="hero-title" {...heroTitleMotion}>
+          <motion.h1 className="hero-title" variants={heroItemVariants}>
             Nur Mohammad Farazi
           </motion.h1>
-          <motion.h2 className="hero-subtitle" {...heroSubtitleMotion}>
+          <motion.h2 className="hero-subtitle" variants={heroItemVariants}>
             Principal Software Engineer
           </motion.h2>
-          <p>
+          <motion.p variants={heroItemVariants}>
             Dhaka, Bangladesh
-          </p>
-          <div className="contact-cta">
-            <Link to="/contact" className="contact-btn">
-              Contact Me
-            </Link>
-          </div>
+          </motion.p>
+          <motion.div className="contact-cta" variants={heroItemVariants}>
+            <motion.div
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+            >
+              <Link to="/contact" className="contact-btn">
+                Contact Me
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="header-right">
-          <video src="working.webm" autoPlay loop muted playsInline style={{ width: "200px" }} />
-        </div>
-      </header>
+        <motion.div className="header-right" variants={heroItemVariants}>
+          <motion.video 
+            src="working.webm" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            style={{ width: "200px" }}
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+          />
+        </motion.div>
+      </motion.header>
 
-      <section className="section about-me">
-        <motion.h2 className="section-title" {...getSectionTitleMotion()}>
+      <motion.section 
+        className="section about-me"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
           About Me
         </motion.h2>
-        <p>
+        <motion.p variants={heroItemVariants}>
           Experienced Backend Engineer and Technical Project Manager
           with 14+ years delivering scalable software and cloud solutions.
           Backend-focused with expertise in system design, optimization, and full-stack development using Angular and TypeScript.
@@ -175,94 +304,127 @@ const HomePage: React.FC = () => {
           complex IT projects across web, mobile, and cloud platforms. Skilled
           in stakeholder alignment, crisis resolution, and project recovery,
           with a hands-on approach to solving real-world problems at scale.
-        </p>
-      </section>
+        </motion.p>
+      </motion.section>
 
-      <section className="section project-management">
-        <motion.h2 className="section-title" {...getSectionTitleMotion(0.05)}>
+      <motion.section 
+        className="section project-management"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
           Project Management & Leadership
         </motion.h2>
-        <ul>
-          <li>
+        <motion.ul variants={sectionVariants}>
+          <motion.li variants={listItemVariants}>
             Led cross-functional teams of up to 12, delivering full-cycle
             projects across web, mobile, and cloud platforms.
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             Defined scope, goals, and deliverables aligned with business
             objectives across multiple SaaS products.
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             Managed timelines, sprints, and budgets using Agile (Scrum, Kanban)
             methodologies.
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             Acted as primary liaison between technical teams, stakeholders, and
             external partners.
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             Mentored junior team members and established a software engineer
             evaluation/growth framework.
-          </li>
-        </ul>
-      </section>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
 
-      <section className="section tools-methods">
-        <motion.h2 className="section-title" {...getSectionTitleMotion(0.1)}>
+      <motion.section 
+        className="section tools-methods"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
           Tools & Methods
         </motion.h2>
-        <ul>
-          <li>
+        <motion.ul variants={sectionVariants}>
+          <motion.li variants={listItemVariants}>
             <strong>Frontend & UI:</strong> Angular (8 yrs), RxJS (4 yrs),
             TypeScript (6 yrs), Bootstrap, SCSS, HTML5, Responsive Design
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Backend:</strong> .NET Core (8 yrs), Node.js (8 yrs), REST
             APIs, WebSocket, SignalR
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Mobile:</strong> Flutter (1 yr), Ionic (5 yrs), Kotlin
             (Android)
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Databases:</strong> PostgreSQL (6 yrs), Redis (6 yrs),
             MongoDB (4 yrs), MySQL (5 yrs), DynamoDB (1 yr)
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Cloud & DevOps:</strong> AWS (10 yrs – Lambda, EC2, SAM,
             Route 53, RDS, etc.), Firebase (7 yrs), Docker, CI/CD
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Architecture & Patterns:</strong> Clean Architecture, CQRS,
             Hexagonal, SOLID, Microservices, gRPC
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>AI & Automation:</strong> ChatBot, Invoice Automation,
             Workflow Automation
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Project & Collaboration Tools:</strong> Jira, YouTrack,
             GitLab Board, GitHub, GitLab, Figma, Miro
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Agile Practices:</strong> Scrum, Kanban, Sprint Planning,
             Backlog Grooming
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listItemVariants}>
             <strong>Other:</strong> SignalR, TDD, Technical Writing,
             Documentation Systems
-          </li>
-        </ul>
-      </section>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
 
-      <section className="section work-experience">
-        <motion.h2 className="section-title" {...getSectionTitleMotion(0.15)}>
+      <motion.section 
+        className="section work-experience"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
           Work Experience
         </motion.h2>
-        <div className="work-experience-list">
+        <motion.div className="work-experience-list" variants={sectionVariants}>
           {workExperiences.map((experience, index) => (
-            <div key={index} className="bento-card">
+            <motion.div 
+              key={index} 
+              className="bento-card"
+              variants={cardVariants}
+              whileHover={shouldReduceMotion ? undefined : { 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+            >
               <div className="bento-card-logo">
-                <img src="https://placehold.co/64x64" alt={experience.company + " logo"} />
+                <motion.img 
+                  src="https://placehold.co/64x64" 
+                  alt={experience.company + " logo"}
+                  whileHover={shouldReduceMotion ? undefined : { 
+                    rotate: 5,
+                    scale: 1.1 
+                  }}
+                />
               </div>
               <div className="bento-card-content">
                 <div className="experience-header">
@@ -275,32 +437,40 @@ const HomePage: React.FC = () => {
                 <p className="experience-description">
                   {experience.description}
                 </p>
-                <ul>
+                <motion.ul variants={sectionVariants}>
                   {experience.achievements.map((achievement, i) => (
-                    <li key={i}>{achievement}</li>
+                    <motion.li key={i} variants={listItemVariants}>
+                      {achievement}
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section className="section education">
-        <motion.h2 className="section-title" {...getSectionTitleMotion(0.2)}>
+      <motion.section 
+        className="section education"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
           Education
         </motion.h2>
-        <ul>
-          <li>
+        <motion.ul variants={sectionVariants}>
+          <motion.li variants={listItemVariants}>
             <strong>
               BSc in Computer Science and Engineering (2006 - 2010)
             </strong>
             <br />
             State University of Bangladesh
-          </li>
-        </ul>
-      </section>
-    </div>
+          </motion.li>
+        </motion.ul>
+      </motion.section>
+    </motion.div>
   );
 };
 

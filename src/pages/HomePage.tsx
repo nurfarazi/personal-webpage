@@ -1,13 +1,10 @@
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import type { MotionProps } from "motion/react";
+import { Link } from "react-router-dom";
 import "../App.css"; // Assuming styles are in App.css or adjust as needed
 
-interface ContactLink {
-  url: string;
-  text: string;
-  className?: string;
-}
+
 
 interface WorkExperience {
   company: string;
@@ -20,14 +17,7 @@ interface WorkExperience {
 const HomePage: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  const contactLinks: ContactLink[] = [
-    { url: "https://www.linkedin.com/in/nurfarazi/", text: "LinkedIn" },
-    {
-      url: "https://github.com/nurfarazi",
-      text: "GitHub",
-      className: "github",
-    },
-  ];
+
 
   const workExperiences: WorkExperience[] = [
     {
@@ -160,21 +150,12 @@ const HomePage: React.FC = () => {
             Principal Software Engineer
           </motion.h2>
           <p>
-            Dhaka, Bangladesh | +8801717369188 |{" "}
-            <a href="mailto:nur369188@gmail.com">nur369188@gmail.com</a>
+            Dhaka, Bangladesh
           </p>
-          <div className="contact-info">
-            {contactLinks.map((link) => (
-              <a
-                key={link.text}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={link.className}
-              >
-                {link.text}
-              </a>
-            ))}
+          <div className="contact-cta">
+            <Link to="/contact" className="contact-btn">
+              Contact Me
+            </Link>
           </div>
         </div>
         <div className="header-right">

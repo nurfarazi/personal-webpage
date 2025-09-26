@@ -2,10 +2,66 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/nurfarazi/personal-webpage.git
+   cd personal-webpage
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+This will start the Vite development server, usually on `http://localhost:5173`.
+
+### Building for Production
+
+To build the app for production:
+
+```bash
+npm run build
+```
+
+### Previewing the Build
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+To run ESLint:
+
+```bash
+npm run lint
+```
+
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Expanding the ESLint configuration
 
@@ -31,7 +87,7 @@ export default tseslint.config({
 })
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+You can also install [`eslint-plugin-react-x`](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [`eslint-plugin-react-dom`](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js

@@ -1,5 +1,6 @@
 import React from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { motion, useReducedMotion } from "motion/react";
+import type { MotionProps } from "motion/react";
 import "../App.css"; // Assuming styles are in App.css or adjust as needed
 
 interface ContactLink {
@@ -17,6 +18,8 @@ interface WorkExperience {
 }
 
 const HomePage: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const contactLinks: ContactLink[] = [
     { url: "https://www.linkedin.com/in/nurfarazi/", text: "LinkedIn" },
     {
@@ -119,12 +122,43 @@ const HomePage: React.FC = () => {
     },
   ];
 
+  // Shared animation presets for hero and section titles
+  const heroTitleMotion: MotionProps = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.8, ease: "easeOut" },
+      };
+
+  const heroSubtitleMotion: MotionProps = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
+      };
+
+  const getSectionTitleMotion = (delay = 0): MotionProps =>
+    shouldReduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.6 },
+          transition: { duration: 0.6, ease: "easeOut", delay },
+        };
+
   return (
     <div className="container">
       <header className="header header-row">
         <div className="header-left">
-          <h1>Nur Mohammad Farazi</h1>
-          <h2>Principal Software Engineer</h2>
+          <motion.h1 className="hero-title" {...heroTitleMotion}>
+            Nur Mohammad Farazi
+          </motion.h1>
+          <motion.h2 className="hero-subtitle" {...heroSubtitleMotion}>
+            Principal Software Engineer
+          </motion.h2>
           <p>
             Dhaka, Bangladesh | +8801717369188 |{" "}
             <a href="mailto:nur369188@gmail.com">nur369188@gmail.com</a>
@@ -149,7 +183,9 @@ const HomePage: React.FC = () => {
       </header>
 
       <section className="section about-me">
-        <h2>About Me</h2>
+        <motion.h2 className="section-title" {...getSectionTitleMotion()}>
+          About Me
+        </motion.h2>
         <p>
           Experienced Technical Project Manager and Principal Software Engineer
           with 14+ years delivering scalable software and cloud solutions.
@@ -160,11 +196,10 @@ const HomePage: React.FC = () => {
         </p>
       </section>
 
-      <section
-        className="section project-management"
-        style={{ textAlign: "left" }}
-      >
-        <h2>Project Management & Leadership</h2>
+      <section className="section project-management">
+        <motion.h2 className="section-title" {...getSectionTitleMotion(0.05)}>
+          Project Management & Leadership
+        </motion.h2>
         <ul>
           <li>
             Led cross-functional teams of up to 12, delivering full-cycle
@@ -190,7 +225,9 @@ const HomePage: React.FC = () => {
       </section>
 
       <section className="section tools-methods">
-        <h2>Tools & Methods</h2>
+        <motion.h2 className="section-title" {...getSectionTitleMotion(0.1)}>
+          Tools & Methods
+        </motion.h2>
         <ul>
           <li>
             <strong>Frontend & UI:</strong> Angular (8 yrs), RxJS (4 yrs),
@@ -236,7 +273,9 @@ const HomePage: React.FC = () => {
       </section>
 
       <section className="section work-experience">
-        <h2>Work Experience</h2>
+        <motion.h2 className="section-title" {...getSectionTitleMotion(0.15)}>
+          Work Experience
+        </motion.h2>
         <div className="work-experience-list">
           {workExperiences.map((experience, index) => (
             <div key={index} className="bento-card">
@@ -266,7 +305,9 @@ const HomePage: React.FC = () => {
       </section>
 
       <section className="section education">
-        <h2>Education</h2>
+        <motion.h2 className="section-title" {...getSectionTitleMotion(0.2)}>
+          Education
+        </motion.h2>
         <ul>
           <li>
             <strong>

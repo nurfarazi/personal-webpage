@@ -1,12 +1,44 @@
 :root {
-  font-family: "SUSE Mono", monospace;
-  line-height: 1.5;
-  font-weight: 400;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Typography scale */
+  --font-family-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-family-display: "Inter", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-family-mono: "SUSE Mono", "Fira Code", "Source Code Pro", monospace;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.75;
+
+  --tracking-tight: -0.01em;
+  --tracking-body: 0em;
+  --tracking-wide: 0.08em;
+  --tracking-ultra-wide: 0.25em;
+
+  --font-size-display: clamp(2.5rem, 6vw, 3.5rem);
+  --font-size-h1: clamp(2.1rem, 5vw, 3rem);
+  --font-size-h2: clamp(1.75rem, 4vw, 2.2rem);
+  --font-size-h3: clamp(1.5rem, 3.5vw, 1.875rem);
+  --font-size-h4: clamp(1.25rem, 3vw, 1.5rem);
+  --font-size-h5: clamp(1.1rem, 2.5vw, 1.35rem);
+  --font-size-h6: clamp(1rem, 2vw, 1.1rem);
+
+  --font-size-body-lg: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.9375rem;
+  --font-size-caption: 0.8125rem;
+  --font-size-eyebrow: 0.75rem;
 }
 
 * {
@@ -30,8 +62,118 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000000;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--tracking-body);
+  background-color: var(--bg-primary, #000000);
+  color: var(--text-primary, #1a1a1a);
   overflow-x: hidden;
+}
+
+h1,
+.heading-1 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.6em;
+}
+
+h2,
+.heading-2 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.5em;
+}
+
+h3,
+.heading-3 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.45em;
+}
+
+h4,
+.heading-4 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.4em;
+}
+
+h5,
+.heading-5 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.35em;
+}
+
+h6,
+.heading-6 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.3em;
+}
+
+p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--tracking-body);
+  margin: 0 0 1rem;
+}
+
+li {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-lead {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+small,
+.caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-wide);
+}
+
+.eyebrow {
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-ultra-wide);
+  text-transform: uppercase;
+}
+
+strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-family-mono);
+  font-size: 0.95em;
 }
 
 img, picture, video, canvas, svg {

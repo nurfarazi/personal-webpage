@@ -66,6 +66,19 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.hero-subtitle {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
 }
 
 /* Enhanced contact button */
@@ -152,6 +165,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
 }
 
 .section-title::after {

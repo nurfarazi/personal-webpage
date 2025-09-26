@@ -36,10 +36,14 @@
 }
 
 body {
-  font-family: "SUSE Mono", monospace;
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--tracking-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -102,18 +106,27 @@ body {
 
 .header h1 {
   margin: 0;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
 }
 
 .header h2 {
   margin: 0;
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
   color: var(--accent-color);
 }
 
 .header p {
   margin: 0.5rem 0;
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-relaxed);
 }
 
 .section {
@@ -132,7 +145,9 @@ body {
 .section h2 {
   color: var(--accent-color);
   margin: 0;
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
 }
 
 
@@ -175,18 +190,21 @@ ul.skills li, ul.education li {
 .work-experience li strong {
   display: block;
   color: var(--accent-color);
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  margin-bottom: 0.75rem;
 }
 
 .work-experience li p {
   margin: 0.5rem 0;
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
   color: var(--text-secondary);
 }
 
 .work-experience li p:first-of-type {
-  font-weight: bold;
+  font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
 }
 
@@ -200,7 +218,8 @@ ul.skills li, ul.education li {
 
 .work-experience li .duration {
   color: var(--accent-color);
-  font-size: 0.9rem;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
   padding: 0.2rem 0.5rem;
   background: var(--duration-bg);
   border-radius: 4px;
@@ -209,7 +228,7 @@ ul.skills li, ul.education li {
 
 .work-experience li .position {
   color: var(--text-primary);
-  font-weight: bold;
+  font-weight: var(--font-weight-semibold);
 }
 
 .work-experience {
@@ -236,8 +255,9 @@ ul.skills li, ul.education li {
 .experience-header h3 {
   color: var(--text-primary);
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
 }
 
 .position-meta {
@@ -249,18 +269,21 @@ ul.skills li, ul.education li {
 }
 
 .position {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
 }
 
 .duration {
   color: var(--accent-color);
-  font-size: 0.9rem;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
 }
 
 .experience-description {
   color: var(--experience-description-color);
   margin-bottom: 1rem;
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
 }
 
 #root {
@@ -333,8 +356,9 @@ a:hover {
   color: white;
   text-decoration: none;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--tracking-tight);
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
@@ -348,8 +372,8 @@ a:hover {
 }
 
 .about-me p {
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
-  line-height: 1.6;
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-relaxed);
   margin: 0;
 }
 
@@ -368,7 +392,7 @@ a:hover {
   }
   
   .work-experience li strong {
-    font-size: 1.1rem;
+    font-size: var(--font-size-h5);
   }
 
   .header-row {
@@ -387,7 +411,7 @@ a:hover {
 
   .contact-btn {
     padding: 0.625rem 1.25rem;
-    font-size: 0.9rem;
+    font-size: var(--font-size-body-sm);
   }
 }
 
@@ -430,8 +454,10 @@ a:hover {
 .nav-brand {
   color: var(--text-primary);
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
 }
 
 .nav-links {
@@ -443,6 +469,9 @@ a:hover {
 .nav-links a {
   color: var(--text-primary);
   text-decoration: none;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-tight);
   transition: color 0.3s ease;
 }
 
@@ -546,18 +575,21 @@ a:hover {
 
 .bento-card .experience-header h3 {
   margin: 0 0 0.2rem 0;
-  font-size: 1.2rem;
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
   color: var(--accent-color);
 }
 
 .bento-card .position-meta {
   gap: 0.7rem;
-  font-size: 1rem;
+  font-size: var(--font-size-body-sm);
   color: var(--experience-meta-color);
 }
 
 .bento-card .position {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
   color: var(--text-primary);
 }
 
@@ -566,14 +598,16 @@ a:hover {
   color: var(--accent-color);
   border-radius: 4px;
   padding: 0.2rem 0.7rem;
-  font-size: 0.95em;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
   border: 1px solid var(--border-color);
 }
 
 .bento-card .experience-description {
   color: var(--experience-description-color);
   margin: 0.3rem 0 0.7rem 0;
-  font-size: 1.05em;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
 }
 
 .work-experience-list {

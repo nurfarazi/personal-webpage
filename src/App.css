@@ -320,6 +320,10 @@ a:hover {
   margin-top: 1rem;
 }
 
+.header-right .contact-cta {
+  margin-top: 0;
+}
+
 .contact-btn {
   display: inline-flex;
   align-items: center;

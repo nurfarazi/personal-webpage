@@ -69,41 +69,74 @@
 }
 
 /* Enhanced contact button */
-.contact-btn {
+.header .contact-btn {
   position: relative;
   overflow: hidden;
   background: linear-gradient(
     135deg,
-    rgba(100, 108, 255, 0.1) 0%,
-    rgba(100, 108, 255, 0.05) 100%
+    rgba(100, 108, 255, 0.95) 0%,
+    rgba(147, 51, 234, 0.9) 100%
   );
-  border: 1px solid rgba(100, 108, 255, 0.3);
+  color: #ffffff;
+  border: 1px solid rgba(100, 108, 255, 0.65);
+  box-shadow:
+    0 14px 28px rgba(100, 108, 255, 0.25),
+    0 4px 14px rgba(37, 59, 129, 0.18);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contact-btn::before {
+.header .contact-btn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(100, 108, 255, 0.2) 0%,
-    rgba(100, 108, 255, 0.1) 100%
-  );
+  background:
+    radial-gradient(
+      140% 140% at 50% 0%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 55%
+    );
   opacity: 0;
+  mix-blend-mode: screen;
   transition: opacity 0.3s ease;
 }
 
-.contact-btn:hover::before {
+.header .contact-btn:hover::before {
   opacity: 1;
 }
 
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 24px rgba(100, 108, 255, 0.2),
-    0 4px 8px rgba(100, 108, 255, 0.1);
-  border-color: rgba(100, 108, 255, 0.5);
+.header .contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 36px rgba(100, 108, 255, 0.3),
+    0 6px 18px rgba(37, 59, 129, 0.22);
+  border-color: rgba(147, 51, 234, 0.6);
+}
+
+.header .contact-btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
+  box-shadow:
+    0 0 0 4px rgba(100, 108, 255, 0.45),
+    0 18px 36px rgba(100, 108, 255, 0.3),
+    0 6px 18px rgba(37, 59, 129, 0.22);
+}
+
+@media (prefers-contrast: more) {
+  .header .contact-btn {
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 18px 36px rgba(100, 108, 255, 0.4),
+      0 8px 24px rgba(37, 59, 129, 0.28);
+  }
+
+  .header .contact-btn:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow:
+      0 0 0 4px rgba(100, 108, 255, 0.65),
+      0 20px 40px rgba(100, 108, 255, 0.35),
+      0 10px 26px rgba(37, 59, 129, 0.28);
+  }
 }
 
 /* Keep your original section styling */

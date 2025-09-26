@@ -259,30 +259,17 @@ const HomePage: React.FC = () => {
           <motion.h2 className="hero-subtitle" variants={heroItemVariants}>
             Principal Software Engineer
           </motion.h2>
-          <motion.p variants={heroItemVariants}>
-            Dhaka, Bangladesh
-          </motion.p>
-          <motion.div className="contact-cta" variants={heroItemVariants}>
-            <motion.div
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-            >
-              <Link to="/contact" className="contact-btn">
-                Contact Me
-              </Link>
-            </motion.div>
-          </motion.div>
         </div>
         <motion.div className="header-right" variants={heroItemVariants}>
-          <motion.video 
-            src="working.webm" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            style={{ width: "200px" }}
+          <motion.div
+            className="contact-cta"
             whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-          />
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+          >
+            <Link to="/contact" className="contact-btn">
+              Contact Me
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.header>
 

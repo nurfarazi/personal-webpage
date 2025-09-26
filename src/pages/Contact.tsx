@@ -69,9 +69,9 @@ const socialLinks = [
 ];
 
 const availabilityTags = [
-  'Frontend Engineering',
-  'React & TypeScript',
-  'UI Engineering',
+  'Backend Engineering',
+  'Angular & TypeScript',
+  'System Design & Optimization',
 ];
 
 const contactSectionVariants: Variants = {

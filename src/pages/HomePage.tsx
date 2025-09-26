@@ -187,8 +187,9 @@ const HomePage: React.FC = () => {
           About Me
         </motion.h2>
         <p>
-          Experienced Technical Project Manager and Principal Software Engineer
+          Experienced Backend Engineer and Technical Project Manager
           with 14+ years delivering scalable software and cloud solutions.
+          Backend-focused with expertise in system design, optimization, and full-stack development using Angular and TypeScript.
           Proven track record leading cross-functional global teams, managing
           complex IT projects across web, mobile, and cloud platforms. Skilled
           in stakeholder alignment, crisis resolution, and project recovery,

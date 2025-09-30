@@ -48,7 +48,7 @@ const Knowledge: React.FC = () => {
       readTime: '12 min read',
       excerpt: 'Learn how to architect and implement a production-ready microservices system using .NET 8, gRPC for inter-service communication, and RabbitMQ for event-driven patterns. This comprehensive guide covers service design, API gateways, and deployment strategies.',
       tags: ['.NET 8', 'Microservices', 'gRPC', 'RabbitMQ', 'Docker'],
-      link: 'https://medium.com/@nur369188'
+      link: 'https://nur369188.medium.com/when-grpc-is-and-isnt-the-right-call-88beb208ed37'
     },
     {
       id: '2',
@@ -158,40 +158,39 @@ const Knowledge: React.FC = () => {
           animate="show"
         >
           {filteredArticles.map((article) => (
-            <motion.article
+            <motion.a
               key={article.id}
-              className="article-card"
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="article-card-link"
               variants={cardVariants}
               whileHover={shouldReduceMotion ? undefined : {
                 y: -8,
                 transition: { duration: 0.3 }
               }}
             >
-              <div className="article-header">
-                <span className="article-category">{article.category}</span>
-                <div className="article-meta">
-                  <span>{article.date}</span>
-                  <span>•</span>
-                  <span>{article.readTime}</span>
+              <article className="article-card">
+                <div className="article-header">
+                  <span className="article-category">{article.category}</span>
+                  <div className="article-meta">
+                    <span>{article.date}</span>
+                    <span>•</span>
+                    <span>{article.readTime}</span>
+                  </div>
                 </div>
-              </div>
-              <h2 className="article-title">{article.title}</h2>
-              <p className="article-excerpt">{article.excerpt}</p>
-              <div className="article-tags">
-                {article.tags.map((tag, index) => (
-                  <span key={index} className="article-tag">{tag}</span>
-                ))}
-              </div>
-              <motion.a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="article-link"
-                whileHover={shouldReduceMotion ? undefined : { x: 4 }}
-              >
-                Read Article →
-              </motion.a>
-            </motion.article>
+                <h2 className="article-title">{article.title}</h2>
+                <p className="article-excerpt">{article.excerpt}</p>
+                <div className="article-tags">
+                  {article.tags.map((tag, index) => (
+                    <span key={index} className="article-tag">{tag}</span>
+                  ))}
+                </div>
+                <div className="article-link">
+                  Read Article →
+                </div>
+              </article>
+            </motion.a>
           ))}
         </motion.div>
 

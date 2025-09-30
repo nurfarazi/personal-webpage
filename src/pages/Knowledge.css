@@ -87,6 +87,12 @@
   margin-bottom: var(--spacing-xxl);
 }
 
+.article-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .article-card {
   background: var(--surface);
   border: 1px solid var(--border-color);
@@ -100,6 +106,8 @@
   overflow: hidden;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  height: 100%;
+  cursor: pointer;
 }
 
 .article-card::before {
@@ -120,7 +128,7 @@
   opacity: 1;
 }
 
-.article-card:hover {
+.article-card-link:hover .article-card {
   border-color: rgba(100, 108, 255, 0.3);
   box-shadow: 
     0 12px 24px rgba(100, 108, 255, 0.12),
@@ -164,7 +172,7 @@
   transition: color 0.2s ease;
 }
 
-.article-card:hover .article-title {
+.article-card-link:hover .article-title {
   color: rgba(100, 108, 255, 0.9);
 }
 
@@ -193,7 +201,7 @@
   transition: all 0.2s ease;
 }
 
-.article-card:hover .article-tag {
+.article-card-link:hover .article-tag {
   background: rgba(100, 108, 255, 0.1);
   border-color: rgba(100, 108, 255, 0.2);
 }
@@ -210,15 +218,15 @@
   margin-top: auto;
 }
 
-.article-link:hover {
+.article-card-link:hover .article-link {
   color: rgba(147, 51, 234, 0.9);
   gap: var(--spacing-sm);
 }
 
-.article-link:focus-visible {
+.article-card-link:focus-visible {
   outline: 2px solid rgba(100, 108, 255, 0.5);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
 }
 
 /* Knowledge CTA */

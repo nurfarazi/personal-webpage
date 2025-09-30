@@ -98,7 +98,7 @@ const Knowledge: React.FC = () => {
       readTime: '16 min read',
       excerpt: 'Master thread-safe programming in C#. Explore concurrent collections, async/await patterns, parallel programming, and techniques for preventing race conditions and deadlocks in multithreaded applications.',
       tags: ['C#', 'Threading', 'Concurrency', 'Async/Await'],
-      link: 'https://medium.com/@nur369188'
+      link: 'https://nur369188.medium.com/how-i-think-about-concurrency-and-threading-in-c-a99340d19eed'
     }
   ];
 

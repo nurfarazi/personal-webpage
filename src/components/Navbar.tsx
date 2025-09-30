@@ -10,6 +10,7 @@ const Navbar = () => {
         <Link to="/" className="nav-brand">NMF</Link>
         <div className="nav-links">
           <Link to="/">Home</Link>
+          <Link to="/projects">Projects</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/knowledge">Knowledge</Link>
           <button 

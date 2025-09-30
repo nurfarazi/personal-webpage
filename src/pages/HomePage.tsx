@@ -21,16 +21,6 @@ interface WorkExperience {
   achievements: string[];
 }
 
-interface Project {
-  name: string;
-  description: string;
-  techStack: string[];
-  githubUrl: string;
-  highlights: string[];
-  stars?: number;
-  language?: string;
-}
-
 interface Publication {
   title: string;
   platform: string;
@@ -158,89 +148,6 @@ const HomePage: React.FC = () => {
       date: "2024",
       url: "https://medium.com/@nur369188",
       excerpt: "Deep dive into system design principles, scalability patterns, and architectural decision-making for modern applications."
-    }
-  ];
-
-  const featuredProjects: Project[] = [
-    {
-      name: "Organic Shop MicroServices",
-      description: "A microservices-based e-commerce platform built using .NET 8, ASP.NET Core, Docker, RabbitMQ, and other modern technologies. Implements core e-commerce features as independent microservices communicating through gRPC and RabbitMQ.",
-      techStack: ["C#", ".NET 8", "Docker", "RabbitMQ", "gRPC", "CQRS", "Microservices"],
-      githubUrl: "https://github.com/nurfarazi/Organic-Shop-MicroServices",
-      highlights: [
-        "Microservices architecture with API Gateway",
-        "gRPC for inter-service communication",
-        "RabbitMQ message broker integration",
-        "CQRS pattern implementation",
-        "FluentValidation for request validation"
-      ],
-      stars: 1,
-      language: "C#"
-    },
-    {
-      name: "SafeMailer",
-      description: "A robust email delivery system designed to ensure high reliability and fault tolerance by managing multiple third-party email services. Integrates seamlessly with providers like SendGrid, Gmail, and Yahoo.",
-      techStack: ["C#", ".NET", "Email Services", "Fault Tolerance"],
-      githubUrl: "https://github.com/nurfarazi/SafeMailer",
-      highlights: [
-        "Multiple email provider integration",
-        "Automatic fallback mechanism",
-        "High reliability & fault tolerance",
-        "Seamless provider switching"
-      ],
-      language: "C#"
-    },
-    {
-      name: "Design Patterns",
-      description: "Comprehensive demonstration of creational, structural, and behavioral design patterns implemented in C# and .NET 8. A learning resource for understanding software design principles.",
-      techStack: ["C#", ".NET 8", "Design Patterns", "SOLID"],
-      githubUrl: "https://github.com/nurfarazi/design-patterns",
-      highlights: [
-        "Singleton, Factory, Builder patterns",
-        "Facade, Proxy, Flyweight patterns",
-        "Comprehensive examples",
-        "Best practices implementation"
-      ],
-      stars: 1,
-      language: "C#"
-    },
-    {
-      name: "Fine Tracker",
-      description: "A tracking system built with modern technologies for managing and monitoring fines efficiently.",
-      techStack: ["Shell", "Automation", "Tracking"],
-      githubUrl: "https://github.com/nurfarazi/fine-tracker",
-      highlights: [
-        "Automated tracking system",
-        "Efficient data management",
-        "Real-time monitoring"
-      ],
-      language: "Shell"
-    },
-    {
-      name: "Express TypeScript 2024",
-      description: "A modern Express.js backend application built with TypeScript, showcasing best practices for building scalable Node.js applications.",
-      techStack: ["TypeScript", "Express.js", "Node.js", "REST API"],
-      githubUrl: "https://github.com/nurfarazi/express-typescript-2024",
-      highlights: [
-        "Type-safe backend development",
-        "Modern Express.js patterns",
-        "RESTful API design",
-        "Scalable architecture"
-      ],
-      language: "TypeScript"
-    },
-    {
-      name: "ThreadingPlay",
-      description: "Thread-safe shared data structures demonstrating concurrency patterns and ensuring correctness in multithreaded applications.",
-      techStack: ["C#", "Concurrency", "Threading", "Parallel Programming"],
-      githubUrl: "https://github.com/nurfarazi/ThreadingPlay",
-      highlights: [
-        "Thread-safe data structures",
-        "Concurrency patterns",
-        "Race condition prevention",
-        "Performance optimization"
-      ],
-      language: "C#"
     }
   ];
 
@@ -505,101 +412,6 @@ const HomePage: React.FC = () => {
             Documentation Systems
           </motion.li>
         </motion.ul>
-      </motion.section>
-
-      <motion.section 
-        className="section featured-projects"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.h2 className="section-title" variants={heroItemVariants}>
-          Featured Projects
-        </motion.h2>
-        <motion.p className="section-subtitle" variants={heroItemVariants}>
-          A selection of open-source projects and contributions
-        </motion.p>
-        <motion.div className="projects-grid" variants={sectionVariants}>
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="project-card"
-              variants={cardVariants}
-              whileHover={shouldReduceMotion ? undefined : {
-                scale: 1.03,
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <div className="project-header">
-                <div className="project-title-row">
-                  <motion.h3
-                    whileHover={shouldReduceMotion ? undefined : { x: 5 }}
-                  >
-                    {project.name}
-                  </motion.h3>
-                  <motion.a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-link"
-                    whileHover={shouldReduceMotion ? undefined : { 
-                      scale: 1.2,
-                      rotate: 5 
-                    }}
-                    whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
-                    aria-label={`View ${project.name} on GitHub`}
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                  </motion.a>
-                </div>
-                <div className="project-meta">
-                  {project.language && (
-                    <span className="project-language">
-                      <span className="language-dot"></span>
-                      {project.language}
-                    </span>
-                  )}
-                  {project.stars !== undefined && (
-                    <span className="project-stars">
-                      ⭐ {project.stars}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <p className="project-description">{project.description}</p>
-              <div className="tech-stack">
-                {project.techStack.map((tech, i) => (
-                  <motion.span
-                    key={i}
-                    className="tech-badge"
-                    whileHover={shouldReduceMotion ? undefined : {
-                      scale: 1.1,
-                      y: -2
-                    }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-              <motion.ul className="project-highlights" variants={sectionVariants}>
-                {project.highlights.map((highlight, i) => (
-                  <motion.li key={i} variants={listItemVariants}>
-                    {highlight}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          ))}
-        </motion.div>
       </motion.section>
 
       <motion.section 

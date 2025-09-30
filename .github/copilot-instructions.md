@@ -10,9 +10,10 @@
 - Shared UI lives in `src/components/`. `Navbar` pulls `useTheme()` and drives navigation, while `ThemedParticles` adds the animated background via `react-tsparticles`.
 - Theme primitives are defined in `src/contexts/ThemeContext.tsx` and `src/hooks/useTheme.ts`. Use the hook instead of reaching into context directly.
 - Static assets (video, icons) are under `public/` and referenced by filename, e.g., `working.webm` in `HomePage.tsx`.
+- Design tokens live in `src/index.css` (typography scale, spacing) and `src/App.css` (theme colors). CSS custom properties provide a comprehensive design system.
 
 ## Animation & interaction patterns
-- Animations use the `motion/react` API (Framer Motion v12). Components define `Variants` objects and pass them to `motion.*` elements with `initial`/`animate` props.
+- Animations use the `motion/react` API (Motion v12, successor to Framer Motion). Components define `Variants` objects and pass them to `motion.*` elements with `initial`/`animate` props.
 - Motion values (`useMotionValue`, `useSpring`, `useMotionTemplate`) drive interactive glow backdrops in `HomePage.tsx` and `Contact.tsx`. Follow this pattern to keep pointer-tracked gradients smooth.
 - Respect accessibility: every animated section gates motion behind `useReducedMotion`. New animations should offer the same fallback.
 
@@ -29,6 +30,7 @@
 - Consume theme state via `useTheme()` and prefer CSS variables toggled by the `data-theme` attribute for color changes.
 - For particle or other theme-aware visuals, follow `ThemedParticles.tsx`: compute options inside `useMemo()` keyed on `theme` to avoid expensive re-inits.
 - Contact metadata, work experience cards, and similar content live in localized arrays. Update those constants rather than introducing new state containers unless interactivity demands it.
+- Use design tokens from `--font-size-*`, `--tracking-*`, and `--line-height-*` custom properties for consistent typography. Theme colors follow `--bg-*`, `--text-*`, and `--accent-*` patterns.
 
 ## Quality bar
 - Keep components functional and typed; favor explicit interfaces for structured data (see `WorkExperience` in `HomePage.tsx`).

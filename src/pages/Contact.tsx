@@ -15,6 +15,7 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaMedium,
 } from 'react-icons/fa';
 
 import './Contact.css';
@@ -65,6 +66,12 @@ const socialLinks = [
     label: 'GitHub',
     href: 'https://github.com/nurfarazi',
     icon: <FaGithub aria-hidden="true" />,
+  },
+  {
+    id: 'medium',
+    label: 'Medium',
+    href: 'https://medium.com/@nur369188',
+    icon: <FaMedium aria-hidden="true" />,
   },
 ];
 

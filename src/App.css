@@ -4,6 +4,7 @@
   --bg-primary: #ffffff;
   --bg-secondary: rgba(255, 255, 255, 0.9);
   --bg-card: rgba(255, 255, 255, 0.95);
+  --surface: rgba(255, 255, 255, 0.95);
   --text-primary: #1a1a1a;
   --text-secondary: #4a4a4a;
   --text-muted: #888888;
@@ -22,6 +23,7 @@
   --bg-primary: #000000;
   --bg-secondary: rgba(0, 0, 0, 0.8);
   --bg-card: rgba(0, 0, 0, 0.6);
+  --surface: rgba(20, 20, 30, 0.8);
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.9);
   --text-muted: rgba(255, 255, 255, 0.7);

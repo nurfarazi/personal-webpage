@@ -68,7 +68,7 @@ const Knowledge: React.FC = () => {
       readTime: '15 min read',
       excerpt: 'Comprehensive guide to optimizing Angular applications for production. Covers change detection strategies, lazy loading, bundle optimization, and advanced RxJS patterns for building high-performance web applications.',
       tags: ['Angular', 'TypeScript', 'RxJS', 'Performance'],
-      link: 'https://nur369188.medium.com/20-angular-performance-optimization-techniques-268900d779ef?sk=33a6f859f375e039725380d5a469a830'
+      link: 'https://nur369188.medium.com/20-angular-performance-optimization-techniques-268900d779ef?sk=33a6f859f375e039725380d5a469a830 '
     },
     {
       id: '4',

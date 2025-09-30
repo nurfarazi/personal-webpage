@@ -1,5 +1,6 @@
 import { useEffect, useState, ReactNode } from 'react';
-import { Theme, ThemeContext } from './themeTypes';
+import { Theme, PrimaryColor, ThemeContext } from './themeTypes';
+import { colorOptions } from './colorOptions';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -16,6 +17,11 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return savedTheme;
   });
 
+  const [primaryColor, setPrimaryColorState] = useState<PrimaryColor>(() => {
+    const savedColor = localStorage.getItem('primaryColor') as PrimaryColor;
+    return savedColor || 'blue';
+  });
+
   const toggleTheme = () => {
     setTheme(prevTheme => {
       const newTheme = prevTheme === 'light' ? 'dark' : 'light';
@@ -24,14 +30,28 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     });
   };
 
+  const setPrimaryColor = (color: PrimaryColor) => {
+    setPrimaryColorState(color);
+    localStorage.setItem('primaryColor', color);
+  };
+
   useEffect(() => {
     // Apply theme class to document element
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.className = theme;
   }, [theme]);
 
+  useEffect(() => {
+    // Apply primary color CSS variables
+    const colorOption = colorOptions.find(option => option.name === primaryColor);
+    if (colorOption) {
+      document.documentElement.style.setProperty('--accent-color', colorOption.primary);
+      document.documentElement.style.setProperty('--accent-hover', colorOption.hover);
+    }
+  }, [primaryColor]);
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, primaryColor, toggleTheme, setPrimaryColor }}>
       {children}
     </ThemeContext.Provider>
   );

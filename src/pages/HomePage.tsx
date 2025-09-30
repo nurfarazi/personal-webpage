@@ -316,13 +316,13 @@ const HomePage: React.FC = () => {
           About Me
         </motion.h2>
         <motion.p variants={heroItemVariants}>
-          Experienced Backend Engineer and Technical Project Manager
-          with 14+ years delivering scalable software and cloud solutions.
-          Backend-focused with expertise in system design, optimization, and full-stack development using Angular and TypeScript.
-          Proven track record leading cross-functional global teams, managing
+          Experienced <span className="highlight-text highlight-primary">Backend Engineer</span> and <span className="highlight-text highlight-dark">Technical Project Manager</span>
+          with <span className="highlight-text highlight-primary">14+ years</span> delivering scalable software and cloud solutions.
+          <span className="highlight-text highlight-dark">Backend-focused</span> with expertise in system design, optimization, and full-stack development using <span className="highlight-text highlight-primary">Angular</span> and <span className="highlight-text highlight-primary">TypeScript</span>.
+          Proven track record leading <span className="highlight-text highlight-dark">cross-functional global teams</span>, managing
           complex IT projects across web, mobile, and cloud platforms. Skilled
           in stakeholder alignment, crisis resolution, and project recovery,
-          with a hands-on approach to solving real-world problems at scale.
+          with a <span className="highlight-text highlight-primary">hands-on</span> approach to solving real-world problems at scale.
         </motion.p>
       </motion.section>
 
@@ -338,24 +338,24 @@ const HomePage: React.FC = () => {
         </motion.h2>
         <motion.ul variants={sectionVariants}>
           <motion.li variants={listItemVariants}>
-            Led cross-functional teams of up to 12, delivering full-cycle
-            projects across web, mobile, and cloud platforms.
+            Led <span className="highlight-text highlight-primary">cross-functional teams</span> of up to <span className="highlight-text highlight-dark">12</span>, delivering <span className="highlight-text highlight-primary">full-cycle
+            projects</span> across web, mobile, and cloud platforms.
           </motion.li>
           <motion.li variants={listItemVariants}>
-            Defined scope, goals, and deliverables aligned with business
-            objectives across multiple SaaS products.
+            Defined scope, goals, and deliverables aligned with <span className="highlight-text highlight-dark">business
+            objectives</span> across multiple <span className="highlight-text highlight-primary">SaaS products</span>.
           </motion.li>
           <motion.li variants={listItemVariants}>
-            Managed timelines, sprints, and budgets using Agile (Scrum, Kanban)
+            Managed timelines, sprints, and budgets using <span className="highlight-text highlight-primary">Agile</span> (<span className="highlight-text highlight-dark">Scrum</span>, <span className="highlight-text highlight-dark">Kanban</span>)
             methodologies.
           </motion.li>
           <motion.li variants={listItemVariants}>
-            Acted as primary liaison between technical teams, stakeholders, and
+            Acted as <span className="highlight-text highlight-primary">primary liaison</span> between technical teams, stakeholders, and
             external partners.
           </motion.li>
           <motion.li variants={listItemVariants}>
-            Mentored junior team members and established a software engineer
-            evaluation/growth framework.
+            <span className="highlight-text highlight-dark">Mentored</span> junior team members and established a <span className="highlight-text highlight-primary">software engineer
+            evaluation/growth framework</span>.
           </motion.li>
         </motion.ul>
       </motion.section>

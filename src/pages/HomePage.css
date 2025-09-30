@@ -560,3 +560,44 @@
     display: none;
   }
 }
+
+/* Highlighted text styles */
+.highlight-text {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  font-weight: 600;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+.highlight-primary {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.highlight-dark {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .highlight-primary {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .highlight-dark {
+  background-color: #3d3d3d;
+  color: #ffffff;
+}
+
+/* Hover effects for highlighted text */
+.highlight-text:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .highlight-text:hover {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}

@@ -511,6 +511,12 @@ a:hover {
   transform: rotate(20deg);
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 @media (max-width: 768px) {
   .theme-toggle {
     width: 36px;
@@ -618,6 +624,128 @@ a:hover {
   gap: 2rem;
 }
 
+/* Color Picker Styles */
+.color-picker {
+  position: relative;
+  display: inline-block;
+}
+
+.color-picker-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.color-picker-trigger:hover {
+  background: var(--surface);
+  border-color: var(--accent-color);
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--border-color);
+  transition: border-color 0.2s ease;
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.color-picker-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px var(--shadow);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  min-width: 200px;
+  animation: fadeInScale 0.15s ease-out;
+}
+
+.color-picker-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.color-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.color-option:hover {
+  background: var(--surface);
+}
+
+.color-option.active {
+  background: rgba(var(--accent-color-rgb, 100, 108, 255), 0.1);
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.color-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  flex: 1;
+}
+
+.check-icon {
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 600px) {
   .bento-card {
     flex-direction: column;
@@ -630,5 +758,11 @@ a:hover {
   }
   .bento-experience-grid {
     gap: 1.2rem;
+  }
+  
+  .color-picker-dropdown {
+    right: -1rem;
+    left: -1rem;
+    min-width: auto;
   }
 }

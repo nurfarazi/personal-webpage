@@ -58,7 +58,7 @@ const Knowledge: React.FC = () => {
       readTime: '10 min read',
       excerpt: 'Deep dive into Command Query Responsibility Segregation (CQRS) pattern implementation in C#. Explore real-world scenarios, performance benefits, and best practices for separating read and write operations in complex applications.',
       tags: ['C#', 'CQRS', 'Design Patterns', 'System Design'],
-      link: 'https://medium.com/@nur369188'
+      link: 'https://nur369188.medium.com/cqrs-pattern-in-c-with-net-8-common-pitfalls-and-how-to-avoid-them-026a49969bc3?sk=3bf4f5216555281b0af59b4f23c7802d'
     },
     {
       id: '3',

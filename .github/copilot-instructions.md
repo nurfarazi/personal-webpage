@@ -1,38 +1,32 @@
-# Copilot Instructions for `personal-webpage`
+# Copilot instructions — personal-webpage
 
-## Project snapshot
-- React 19 + TypeScript app scaffolded with Vite (`src/main.tsx` renders `<App />` into `#root`).
-- Routing is handled with `react-router-dom@7`: `App.tsx` mounts `/`, `/contact`, and `/knowledge` routes inside a `<BrowserRouter>`.
-- A global `ThemeProvider` wraps the app; theme state lives in `localStorage` and is mirrored on `document.documentElement` for CSS switching.
+- Stack: React 19 + TypeScript + Vite. Entry: `src/main.tsx` -> `App.tsx`.
+- Routing: `react-router-dom@7`. Pages live in `src/pages/` and have sibling global CSS files (e.g. `HomePage.tsx` + `HomePage.css`). Register routes inside `App.tsx`.
 
-## Where things live
-- Page components sit in `src/pages/`; each has a matching global CSS file (e.g., `HomePage.tsx` + `HomePage.css`). Styles are not scoped, so reuse class names carefully.
-- Shared UI lives in `src/components/`. `Navbar` pulls `useTheme()` and drives navigation, while `ThemedParticles` adds the animated background via `react-tsparticles`.
-- Theme primitives are defined in `src/contexts/ThemeContext.tsx` and `src/hooks/useTheme.ts`. Use the hook instead of reaching into context directly.
-- Static assets (video, icons) are under `public/` and referenced by filename, e.g., `working.webm` in `HomePage.tsx`.
-- Design tokens live in `src/index.css` (typography scale, spacing) and `src/App.css` (theme colors). CSS custom properties provide a comprehensive design system.
+- Theming: `src/contexts/ThemeContext.tsx` + `src/hooks/useTheme.ts`. Theme is persisted to localStorage and mirrored to `document.documentElement` using a `data-theme` attribute. Change colors with CSS variables in `src/App.css` and `src/index.css`.
 
-## Animation & interaction patterns
-- Animations use the `motion/react` API (Motion v12, successor to Framer Motion). Components define `Variants` objects and pass them to `motion.*` elements with `initial`/`animate` props.
-- Motion values (`useMotionValue`, `useSpring`, `useMotionTemplate`) drive interactive glow backdrops in `HomePage.tsx` and `Contact.tsx`. Follow this pattern to keep pointer-tracked gradients smooth.
-- Respect accessibility: every animated section gates motion behind `useReducedMotion`. New animations should offer the same fallback.
+- Animations & motion:
+  - Uses Motion v12 (`motion/react`) and motion values (`useMotionValue`, `useSpring`, `useMotionTemplate`).
+  - Gate animations with `useReducedMotion` and keep heavy motion-driven objects memoized (`useMemo`) to avoid re-creating them every render.
+  - Pointer-tracked glows and gradients follow the pattern in `src/pages/HomePage.tsx` and `src/pages/Contact.tsx`.
 
-## Working effectively
-- Preferred workflows:
-  - `npm run dev` — Vite dev server with HMR.
-  - `npm run build` — type-checks with `tsc -b` before bundling.
-  - `npm run preview` — serves the production build locally.
-  - `npm run lint` — runs the flat ESLint config in `eslint.config.js`.
-- TypeScript paths are standard; no path aliases are configured. Keep imports relative to avoid breaking Vite resolution.
+- Particles: `src/components/ThemedParticles.tsx` uses `react-tsparticles`. Compute options in `useMemo()` on `theme` and prefer `tsparticles-slim` for smaller bundles.
 
-## Implementation tips
-- When adding new pages, register the route in `App.tsx`, create the component under `src/pages/`, and add any styles in a sibling CSS file.
-- Consume theme state via `useTheme()` and prefer CSS variables toggled by the `data-theme` attribute for color changes.
-- For particle or other theme-aware visuals, follow `ThemedParticles.tsx`: compute options inside `useMemo()` keyed on `theme` to avoid expensive re-inits.
-- Contact metadata, work experience cards, and similar content live in localized arrays. Update those constants rather than introducing new state containers unless interactivity demands it.
-- Use design tokens from `--font-size-*`, `--tracking-*`, and `--line-height-*` custom properties for consistent typography. Theme colors follow `--bg-*`, `--text-*`, and `--accent-*` patterns.
+- Data patterns: Small page-specific lists (contacts, projects, experiences) live as localized arrays inside page files. Prefer editing those constants for content changes rather than introducing global state.
 
-## Quality bar
-- Keep components functional and typed; favor explicit interfaces for structured data (see `WorkExperience` in `HomePage.tsx`).
-- Stay consistent with existing ARIA usage and accessible labels, especially around interactive icons and buttons.
-- If you introduce new libraries, update `package.json` and run `npm install` so `package-lock.json` stays in sync.
+- Dev & build commands (see `package.json`):
+  - `npm run dev` — Vite dev server with HMR (default port 5173).
+  - `npm run build` — `tsc -b` then `vite build` (type-check enforced).
+  - `npm run preview` — preview production build.
+  - `npm run lint` — runs ESLint (config: `eslint.config.js`).
+
+- Conventions & gotchas:
+  - No TS path aliases — use relative imports.
+  - Styles are global; scope class names by component prefix to avoid collisions.
+  - Use `useMemo`/`useCallback` when computing theme-aware visuals or particle options.
+
+- Key files to inspect when debugging:
+  - `src/contexts/ThemeContext.tsx`, `src/hooks/useTheme.ts`
+  - `src/App.tsx`, `src/main.tsx`
+  - `src/components/ThemedParticles.tsx`, `src/components/Navbar.tsx`
+  - Page files in `src/pages/` for localized data arrays and motion usage.

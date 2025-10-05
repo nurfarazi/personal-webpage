@@ -442,6 +442,17 @@ a:hover {
   }
 }
 
+/* Ensure fixed navbar doesn't overlap page content. Adjust --nav-height if you change navbar padding/size. */
+:root {
+  --nav-height: 72px;
+}
+
+/* Offset the document content so fixed .navbar won't cover headings */
+body {
+  padding-top: var(--nav-height);
+  scroll-padding-top: var(--nav-height);
+}
+
 .navbar {
   position: fixed;
   top: 0;

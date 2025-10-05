@@ -8,6 +8,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Knowledge = lazy(() => import('./pages/Knowledge'));
 const Projects = lazy(() => import('./pages/Projects'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const ThemedParticles = lazy(() => import('./components/ThemedParticles'));
 
 const RouteFallback = () => (
@@ -29,6 +30,7 @@ const AppContent = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} />
         </Routes>
       </Suspense>
     </Router>

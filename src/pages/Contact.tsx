@@ -9,14 +9,14 @@ import {
 } from 'motion/react';
 import type { Variants } from 'motion/react';
 import {
-  FaCalendarCheck,
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaMedium,
-} from 'react-icons/fa';
+  CalendarCheckIcon,
+  EnvelopeIcon,
+  GithubIcon,
+  LinkedInIcon,
+  LocationIcon,
+  MediumIcon,
+  PhoneIcon,
+} from '../components/icons';
 
 import './Contact.css';
 
@@ -35,7 +35,7 @@ const contactMethods: ContactMethod[] = [
     label: 'Email',
     value: 'nur369188@gmail.com',
     href: 'mailto:nur369188@gmail.com',
-    icon: <FaEnvelope aria-hidden="true" />,
+    icon: <EnvelopeIcon aria-hidden="true" />,
     copyable: true,
   },
   {
@@ -43,14 +43,14 @@ const contactMethods: ContactMethod[] = [
     label: 'Phone',
     value: '+8801717369188',
     href: 'tel:+8801717369188',
-    icon: <FaPhone aria-hidden="true" />,
+    icon: <PhoneIcon aria-hidden="true" />,
     copyable: true,
   },
   {
     id: 'location',
     label: 'Location',
     value: 'Dhaka, Bangladesh',
-    icon: <FaMapMarkerAlt aria-hidden="true" />,
+    icon: <LocationIcon aria-hidden="true" />,
   },
 ];
 
@@ -59,19 +59,19 @@ const socialLinks = [
     id: 'linkedin',
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/nurfarazi/',
-    icon: <FaLinkedin aria-hidden="true" />,
+    icon: <LinkedInIcon aria-hidden="true" />,
   },
   {
     id: 'github',
     label: 'GitHub',
     href: 'https://github.com/nurfarazi',
-    icon: <FaGithub aria-hidden="true" />,
+    icon: <GithubIcon aria-hidden="true" />,
   },
   {
     id: 'medium',
     label: 'Medium',
     href: 'https://medium.com/@nur369188',
-    icon: <FaMedium aria-hidden="true" />,
+    icon: <MediumIcon aria-hidden="true" />,
   },
 ];
 
@@ -402,7 +402,7 @@ const Contact = () => {
                   ))}
                 </motion.ul>
                 <motion.div className="contact-note" role="status" variants={noteVariants}>
-                  <FaCalendarCheck aria-hidden="true" />
+                  <CalendarCheckIcon aria-hidden="true" />
                   <span>Typically replying within 24 hours.</span>
                 </motion.div>
               </motion.article>

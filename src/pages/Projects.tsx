@@ -1,386 +1,463 @@
-import React, { useRef } from "react";
-import { 
-  motion, 
-  useReducedMotion, 
-  useMotionValue, 
-  useSpring, 
-  useMotionTemplate 
-} from "motion/react";
-import type { Variants } from "motion/react";
-import "./Projects.css";
-import "../App.css";
+import React, { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import './Projects.css';
 
-interface Project {
-  name: string;
-  description: string;
-  techStack: string[];
-  githubUrl: string;
-  highlights: string[];
-  stars?: number;
-  language?: string;
+type MediaType = 'image' | 'video';
+
+interface ProjectMedia {
+  type: MediaType;
+  src: string;
+  alt: string;
+  poster?: string;
 }
 
-// Motion variants for staggered animations
-const heroVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut',
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
+interface TechCategory {
+  label: string;
+  items: string[];
+}
 
-const heroItemVariants: Variants = {
+interface ProjectLink {
+  label: string;
+  url: string;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  tagline: string;
+  preview: ProjectMedia;
+  techTags: string[];
+  description: string[];
+  features: string[];
+  techCategories: TechCategory[];
+  mediaGallery: ProjectMedia[];
+  links: ProjectLink[];
+  role?: string;
+  duration?: string;
+  challenges?: string[];
+}
+
+const projectData: Project[] = [
+  {
+    id: 'pulseforge',
+    title: 'PulseForge Analytics',
+    tagline: 'Real-time health analytics platform for enterprise clinics',
+    preview: {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1580894906472-2f9f8b910f20?auto=format&fit=crop&w=1200&q=80',
+      alt: 'PulseForge analytics dashboard preview',
+    },
+    mediaGallery: [
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+        alt: 'PulseForge data visualisations',
+      },
+      {
+        type: 'video',
+        src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
+        alt: 'PulseForge workflow demo',
+        poster: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+      },
+    ],
+    description: [
+      'PulseForge brings together wearable data, patient records, and predictive models so care teams can respond to health events faster.',
+      'Led the full-stack build while pairing with clinicians to iterate on dashboards that translate complex signals into actionable insights.',
+    ],
+    features: [
+      'Live data stream processing with configurable watchlists',
+      'Scenario modelling that projects health trends using custom ML models',
+      'Collaborative review spaces with audit-friendly notes and approvals',
+    ],
+    techTags: ['React', 'TypeScript', 'Socket.IO', 'Azure Functions'],
+    techCategories: [
+      { label: 'Frontend', items: ['React 18', 'React Query', 'Framer Motion', 'Victory Charts'] },
+      { label: 'Backend', items: ['.NET 8 Web API', 'Azure Functions', 'Redis Streams'] },
+      { label: 'Cloud', items: ['Azure Event Hubs', 'Azure Monitor', 'Azure Blob Storage'] },
+    ],
+    links: [
+      { label: 'Live Demo', url: 'https://example.com/pulseforge' },
+      { label: 'GitHub', url: 'https://github.com/example/pulseforge' },
+    ],
+    role: 'Product Engineer & Technical Lead',
+    duration: 'Jan 2024 - Aug 2024',
+    challenges: [
+      'Synthesising varying data refresh cadences without overwhelming clinicians',
+      'Meeting HIPAA controls while keeping collaboration fluid',
+    ],
+  },
+  {
+    id: 'atlas',
+    title: 'Atlas Commerce',
+    tagline: 'Composable e-commerce storefront with headless CMS',
+    preview: {
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Atlas commerce storefront preview',
+    },
+    mediaGallery: [
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+        alt: 'Atlas modular component builder',
+      },
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+        alt: 'Atlas campaign dashboard',
+      },
+    ],
+    description: [
+      'Atlas is a composable storefront enabling marketing teams to launch campaigns in hours rather than weeks.',
+      'The platform emphasises a modular design system, dynamic routing, and a CMS-driven workflow that keeps engineering and content in sync.',
+    ],
+    features: [
+      'Block-based page builder with live preview and versioning',
+      'Dynamic personalisation flows powered by segment-driven rules',
+      'Server-side rendering with incremental revalidation for fast global delivery',
+    ],
+    techTags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'GraphQL'],
+    techCategories: [
+      { label: 'Frontend', items: ['Next.js 14', 'React Server Components', 'Tailwind CSS'] },
+      { label: 'Backend', items: ['Node.js', 'Apollo Federation', 'Prisma'] },
+      { label: 'Cloud', items: ['Vercel', 'AWS RDS', 'CloudFront'] },
+    ],
+    links: [
+      { label: 'Case Study', url: 'https://example.com/atlas-case-study' },
+      { label: 'GitHub', url: 'https://github.com/example/atlas-commerce' },
+    ],
+    role: 'Lead Frontend Engineer',
+    duration: 'May 2023 - Dec 2023',
+  },
+  {
+    id: 'tidelabs',
+    title: 'TideLabs Research Portal',
+    tagline: 'Knowledge base and experiment automation for data teams',
+    preview: {
+      type: 'video',
+      src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
+      alt: 'TideLabs walkthrough',
+      poster: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    },
+    mediaGallery: [
+      {
+        type: 'video',
+        src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
+        alt: 'Automated experiment timeline',
+        poster: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
+      },
+      {
+        type: 'image',
+        src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        alt: 'Research documentation hub',
+      },
+    ],
+    description: [
+      'TideLabs centralises experimental findings, datasets, and team rituals so data scientists can iterate quickly without losing context.',
+      'Automations bring relevant documentation into the workflow and trigger environment provisioning on demand.',
+    ],
+    features: [
+      'Notebook synchronisation with automatic changelog generation',
+      'Automated environment setup with one-click teardown',
+      'Cross-team retrospectives and insights surfaced by AI summaries',
+    ],
+    techTags: ['React', 'NestJS', 'PostgreSQL', 'Kubernetes'],
+    techCategories: [
+      { label: 'Frontend', items: ['React 18', 'Zustand', 'Framer Motion'] },
+      { label: 'Backend', items: ['NestJS', 'GraphQL', 'Hasura'] },
+      { label: 'Cloud', items: ['GKE', 'ArgoCD', 'BigQuery'] },
+    ],
+    links: [
+      { label: 'Live Portal', url: 'https://example.com/tidelabs' },
+    ],
+    role: 'Founding Engineer',
+    duration: 'Jul 2022 - Present',
+    challenges: [
+      'Abstracting complex data governance policies into lightweight controls',
+      'Maintaining fast onboarding despite infrastructure complexity',
+    ],
+  },
+];
+
+const cardVariants = {
   hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
+  show: { opacity: 1, y: 0 },
 };
 
-const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-      staggerChildren: 0.08,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-};
-
-const listItemVariants: Variants = {
-  hidden: { opacity: 0, x: -16 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
-  },
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.96, y: 24 },
+  show: { opacity: 1, scale: 1, y: 0 },
+  exit: { opacity: 0, scale: 0.96, y: 24 },
 };
 
 const Projects: React.FC = () => {
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+  const [mediaIndex, setMediaIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  // Mouse tracking for glow effect
-  const glowX = useMotionValue(50);
-  const glowY = useMotionValue(50);
-  const glowXSpring = useSpring(glowX, {
-    stiffness: 120,
-    damping: 24,
-    mass: 0.8,
-  });
-  const glowYSpring = useSpring(glowY, {
-    stiffness: 120,
-    damping: 24,
-    mass: 0.8,
-  });
-  const glowBackground = useMotionTemplate`
-    radial-gradient(300px circle at ${glowXSpring}% ${glowYSpring}%, rgba(100, 108, 255, 0.15), transparent 70%)
-  `;
 
-  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
-    if (shouldReduceMotion || !sectionRef.current) return;
-    
-    const bounds = sectionRef.current.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
-    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
-    
-    glowX.set(Math.min(100, Math.max(0, x)));
-    glowY.set(Math.min(100, Math.max(0, y)));
-  };
+  const activeProject = useMemo(
+    () => projectData.find((project) => project.id === activeProjectId) ?? null,
+    [activeProjectId],
+  );
 
-  const handlePointerLeave = () => {
-    if (shouldReduceMotion) return;
-    glowX.set(50);
-    glowY.set(50);
-  };
-
-  const featuredProjects: Project[] = [
-    {
-      name: "Organic Shop MicroServices",
-      description: "A microservices-based e-commerce platform built using .NET 8, ASP.NET Core, Docker, RabbitMQ, and other modern technologies. Implements core e-commerce features as independent microservices communicating through gRPC and RabbitMQ.",
-      techStack: ["C#", ".NET 8", "Docker", "RabbitMQ", "gRPC", "CQRS", "Microservices"],
-      githubUrl: "https://github.com/nurfarazi/Organic-Shop-MicroServices",
-      highlights: [
-        "Microservices architecture with API Gateway",
-        "gRPC for inter-service communication",
-        "RabbitMQ message broker integration",
-        "CQRS pattern implementation",
-        "FluentValidation for request validation"
-      ],
-      stars: 1,
-      language: "C#"
-    },
-    {
-      name: "SafeMailer",
-      description: "A robust email delivery system designed to ensure high reliability and fault tolerance by managing multiple third-party email services. Integrates seamlessly with providers like SendGrid, Gmail, and Yahoo.",
-      techStack: ["C#", ".NET", "Email Services", "Fault Tolerance"],
-      githubUrl: "https://github.com/nurfarazi/SafeMailer",
-      highlights: [
-        "Multiple email provider integration",
-        "Automatic fallback mechanism",
-        "High reliability & fault tolerance",
-        "Seamless provider switching"
-      ],
-      language: "C#"
-    },
-    {
-      name: "Design Patterns",
-      description: "Comprehensive demonstration of creational, structural, and behavioral design patterns implemented in C# and .NET 8. A learning resource for understanding software design principles.",
-      techStack: ["C#", ".NET 8", "Design Patterns", "SOLID"],
-      githubUrl: "https://github.com/nurfarazi/design-patterns",
-      highlights: [
-        "Singleton, Factory, Builder patterns",
-        "Facade, Proxy, Flyweight patterns",
-        "Comprehensive examples",
-        "Best practices implementation"
-      ],
-      stars: 1,
-      language: "C#"
-    },
-    {
-      name: "Fine Tracker",
-      description: "A tracking system built with modern technologies for managing and monitoring fines efficiently.",
-      techStack: ["Shell", "Automation", "Tracking"],
-      githubUrl: "https://github.com/nurfarazi/fine-tracker",
-      highlights: [
-        "Automated tracking system",
-        "Efficient data management",
-        "Real-time monitoring"
-      ],
-      language: "Shell"
-    },
-    {
-      name: "Express TypeScript 2024",
-      description: "A modern Express.js backend application built with TypeScript, showcasing best practices for building scalable Node.js applications.",
-      techStack: ["TypeScript", "Express.js", "Node.js", "REST API"],
-      githubUrl: "https://github.com/nurfarazi/express-typescript-2024",
-      highlights: [
-        "Type-safe backend development",
-        "Modern Express.js patterns",
-        "RESTful API design",
-        "Scalable architecture"
-      ],
-      language: "TypeScript"
-    },
-    {
-      name: "ThreadingPlay",
-      description: "Thread-safe shared data structures demonstrating concurrency patterns and ensuring correctness in multithreaded applications.",
-      techStack: ["C#", "Concurrency", "Threading", "Parallel Programming"],
-      githubUrl: "https://github.com/nurfarazi/ThreadingPlay",
-      highlights: [
-        "Thread-safe data structures",
-        "Concurrency patterns",
-        "Race condition prevention",
-        "Performance optimization"
-      ],
-      language: "C#"
+  useEffect(() => {
+    if (!activeProject) {
+      setMediaIndex(0);
+      return;
     }
-  ];
 
-  const sectionInitial = shouldReduceMotion ? false : 'hidden';
-  const sectionAnimate = shouldReduceMotion ? false : 'show';
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [activeProject]);
+
+  const handleOpenProject = (projectId: string) => {
+    setActiveProjectId(projectId);
+    setMediaIndex(0);
+  };
+
+  const handleCloseProject = () => {
+    setActiveProjectId(null);
+  };
+
+  const buildThumbnailClass = (isActive: boolean) => {
+    return isActive ? 'thumbnail is-active' : 'thumbnail';
+  };
 
   return (
-    <motion.div 
-      className="container"
-      ref={sectionRef}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
-      {/* Interactive glow effect */}
-      {!shouldReduceMotion && (
+    <div className='projects-page'>
+      <section className='projects-header'>
         <motion.span
-          className="home-glow"
-          style={{ background: glowBackground }}
-          aria-hidden="true"
-          animate={{ 
-            opacity: [0.2, 0.4, 0.2], 
-            scale: [0.98, 1.02, 0.98] 
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            repeatType: 'mirror',
-            ease: 'easeInOut',
-          }}
-        />
-      )}
-
-      <motion.header 
-        className="header"
-        variants={heroVariants}
-        initial={sectionInitial}
-        animate={sectionAnimate}
-      >
-        <motion.h1 className="hero-title" variants={heroItemVariants}>
-          Projects
-        </motion.h1>
-        <motion.p className="hero-subtitle" variants={heroItemVariants}>
-          A showcase of open-source projects and technical contributions
-        </motion.p>
-      </motion.header>
-
-      <motion.section 
-        className="section featured-projects"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.div className="projects-grid" variants={sectionVariants}>
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="project-card"
-              variants={cardVariants}
-              whileHover={shouldReduceMotion ? undefined : {
-                scale: 1.03,
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <div className="project-header">
-                <div className="project-title-row">
-                  <motion.h3
-                    whileHover={shouldReduceMotion ? undefined : { x: 5 }}
-                  >
-                    {project.name}
-                  </motion.h3>
-                  <motion.a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-link"
-                    whileHover={shouldReduceMotion ? undefined : { 
-                      scale: 1.2,
-                      rotate: 5 
-                    }}
-                    whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
-                    aria-label={`View ${project.name} on GitHub`}
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                  </motion.a>
-                </div>
-                <div className="project-meta">
-                  {project.language && (
-                    <span className="project-language">
-                      <span className="language-dot"></span>
-                      {project.language}
-                    </span>
-                  )}
-                  {project.stars !== undefined && (
-                    <span className="project-stars">
-                      ⭐ {project.stars}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <p className="project-description">{project.description}</p>
-              <div className="tech-stack">
-                {project.techStack.map((tech, i) => (
-                  <motion.span
-                    key={i}
-                    className="tech-badge"
-                    whileHover={shouldReduceMotion ? undefined : {
-                      scale: 1.1,
-                      y: -2
-                    }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-              <motion.ul className="project-highlights" variants={sectionVariants}>
-                {project.highlights.map((highlight, i) => (
-                  <motion.li key={i} variants={listItemVariants}>
-                    {highlight}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
-
-      <motion.section 
-        className="section github-stats"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2 className="section-title" variants={heroItemVariants}>
-          GitHub Activity
-        </motion.h2>
-        <motion.div className="stats-grid" variants={sectionVariants}>
-          <motion.div className="stat-card" variants={cardVariants}>
-            <div className="stat-value">97</div>
-            <div className="stat-label">Public Repositories</div>
-          </motion.div>
-          <motion.div className="stat-card" variants={cardVariants}>
-            <div className="stat-value">14</div>
-            <div className="stat-label">Followers</div>
-          </motion.div>
-          <motion.div className="stat-card" variants={cardVariants}>
-            <div className="stat-value">31</div>
-            <div className="stat-label">Following</div>
-          </motion.div>
-          <motion.div className="stat-card" variants={cardVariants}>
-            <div className="stat-value">14+</div>
-            <div className="stat-label">Years Experience</div>
-          </motion.div>
-        </motion.div>
-        <motion.div 
-          className="github-charts"
-          variants={heroItemVariants}
-          style={{ marginTop: 'var(--spacing-xl)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}
+          className='projects-kicker'
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-          <motion.img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=nurfarazi&theme=transparent&hide_border=true&stroke=646CFF&ring=646CFF&fire=9333EA&currStreakLabel=646CFF"
-            alt="GitHub Streak Stats"
-            style={{ width: '100%', maxWidth: '800px', margin: '0 auto', borderRadius: 'var(--radius-lg)' }}
-            whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
-          />
-          <motion.img
-            src="https://github-readme-activity-graph.vercel.app/graph?username=nurfarazi&theme=github-compact&hide_border=true&bg_color=00000000&color=646CFF&line=9333EA&point=646CFF"
-            alt="GitHub Activity Graph"
-            style={{ width: '100%', borderRadius: 'var(--radius-lg)' }}
-            whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
-          />
-        </motion.div>
-      </motion.section>
-    </motion.div>
+          Featured Work
+        </motion.span>
+        <motion.h1
+          className='projects-title'
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+        >
+          Projects crafted with intent and measurable impact.
+        </motion.h1>
+        <motion.p
+          className='projects-subtitle'
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+        >
+          Explore a selection of end-to-end deliveries—from real-time analytics platforms to composable commerce systems—each distilled into a quick overview with deeper context on demand.
+        </motion.p>
+      </section>
+
+      <motion.div
+        className='projects-grid'
+        initial='hidden'
+        whileInView='show'
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ staggerChildren: 0.12 }}
+      >
+        {projectData.map((project) => (
+          <motion.article
+            key={project.id}
+            className='project-card'
+            variants={cardVariants}
+            whileHover={shouldReduceMotion ? undefined : { y: -8 }}
+          >
+            <button
+              type='button'
+              className='project-card-inner'
+              onClick={() => handleOpenProject(project.id)}
+            >
+              <div className='project-preview'>
+                {project.preview.type === 'image' ? (
+                  <img src={project.preview.src} alt={project.preview.alt} loading='lazy' />
+                ) : (
+                  <video
+                    src={project.preview.src}
+                    poster={project.preview.poster}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay={!shouldReduceMotion}
+                  />
+                )}
+              </div>
+              <div className='project-content'>
+                <div className='project-text'>
+                  <h2>{project.title}</h2>
+                  <p>{project.tagline}</p>
+                </div>
+                <div className='tech-tags'>
+                  {project.techTags.map((tech) => (
+                    <span key={tech} className='tech-tag'>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <motion.span
+                  className='project-cta'
+                  whileHover={shouldReduceMotion ? undefined : { x: 6 }}
+                >
+                  View details
+                </motion.span>
+              </div>
+            </button>
+          </motion.article>
+        ))}
+      </motion.div>
+
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            className='project-modal-overlay'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleCloseProject}
+          >
+            <motion.div
+              className='project-modal'
+              variants={modalVariants}
+              initial='hidden'
+              animate='show'
+              exit='exit'
+              transition={{ duration: 0.28, ease: 'easeOut' }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button type='button' className='modal-close' onClick={handleCloseProject} aria-label='Close project details'>
+                X
+              </button>
+
+              <div className='modal-media'>
+                {activeProject.mediaGallery[mediaIndex]?.type === 'image' ? (
+                  <img
+                    src={activeProject.mediaGallery[mediaIndex].src}
+                    alt={activeProject.mediaGallery[mediaIndex].alt}
+                  />
+                ) : (
+                  <video
+                    key={activeProject.mediaGallery[mediaIndex].src}
+                    src={activeProject.mediaGallery[mediaIndex].src}
+                    poster={activeProject.mediaGallery[mediaIndex].poster}
+                    controls
+                    autoPlay
+                    muted
+                    playsInline
+                  />
+                )}
+
+                {activeProject.mediaGallery.length > 1 && (
+                  <div className='media-thumbnails'>
+                    {activeProject.mediaGallery.map((media, index) => (
+                      <button
+                        key={media.src}
+                        type='button'
+                        className={buildThumbnailClass(index === mediaIndex)}
+                        onClick={() => setMediaIndex(index)}
+                      >
+                        {media.type === 'image' ? (
+                          <img src={media.src} alt={media.alt} loading='lazy' />
+                        ) : (
+                          <div className='thumbnail-video'>
+                            <img src={media.poster ?? activeProject.preview.src} alt={media.alt} loading='lazy' />
+                            <span className='thumbnail-badge'>Play</span>
+                          </div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className='modal-content'>
+                <header className='modal-header'>
+                  <h2>{activeProject.title}</h2>
+                  <p>{activeProject.tagline}</p>
+                </header>
+
+                <section className='modal-section'>
+                  {activeProject.description.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </section>
+
+                <section className='modal-section'>
+                  <h3>Highlights</h3>
+                  <ul className='feature-list'>
+                    {activeProject.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className='modal-section'>
+                  <h3>Tech Stack</h3>
+                  <div className='tech-categories'>
+                    {activeProject.techCategories.map((category) => (
+                      <div key={category.label} className='tech-category'>
+                        <span className='tech-category-label'>{category.label}</span>
+                        <ul>
+                          {category.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {activeProject.links.length > 0 && (
+                  <section className='modal-section'>
+                    <h3>Links</h3>
+                    <div className='modal-links'>
+                      {activeProject.links.map((link) => (
+                        <a key={link.url} href={link.url} target='_blank' rel='noopener noreferrer'>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {(activeProject.role || activeProject.duration || activeProject.challenges) && (
+                  <section className='modal-section meta-grid'>
+                    {activeProject.role && (
+                      <div className='meta-item'>
+                        <span className='meta-label'>Role</span>
+                        <span>{activeProject.role}</span>
+                      </div>
+                    )}
+                    {activeProject.duration && (
+                      <div className='meta-item'>
+                        <span className='meta-label'>Duration</span>
+                        <span>{activeProject.duration}</span>
+                      </div>
+                    )}
+                    {activeProject.challenges && (
+                      <div className='meta-item'>
+                        <span className='meta-label'>Challenges</span>
+                        <ul>
+                          {activeProject.challenges.map((challenge) => (
+                            <li key={challenge}>{challenge}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </section>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

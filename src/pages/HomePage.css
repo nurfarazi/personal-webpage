@@ -50,6 +50,17 @@
   transition: opacity 0.3s ease;
 }
 
+/* Scoped adjustments for home page to avoid double padding from global container/header */
+.home-page.container {
+  /* Global .container adds padding-top for layout; reduce it on the home page
+     because the header and particles already create vertical spacing. */
+  padding-top: 40px; /* smaller than global 80px in App.css */
+}
+
+.home-page .header {
+  padding: 1rem 1rem; /* tighten header spacing on the home page */
+}
+
 /* Keep your original header styling with animations */
 .header {
   position: relative;

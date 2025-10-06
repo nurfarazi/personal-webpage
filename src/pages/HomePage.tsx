@@ -251,7 +251,7 @@ const HomePage: React.FC = () => {
 
   return (
     <motion.div 
-      className="container"
+      className="container home-page"
       ref={sectionRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}

@@ -5,6 +5,9 @@ type IconProps = SVGProps<SVGSVGElement>;
 const createIcon = (viewBox: string, path: string, displayName: string) => {
   const IconComponent = (props: IconProps): ReactElement => (
     <svg
+      // make icons size with font-size from CSS by default
+      width="1em"
+      height="1em"
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"

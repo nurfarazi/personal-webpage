@@ -35,51 +35,54 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'pulseforge',
-    title: 'PulseForge Analytics',
-    tagline: 'Real-time health analytics platform for enterprise clinics',
+    id: 'evv',
+    title: 'EVV (Electronic Visit Verification)',
+    tagline: 'EVV (Electronic Visit Verification) platform for healthcare providers',
     preview: {
       type: 'image',
       src: 'https://images.unsplash.com/photo-1580894906472-2f9f8b910f20?auto=format&fit=crop&w=1200&q=80',
-      alt: 'PulseForge analytics dashboard preview',
+      alt: 'EVV dashboard preview',
     },
     mediaGallery: [
       {
         type: 'image',
         src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-        alt: 'PulseForge data visualisations',
+        alt: 'EVV data visualisations',
       },
       {
         type: 'video',
         src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
-        alt: 'PulseForge workflow demo',
+        alt: 'EVV workflow demo',
         poster: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
       },
     ],
     description: [
-      'PulseForge brings together wearable data, patient records, and predictive models so care teams can respond to health events faster.',
-      'Led the full-stack build while pairing with clinicians to iterate on dashboards that translate complex signals into actionable insights.',
+      'EVV is a comprehensive platform designed to help healthcare providers comply with federal mandates while improving operational efficiency.',
+      'The system integrates real-time visit verification, scheduling, and reporting to streamline home healthcare services.',
     ],
     features: [
-      'Live data stream processing with configurable watchlists',
-      'Scenario modelling that projects health trends using custom ML models',
-      'Collaborative review spaces with audit-friendly notes and approvals',
+      'Real-time GPS and biometric verification to ensure visit authenticity',
+      'Automated scheduling and dispatching to optimise caregiver routes',
+      'Comprehensive reporting tools for compliance and performance tracking',
     ],
-    techTags: ['React', 'TypeScript', 'Socket.IO', 'Azure Functions'],
+    techTags: ['Angular', 'TypeScript', '.NET 8', 'MongoDB', 'AWS', 'Docker'],
     techCategories: [
-      { label: 'Frontend', items: ['React 18', 'React Query', 'Framer Motion', 'Victory Charts'] },
-      { label: 'Backend', items: ['.NET 8 Web API', 'Azure Functions', 'Redis Streams'] },
-      { label: 'Cloud', items: ['Azure Event Hubs', 'Azure Monitor', 'Azure Blob Storage'] },
+      { label: 'Frontend', items: ['Angular 20', 'RxJS'] },
+      { label: 'Backend', items: ['.NET 8', 'MongoDB'] },
+      { label: 'Cloud', items: ['AWS Lambda', 'S3', 'CloudFront', 'Docker', 'AWS SNS', 'AWS SQS'] },
     ],
     links: [
       { label: 'Live Demo', url: 'https://example.com/pulseforge' },
       { label: 'GitHub', url: 'https://github.com/example/pulseforge' },
     ],
     role: 'Product Engineer & Technical Lead',
-    duration: 'Jan 2024 - Aug 2024',
+    duration: 'Jan 2024 - Ongoing',
     challenges: [
-      'Synthesising varying data refresh cadences without overwhelming clinicians',
-      'Meeting HIPAA controls while keeping collaboration fluid',
+      'Ensuring data security and compliance with healthcare regulations',
+      'Designing a scalable architecture to handle peak loads during emergencies',
+      'Implementing real-time monitoring and alerting for critical workflows',
+      'Integrating with third-party services while maintaining data integrity',
+      'Optimising performance for low-bandwidth environments',
     ],
   },
   {

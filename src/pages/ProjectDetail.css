@@ -295,6 +295,20 @@
   color: rgba(140, 150, 255, 0.6);
 }
 
+/* Remove bullets for the Key challenges list */
+.project-detail-challenges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  color: rgba(200, 210, 255, 0.75);
+}
+
+.project-detail-challenges li {
+  padding: 0;
+}
+
 .project-detail-highlights {
   list-style: none;
   margin: 0;

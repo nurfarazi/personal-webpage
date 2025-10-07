@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting...</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="refresh" content="0;url=/" />
+  </head>
+  <body>
+    <script>
+      // SPA fallback for static hosts that return this 404 when visiting
+      // a nested route directly (e.g. /projects). This fetches the
+      // production index.html and writes it into the document, then
+      // restores the original URL so the SPA router can handle the route.
+      (function () {
+        try {
+          var originalPath = location.pathname + location.search + location.hash;
+          fetch('/index.html', {cache: 'no-store'})
+            .then(function (r) { return r.text(); })
+            .then(function (html) {
+              document.open();
+              document.write(html);
+              // Replace the browser URL with the original path so the app's
+              // client-side router sees the intended route.
+              history.replaceState(null, '', originalPath);
+              document.close();
+            })
+            .catch(function () {
+              // Fallback to a hard redirect if fetch fails
+              location.replace('/');
+            });
+        } catch (e) {
+          location.replace('/');
+        }
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/" />
+    </noscript>
+  </body>
+</html>

@@ -8,7 +8,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 6vw, 5rem);
+  gap: clamp(3rem, 6vw, 1rem);
 }
 
 .project-detail-hero {
@@ -220,7 +220,8 @@
 /* Body */
 .project-detail-body {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  /* Default to two equal columns on wide screens for 6/6 split */
+  grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
 }
@@ -449,9 +450,15 @@
   }
 
   .project-detail-body {
+    /* Collapse to a single column on smaller screens */
     grid-template-columns: 1fr;
     gap: clamp(2rem, 5vw, 3rem);
   }
+}
+
+/* Utility class to allow a panel to span full width of the body grid */
+.full-width-panel {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 720px) {

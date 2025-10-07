@@ -148,27 +148,27 @@ const ProjectDetail: React.FC = () => {
               <li key={feature}>{feature}</li>
             ))}
           </ul>
+        </div>
 
-          <div className='project-detail-panel tech-card'>
-            <h3>Tech stack</h3>
-            <div className='project-detail-tech-grid'>
-              {project.techCategories.map((category) => (
-                <div key={category.label} className='project-detail-tech-item'>
-                  <span className='meta-label'>{category.label}</span>
-                  <ul>
-                    {category.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+  {/* Tech stack as a full-width panel */}
+  <div className='project-detail-panel tech-card full-width-panel'>
+          <h3>Tech stack</h3>
+          <div className='project-detail-tech-grid'>
+            {project.techCategories.map((category) => (
+              <div key={category.label} className='project-detail-tech-item'>
+                <span className='meta-label'>{category.label}</span>
+                <ul>
+                  {category.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className='project-detail-gallery'>
-        <h2>Gallery</h2>
         <div className='project-detail-gallery-grid'>
           {project.mediaGallery.map((media) => (
             <figure key={media.src} className='project-detail-gallery-card'>

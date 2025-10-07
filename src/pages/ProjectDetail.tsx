@@ -36,7 +36,8 @@ const ProjectDetail: React.FC = () => {
   return (
     <article className='project-detail-page'>
       <header className='project-detail-hero'>
-        <div className='project-detail-topbar'>
+        <div className='project-detail-hero-left'>
+          <div className='project-detail-topbar'>
           <Link to='/projects' className='project-detail-back'>
             ← Back to projects
           </Link>
@@ -104,23 +105,24 @@ const ProjectDetail: React.FC = () => {
             </div>
           )}
         </div>
-      </header>
+        </div>
 
-      <section className='project-detail-hero-media'>
-        {heroMedia.type === 'video' ? (
-          <video
-            key={heroMedia.src}
-            src={heroMedia.src}
-            poster={heroMedia.poster}
-            controls
-            playsInline
-            autoPlay={!shouldReduceMotion}
-            muted
-          />
-        ) : (
-          <img src={heroMedia.src} alt={heroMedia.alt} />
-        )}
-      </section>
+        <div className='project-detail-hero-media'>
+          {heroMedia.type === 'video' ? (
+            <video
+              key={heroMedia.src}
+              src={heroMedia.src}
+              poster={heroMedia.poster}
+              controls
+              playsInline
+              autoPlay={!shouldReduceMotion}
+              muted
+            />
+          ) : (
+            <img src={heroMedia.src} alt={heroMedia.alt} />
+          )}
+        </div>
+      </header>
 
       <section className='project-detail-body'>
         <div className='project-detail-column'>
@@ -149,7 +151,7 @@ const ProjectDetail: React.FC = () => {
             ))}
           </ul>
 
-          <div className='project-detail-panel'>
+          <div className='project-detail-panel tech-card'>
             <h3>Tech stack</h3>
             <div className='project-detail-tech-grid'>
               {project.techCategories.map((category) => (

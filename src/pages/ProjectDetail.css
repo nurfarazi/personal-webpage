@@ -11,6 +11,13 @@
 }
 
 .project-detail-hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.project-detail-hero-left {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
@@ -95,7 +102,7 @@
 
 .project-detail-meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--spacing-md);
 }
 
@@ -145,6 +152,8 @@
   border: 1px solid rgba(120, 130, 255, 0.18);
   background: rgba(16, 18, 32, 0.85);
   box-shadow: 0 24px 64px rgba(12, 14, 28, 0.5);
+  height: 100%;
+  min-height: 260px;
 }
 
 .project-detail-hero-media img,
@@ -152,6 +161,17 @@
   width: 100%;
   display: block;
   object-fit: cover;
+  height: 100%;
+}
+
+/* Constrain hero media height so it doesn't dominate the page */
+.project-detail-hero-media {
+  max-height: 420px;
+}
+
+.project-detail-hero-media img,
+.project-detail-hero-media video {
+  height: 100%;
 }
 
 /* Body */
@@ -189,6 +209,30 @@
   border: 1px solid rgba(126, 135, 255, 0.18);
 }
 
+/* Make the tech stack feel like a distinct card */
+.tech-card {
+  align-self: start;
+  padding: calc(var(--spacing-lg) + 4px);
+  background: linear-gradient(180deg, rgba(22,24,40,0.9), rgba(16,18,30,0.85));
+  border: 1px solid rgba(126,135,255,0.12);
+  box-shadow: 0 12px 32px rgba(10,12,22,0.6);
+}
+
+.tech-card .project-detail-tech-grid {
+  gap: calc(var(--spacing-md) + 4px);
+}
+
+.project-detail-tech-item .meta-label {
+  color: rgba(200,205,255,0.75);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.project-detail-tech-item ul li {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
 .project-detail-panel h3 {
   margin: 0;
   font-size: var(--font-size-lg);
@@ -213,8 +257,10 @@
 
 .project-detail-highlights li {
   position: relative;
-  padding-left: 1.3rem;
+  padding-left: 1.6rem;
   color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.45;
 }
 
 .project-detail-highlights li::before {
@@ -256,6 +302,11 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* Small visual tweak: make gallery cards more compact on narrow screens */
+.project-detail-gallery-card {
+  padding-bottom: var(--spacing-sm);
+}
+
 .project-detail-gallery-card {
   display: flex;
   flex-direction: column;
@@ -285,6 +336,10 @@
   .project-detail-page {
     padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-4xl);
     width: min(95%, 100%);
+  }
+
+  .project-detail-hero {
+    grid-template-columns: 1fr;
   }
 
   .project-detail-meta {

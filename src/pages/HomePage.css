@@ -249,8 +249,8 @@
   color: var(--text-secondary);
   font-size: var(--font-size-lg);
   margin-top: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.8;
+  margin-bottom: var(--spacing-xs);
+  opacity: 0.5;
 }
 
 .projects-grid {

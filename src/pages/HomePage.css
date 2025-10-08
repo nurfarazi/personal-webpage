@@ -437,8 +437,9 @@
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
@@ -450,6 +451,8 @@
   padding: var(--spacing-lg);
   text-align: center;
   transition: all 0.3s ease;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .stat-card:hover {

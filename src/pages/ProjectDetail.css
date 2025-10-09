@@ -449,6 +449,187 @@
   border-top: 1px solid rgba(130, 140, 255, 0.12);
 }
 
+/* Light theme overrides */
+:is(.light, [data-theme="light"]) .project-detail-page {
+  color: var(--text-primary);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-back {
+  color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.12), rgba(100, 108, 255, 0.04));
+  border-color: rgba(100, 108, 255, 0.28);
+  box-shadow: 0 8px 20px rgba(15, 17, 35, 0.08);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-back:hover {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.24), rgba(100, 108, 255, 0.12));
+  border-color: rgba(100, 108, 255, 0.35);
+  color: var(--text-primary);
+  box-shadow: 0 12px 28px rgba(18, 21, 42, 0.12);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-hero-links a {
+  color: var(--text-primary);
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(100, 108, 255, 0.03));
+  border-color: rgba(100, 108, 255, 0.22);
+  box-shadow: 0 6px 18px rgba(15, 17, 35, 0.08);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-hero-links a:hover {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.2), rgba(100, 108, 255, 0.1));
+  border-color: rgba(100, 108, 255, 0.35);
+  color: var(--accent-color);
+  box-shadow: 0 10px 26px rgba(18, 21, 42, 0.12);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-kicker {
+  color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.18), rgba(100, 108, 255, 0.08));
+  border-color: rgba(100, 108, 255, 0.28);
+  box-shadow: 0 6px 18px rgba(15, 17, 35, 0.08);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-title {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: color-mix(in srgb, var(--accent-color) 55%, var(--text-primary) 45%);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tagline {
+  color: var(--text-secondary);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-meta-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 247, 255, 0.8));
+  border-color: rgba(100, 108, 255, 0.18);
+  box-shadow: 0 18px 36px rgba(21, 26, 56, 0.12);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-meta-item:hover {
+  border-color: rgba(100, 108, 255, 0.28);
+  box-shadow: 0 24px 48px rgba(21, 26, 56, 0.16);
+}
+
+:is(.light, [data-theme="light"]) .meta-label {
+  color: var(--text-muted);
+}
+
+:is(.light, [data-theme="light"]) .meta-value {
+  color: var(--text-primary);
+}
+
+:is(.light, [data-theme="light"]) .meta-chip {
+  color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.14), rgba(100, 108, 255, 0.06));
+  border-color: rgba(100, 108, 255, 0.22);
+  box-shadow: 0 4px 12px rgba(18, 21, 42, 0.08);
+}
+
+:is(.light, [data-theme="light"]) .meta-chip:hover {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.24), rgba(100, 108, 255, 0.12));
+  border-color: rgba(100, 108, 255, 0.32);
+  color: color-mix(in srgb, var(--accent-color) 70%, var(--text-primary) 30%);
+  box-shadow: 0 8px 18px rgba(21, 26, 56, 0.12);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-hero-media {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(238, 240, 255, 0.75));
+  border-color: rgba(100, 108, 255, 0.22);
+  box-shadow:
+    0 22px 60px rgba(30, 36, 70, 0.14),
+    0 0 0 1px rgba(100, 108, 255, 0.08) inset;
+}
+
+:is(.light, [data-theme="light"]) .project-detail-hero-media:hover {
+  box-shadow:
+    0 32px 90px rgba(30, 36, 70, 0.18),
+    0 0 0 1px rgba(100, 108, 255, 0.14) inset,
+    0 0 40px rgba(120, 130, 255, 0.12);
+  border-color: rgba(100, 108, 255, 0.3);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-column h2,
+:is(.light, [data-theme="light"]) .project-detail-gallery h2 {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: color-mix(in srgb, var(--accent-color) 45%, var(--text-primary) 55%);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-column p,
+:is(.light, [data-theme="light"]) .project-detail-panel ul,
+:is(.light, [data-theme="light"]) .project-detail-challenges,
+:is(.light, [data-theme="light"]) .project-detail-highlights li {
+  color: var(--text-secondary);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 246, 255, 0.8));
+  border-color: rgba(100, 108, 255, 0.16);
+  box-shadow: 0 20px 48px rgba(30, 36, 70, 0.14);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-panel:hover {
+  border-color: rgba(100, 108, 255, 0.28);
+  box-shadow: 0 26px 60px rgba(30, 36, 70, 0.18);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-panel h3 {
+  color: var(--text-primary);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-panel ul li::marker {
+  color: rgba(100, 108, 255, 0.65);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-highlights li:hover {
+  color: color-mix(in srgb, var(--accent-color) 60%, var(--text-primary) 40%);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(240, 243, 255, 0.78));
+  border-color: rgba(100, 108, 255, 0.18);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 243, 255, 0.82));
+  border-color: rgba(100, 108, 255, 0.3);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item .meta-label {
+  color: var(--text-muted);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item ul {
+  color: var(--text-secondary);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item ul li {
+  background: rgba(100, 108, 255, 0.08);
+  border-color: rgba(100, 108, 255, 0.16);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-tech-item ul li:hover {
+  background: rgba(100, 108, 255, 0.14);
+  border-color: rgba(100, 108, 255, 0.24);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-gallery-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(242, 244, 255, 0.82));
+  border-color: rgba(100, 108, 255, 0.18);
+  box-shadow: 0 20px 50px rgba(30, 36, 70, 0.14);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-gallery-card:hover {
+  border-color: rgba(100, 108, 255, 0.3);
+  box-shadow: 0 26px 70px rgba(30, 36, 70, 0.18);
+}
+
+:is(.light, [data-theme="light"]) .project-detail-gallery-card figcaption {
+  color: var(--text-secondary);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(244, 246, 255, 0.92));
+  border-top-color: rgba(100, 108, 255, 0.18);
+}
+
 /* Responsive */
 @media (max-width: 960px) {
   .project-detail-page {

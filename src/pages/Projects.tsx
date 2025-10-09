@@ -24,39 +24,16 @@ const Projects: React.FC = () => {
   return (
     <div className='projects-page'>
       <section className='projects-header'>
-        <motion.span
-          className='projects-kicker'
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
-          Featured Work
-        </motion.span>
-        <motion.h1
+    
+        <motion.h4
           className='projects-title'
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
         >
-          Projects crafted with intent and measurable impact.
-        </motion.h1>
-        <motion.p
-          className='projects-subtitle'
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-        >
-          Explore platforms and programs spanning analytics, commerce, and research. Each engagement moves from discovery to launch with a focus on meaningful outcomes.
-        </motion.p>
-      </section>
-
-      <section className='projects-insights'>
-        {stats.map((stat) => (
-          <article key={stat.label} className='projects-insight'>
-            <span className='insight-label'>{stat.label}</span>
-            <span className='insight-value'>{stat.value}</span>
-          </article>
-        ))}
+          Selected projects and case studies
+        </motion.h4>
+    
       </section>
 
       <motion.div

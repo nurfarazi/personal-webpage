@@ -376,12 +376,10 @@ const HomePage: React.FC = () => {
             TypeScript (6 yrs), Bootstrap, SCSS, HTML5, Responsive Design
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Backend:</strong> .NET Core (8 yrs), Node.js (8 yrs), REST
-            APIs, WebSocket, SignalR
+            <strong>Backend:</strong> .NET Core (8 yrs), Node.js (8 yrs), WebSocket, SignalR
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Mobile:</strong> Flutter (1 yr), Ionic (5 yrs), Kotlin
-            (Android)
+            <strong>Mobile:</strong> Flutter (1 yr), Ionic (5 yrs)
           </motion.li>
           <motion.li variants={listItemVariants}>
             <strong>Databases:</strong> PostgreSQL (6 yrs), Redis (6 yrs),

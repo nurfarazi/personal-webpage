@@ -21,13 +21,7 @@ interface WorkExperience {
   achievements: string[];
 }
 
-interface Publication {
-  title: string;
-  platform: string;
-  date: string;
-  url: string;
-  excerpt: string;
-}
+// Publication interface removed (was used by a publications array that's no longer in use)
 
 // Motion variants for staggered animations
 
@@ -127,29 +121,7 @@ const HomePage: React.FC = () => {
 
 
 
-  const publications: Publication[] = [
-    {
-      title: "Building Scalable Microservices with .NET 8",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "Exploring modern microservices architecture patterns, gRPC communication, and CQRS implementation in .NET 8."
-    },
-    {
-      title: "Mastering Design Patterns in C#",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "A comprehensive guide to implementing creational, structural, and behavioral design patterns in C# and .NET."
-    },
-    {
-      title: "System Design Best Practices",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "Deep dive into system design principles, scalability patterns, and architectural decision-making for modern applications."
-    }
-  ];
+  // publications removed to satisfy eslint no-unused-vars (was previously an unused array of Publication)
 
   const workExperiences: WorkExperience[] = [
     {

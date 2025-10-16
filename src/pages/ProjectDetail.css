@@ -120,7 +120,7 @@
 
 .project-detail-meta {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(0.85rem, 2vw, 1.25rem);
   margin-top: var(--spacing-lg);
 }
@@ -163,6 +163,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.tech-list {
+  grid-column: span 2;
 }
 
 .meta-chip {
@@ -248,6 +252,7 @@
   color: rgba(200, 210, 255, 0.75);
   line-height: 1.75;
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  text-align: left;
 }
 
 .project-detail-panel {
@@ -266,7 +271,6 @@
 .project-detail-panel:hover {
   border-color: rgba(160, 170, 255, 0.32);
   box-shadow: 0 12px 48px rgba(120, 130, 255, 0.15);
-  transform: translateY(-2px);
 }
 
 .project-detail-panel h3 {
@@ -324,6 +328,7 @@
   line-height: 1;
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
   transition: all 0.25s ease;
+  text-align: left;
 }
 
 .project-detail-highlights li:hover {

@@ -51,14 +51,7 @@ const ProjectDetail: React.FC = () => {
           )}
         </div>
 
-        <motion.span
-          className='project-detail-kicker'
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
-          Case Study
-        </motion.span>
+
 
         <motion.h1
           className='project-detail-title'

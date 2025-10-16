@@ -121,17 +121,6 @@ const ProjectDetail: React.FC = () => {
           {project.description.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-
-          {project.challenges && project.challenges.length > 0 && (
-            <div className='project-detail-panel'>
-              <h3>Key challenges</h3>
-              <ul className='project-detail-challenges'>
-                {project.challenges.map((challenge) => (
-                  <li key={challenge}>{challenge}</li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         <div className='project-detail-column'>

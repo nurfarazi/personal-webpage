@@ -57,7 +57,7 @@ export const projects: Project[] = [
       },
     ],
     description: [
-      'EVV is a comprehensive platform designed to help healthcare providers comply with federal mandates while improving operational efficiency.',
+      'Developed a full-featured Electronic Visit Verification (EVV) platform for healthcare agencies to manage caregiver scheduling, visit tracking, and billing. Built with .NET Core API and Angular web app, the solution ensures HIPAA compliance, role-based security, timezone-accurate scheduling, and automated invoice generation. The system improved caregiver compliance, reduced billing errors, and streamlined agency operations.',
       'The system integrates real-time visit verification, scheduling, and reporting to streamline home healthcare services.',
     ],
     features: [

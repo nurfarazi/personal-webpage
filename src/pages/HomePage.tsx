@@ -21,13 +21,7 @@ interface WorkExperience {
   achievements: string[];
 }
 
-interface Publication {
-  title: string;
-  platform: string;
-  date: string;
-  url: string;
-  excerpt: string;
-}
+// Publication interface removed (was used by a publications array that's no longer in use)
 
 // Motion variants for staggered animations
 
@@ -127,29 +121,7 @@ const HomePage: React.FC = () => {
 
 
 
-  const publications: Publication[] = [
-    {
-      title: "Building Scalable Microservices with .NET 8",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "Exploring modern microservices architecture patterns, gRPC communication, and CQRS implementation in .NET 8."
-    },
-    {
-      title: "Mastering Design Patterns in C#",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "A comprehensive guide to implementing creational, structural, and behavioral design patterns in C# and .NET."
-    },
-    {
-      title: "System Design Best Practices",
-      platform: "Medium",
-      date: "2024",
-      url: "https://medium.com/@nur369188",
-      excerpt: "Deep dive into system design principles, scalability patterns, and architectural decision-making for modern applications."
-    }
-  ];
+  // publications removed to satisfy eslint no-unused-vars (was previously an unused array of Publication)
 
   const workExperiences: WorkExperience[] = [
     {
@@ -372,11 +344,11 @@ const HomePage: React.FC = () => {
         </motion.h2>
         <motion.ul variants={sectionVariants}>
           <motion.li variants={listItemVariants}>
-            <strong>Frontend & UI:</strong> Angular (8 yrs), RxJS (4 yrs),
-            TypeScript (6 yrs), Bootstrap, SCSS, HTML5, Responsive Design
+            <strong>Frontend & UI:</strong> <span className="highlight-text highlight-primary">Angular</span> (8 yrs), <span className="highlight-text highlight-dark">RxJS</span> (4 yrs),
+            <span className="highlight-text highlight-primary">TypeScript</span> (6 yrs), Bootstrap, SCSS, HTML5, Responsive Design
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Backend:</strong> .NET Core (8 yrs), Node.js (8 yrs), WebSocket, SignalR
+            <strong>Backend:</strong> <span className="highlight-text highlight-primary">.NET Core</span> (8 yrs), <span className="highlight-text highlight-dark">Node.js</span> (8 yrs), WebSocket, SignalR
           </motion.li>
           <motion.li variants={listItemVariants}>
             <strong>Mobile:</strong> Flutter (1 yr), Ionic (5 yrs)
@@ -386,12 +358,12 @@ const HomePage: React.FC = () => {
             MongoDB (4 yrs), MySQL (5 yrs), DynamoDB (1 yr)
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Cloud & DevOps:</strong> AWS (10 yrs – Lambda, EC2, SAM,
+            <strong>Cloud & DevOps:</strong> <span className="highlight-text highlight-primary">AWS</span> (10 yrs - Lambda, EC2, SAM,
             Route 53, RDS, etc.), Firebase (7 yrs), Docker, CI/CD
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Architecture & Patterns:</strong> Clean Architecture, CQRS,
-            Hexagonal, SOLID, Microservices, gRPC
+            <strong>Architecture & Patterns:</strong> <span className="highlight-text highlight-dark">Clean Architecture</span>, CQRS,
+            Hexagonal, SOLID, <span className="highlight-text highlight-primary">Microservices</span>, gRPC
           </motion.li>
           <motion.li variants={listItemVariants}>
             <strong>AI & Automation:</strong> ChatBot, Invoice Automation,
@@ -402,11 +374,11 @@ const HomePage: React.FC = () => {
             GitLab Board, GitHub, GitLab, Figma, Miro
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Agile Practices:</strong> Scrum, Kanban, Sprint Planning,
+            <strong>Agile Practices:</strong> <span className="highlight-text highlight-dark">Scrum</span>, Kanban, Sprint Planning,
             Backlog Grooming
           </motion.li>
           <motion.li variants={listItemVariants}>
-            <strong>Other:</strong> SignalR, TDD, Technical Writing,
+            <strong>Other:</strong> SignalR, <span className="highlight-text highlight-dark">TDD</span>, Technical Writing,
             Documentation Systems
           </motion.li>
         </motion.ul>
@@ -460,66 +432,6 @@ const HomePage: React.FC = () => {
         </motion.div>
       </motion.section>
 
-      <motion.section 
-        className="section publications"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2 className="section-title" variants={heroItemVariants}>
-          Publications & Writing
-        </motion.h2>
-        <motion.p className="section-subtitle" variants={heroItemVariants}>
-          Technical articles and insights on software engineering
-        </motion.p>
-        <motion.div className="publications-list" variants={sectionVariants}>
-          {publications.map((publication, index) => (
-            <motion.div
-              key={index}
-              className="publication-card"
-              variants={cardVariants}
-              whileHover={shouldReduceMotion ? undefined : {
-                x: 8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <h3 className="publication-title">{publication.title}</h3>
-              <div className="publication-meta">
-                <span>{publication.platform}</span>
-                <span>•</span>
-                <span>{publication.date}</span>
-              </div>
-              <p className="publication-excerpt">{publication.excerpt}</p>
-              <motion.a
-                href={publication.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="publication-link"
-                whileHover={shouldReduceMotion ? undefined : { x: 4 }}
-              >
-                Read Article →
-              </motion.a>
-            </motion.div>
-          ))}
-        </motion.div>
-        <motion.div 
-          style={{ marginTop: 'var(--spacing-lg)', textAlign: 'center' }}
-          variants={heroItemVariants}
-        >
-          <motion.a
-            href="https://medium.com/@nur369188"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-btn"
-            style={{ display: 'inline-block' }}
-            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-            whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-          >
-            View All Articles on Medium
-          </motion.a>
-        </motion.div>
-      </motion.section>
 
       <motion.section 
         className="section work-experience"

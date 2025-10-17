@@ -51,14 +51,7 @@ const ProjectDetail: React.FC = () => {
           )}
         </div>
 
-        <motion.span
-          className='project-detail-kicker'
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
-          Case Study
-        </motion.span>
+
 
         <motion.h1
           className='project-detail-title'
@@ -128,17 +121,6 @@ const ProjectDetail: React.FC = () => {
           {project.description.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-
-          {project.challenges && project.challenges.length > 0 && (
-            <div className='project-detail-panel'>
-              <h3>Key challenges</h3>
-              <ul className='project-detail-challenges'>
-                {project.challenges.map((challenge) => (
-                  <li key={challenge}>{challenge}</li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         <div className='project-detail-column'>

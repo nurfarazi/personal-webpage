@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import './Projects.css';
@@ -12,14 +12,7 @@ const cardVariants = {
 const Projects: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  const stats = useMemo(
-    () => [
-      { label: 'Industries', value: 'Health, Commerce, Research' },
-      { label: 'Impact', value: 'Operational efficiency, GTM velocity, data governance' },
-      { label: 'Scope', value: 'End-to-end product delivery & scale' },
-    ],
-    [],
-  );
+
 
   return (
     <div className='projects-page'>

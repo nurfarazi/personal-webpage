@@ -123,44 +123,6 @@ const ProjectDetail: React.FC = () => {
         </div>
       </section>
 
-      <section className='project-detail-body'>
-        <div className='project-detail-column'>
-          <h2>Highlights</h2>
-          <ul className='project-detail-highlights'>
-            {project.features.map((feature) => (
-              <li key={feature}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-
-        {project.challenges && project.challenges.length > 0 && (
-          <div className='project-detail-column'>
-            <h2>Key challenges</h2>
-            <ul className='project-detail-highlights'>
-              {project.challenges.map((challenge) => (
-                <li key={challenge}>{challenge}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className='project-detail-panel tech-card full-width-panel'>
-          <h3>Tech stack</h3>
-          <div className='project-detail-tech-grid'>
-            {project.techCategories.map((category) => (
-              <div key={category.label} className='project-detail-tech-item'>
-                <span className='meta-label'>{category.label}</span>
-                <ul>
-                  {category.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className='project-detail-gallery'>
         <div className='project-detail-gallery-grid'>
           {project.mediaGallery.map((media) => (

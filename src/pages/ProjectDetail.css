@@ -13,7 +13,7 @@
 
 .project-detail-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: clamp(2rem, 6vw, 4rem);
   padding: clamp(1.5rem, 3vw, 3rem) 0;
   align-items: flex-start;
@@ -23,7 +23,8 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 2.5vw, 2.5rem);
-  max-width: 620px;
+  grid-column: 1 / span 4;
+  text-align: left;
 }
 
 .project-detail-summary-meta {
@@ -33,15 +34,29 @@
   margin-top: var(--spacing-md);
 }
 
+.project-detail-summary .meta-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: rgba(180, 190, 255, 0.7);
+}
+
+.project-detail-summary .meta-value {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(245, 247, 255, 0.9);
+  text-align: left;
+}
+
 .project-detail-description {
   display: flex;
   flex-direction: column;
   gap: clamp(0.9rem, 2vw, 1.25rem);
   margin-top: var(--spacing-lg);
+  text-align: left;
 }
 
 .project-detail-description h2 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -49,8 +64,10 @@
 }
 
 .project-detail-description p {
-  color: rgba(210, 218, 255, 0.85);
-  line-height: 1.85;
+  color: rgba(210, 218, 255, 0.9);
+  line-height: 1.75;
+  font-size: 1rem;
+  text-align: left;
 }
 
 .project-detail-topbar {
@@ -134,7 +151,8 @@
 .project-detail-title {
   margin: var(--spacing-sm) 0 0;
   font-family: var(--font-family-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  text-align: left;
   font-weight: 700;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(200, 210, 255, 0.85));
   -webkit-background-clip: text;
@@ -148,7 +166,8 @@
   margin: var(--spacing-sm) 0 0;
   max-width: 850px;
   color: rgba(200, 210, 255, 0.8);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  text-align: left;
   line-height: 1.65;
   font-weight: 400;
 }
@@ -158,6 +177,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(0.85rem, 2vw, 1.25rem);
   margin-top: var(--spacing-lg);
+  text-align: left;
 }
 
 .project-detail-meta-item {
@@ -188,7 +208,7 @@
 }
 
 .meta-value {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: rgba(245, 247, 255, 0.92);
   line-height: 1.5;
@@ -228,6 +248,7 @@
 
 /* Hero media */
 .project-detail-featured {
+  grid-column: 5 / -1;
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(140, 150, 255, 0.25);
@@ -323,7 +344,7 @@
   gap: 0.75rem;
   color: rgba(200, 210, 255, 0.75);
   line-height: 1.7;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .project-detail-panel ul li {
@@ -683,6 +704,11 @@
     gap: clamp(2rem, 5vw, 3rem);
   }
 
+  .project-detail-summary,
+  .project-detail-featured {
+    grid-column: 1 / -1;
+  }
+
   .project-detail-summary-meta {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
@@ -741,6 +767,7 @@
 
   .project-detail-tagline {
     font-size: 1rem;
+  text-align: left;
   }
 
   .project-detail-summary-meta {
@@ -760,3 +787,9 @@
     height: clamp(180px, 50vw, 280px);
   }
 }
+
+
+
+
+
+

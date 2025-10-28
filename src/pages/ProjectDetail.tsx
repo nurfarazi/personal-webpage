@@ -35,58 +35,66 @@ const ProjectDetail: React.FC = () => {
 
   return (
     <article className='project-detail-page'>
-      <header className='project-detail-hero'>
-        <div className='project-detail-topbar'>
-          <Link to='/projects' className='project-detail-back'>
-            ← Back to projects
-          </Link>
-          {project.links.length > 0 && (
-            <div className='project-detail-hero-links'>
-              {project.links.map((link) => (
-                <a key={link.url} href={link.url} target='_blank' rel='noopener noreferrer'>
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
+      <div className='project-detail-topbar'>
+        <Link to='/projects' className='project-detail-back'>
+          Back to projects
+        </Link>
+        {project.links.length > 0 && (
+          <div className='project-detail-hero-links'>
+            {project.links.map((link) => (
+              <a key={link.url} href={link.url} target='_blank' rel='noopener noreferrer'>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
 
+      <section className='project-detail-hero'>
+        <div className='project-detail-summary'>
+          <motion.h1
+            className='project-detail-title'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+          >
+            {project.title}
+          </motion.h1>
 
+          <motion.p
+            className='project-detail-tagline'
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 }}
+          >
+            {project.tagline}
+          </motion.p>
 
-        <motion.h1
-          className='project-detail-title'
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-        >
-          {project.title}
-        </motion.h1>
+          <div className='project-detail-summary-meta'>
+            {project.role && (
+              <div className='project-detail-meta-item'>
+                <span className='meta-label'>My role</span>
+                <span className='meta-value'>{project.role}</span>
+              </div>
+            )}
+            {project.duration && (
+              <div className='project-detail-meta-item'>
+                <span className='meta-label'>Timeline</span>
+                <span className='meta-value'>{project.duration}</span>
+              </div>
+            )}
+          </div>
 
-        <motion.p
-          className='project-detail-tagline'
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 }}
-        >
-          {project.tagline}
-        </motion.p>
+          <div className='project-detail-description'>
+            <h2>Project description.</h2>
+            {project.description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
 
-        <div className='project-detail-meta'>
-          {project.role && (
-            <div className='project-detail-meta-item'>
-              <span className='meta-label'>Role</span>
-              <span className='meta-value'>{project.role}</span>
-            </div>
-          )}
-          {project.duration && (
-            <div className='project-detail-meta-item'>
-              <span className='meta-label'>Timeline</span>
-              <span className='meta-value'>{project.duration}</span>
-            </div>
-          )}
           {project.techTags.length > 0 && (
             <div className='project-detail-meta-item tech-list'>
-              <span className='meta-label'>Core Stack</span>
+              <span className='meta-label'>Skills and deliverables</span>
               <div className='meta-chip-row'>
                 {project.techTags.map((tech) => (
                   <span key={tech} className='meta-chip'>
@@ -97,32 +105,25 @@ const ProjectDetail: React.FC = () => {
             </div>
           )}
         </div>
-      </header>
 
-      <section className='project-detail-hero-media'>
-        {heroMedia.type === 'video' ? (
-          <video
-            key={heroMedia.src}
-            src={heroMedia.src}
-            poster={heroMedia.poster}
-            controls
-            playsInline
-            autoPlay={!shouldReduceMotion}
-            muted
-          />
-        ) : (
-          <img src={heroMedia.src} alt={heroMedia.alt} />
-        )}
+        <div className='project-detail-featured'>
+          {heroMedia.type === 'video' ? (
+            <video
+              key={heroMedia.src}
+              src={heroMedia.src}
+              poster={heroMedia.poster}
+              controls
+              playsInline
+              autoPlay={!shouldReduceMotion}
+              muted
+            />
+          ) : (
+            <img src={heroMedia.src} alt={heroMedia.alt} />
+          )}
+        </div>
       </section>
 
       <section className='project-detail-body'>
-        <div className='project-detail-column'>
-          <h2>Project overview</h2>
-          {project.description.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-
         <div className='project-detail-column'>
           <h2>Highlights</h2>
           <ul className='project-detail-highlights'>
@@ -132,8 +133,18 @@ const ProjectDetail: React.FC = () => {
           </ul>
         </div>
 
-  {/* Tech stack as a full-width panel */}
-  <div className='project-detail-panel tech-card full-width-panel'>
+        {project.challenges && project.challenges.length > 0 && (
+          <div className='project-detail-column'>
+            <h2>Key challenges</h2>
+            <ul className='project-detail-highlights'>
+              {project.challenges.map((challenge) => (
+                <li key={challenge}>{challenge}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className='project-detail-panel tech-card full-width-panel'>
           <h3>Tech stack</h3>
           <div className='project-detail-tech-grid'>
             {project.techCategories.map((category) => (

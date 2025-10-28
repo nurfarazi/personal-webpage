@@ -129,10 +129,19 @@
   outline-offset: 6px;
 }
 
+.project-card-title {
+  margin: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  color: var(--accent-color);
+}
+
 .project-preview {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 4px);
   border-bottom: 1px solid rgba(200, 205, 255, 0.12);
   background: rgba(16, 18, 32, 0.9);
 }
@@ -294,6 +303,10 @@
 :is(.light, [data-theme="light"]) .project-preview {
   background: rgba(255, 255, 255, 0.96);
   border-bottom-color: rgba(100, 108, 255, 0.18);
+}
+
+:is(.light, [data-theme="light"]) .project-card-title {
+  color: var(--accent-color);
 }
 
 :is(.light, [data-theme="light"]) .project-text h2 {

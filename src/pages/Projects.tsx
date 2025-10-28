@@ -12,23 +12,8 @@ const cardVariants = {
 const Projects: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
-
-
   return (
     <div className='projects-page'>
-      <section className='projects-header'>
-    
-        <motion.h4
-          className='projects-title'
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-        >
-          Selected projects and case studies
-        </motion.h4>
-    
-      </section>
-
       <motion.div
         className='projects-grid'
         initial='hidden'
@@ -58,50 +43,7 @@ const Projects: React.FC = () => {
                   />
                 )}
               </div>
-
-              <div className='project-content'>
-                <div className='project-text'>
-                  <h2>{project.title}</h2>
-                  <p>{project.tagline}</p>
-                </div>
-
-                {(project.role || project.duration) && (
-                  <div className='project-meta'>
-                    {project.role && (
-                      <div className='project-meta-item'>
-                        <span className='project-meta-label'>Role</span>
-                        <span className='project-meta-value'>{project.role}</span>
-                      </div>
-                    )}
-                    {project.duration && (
-                      <div className='project-meta-item'>
-                        <span className='project-meta-label'>Timeline</span>
-                        <span className='project-meta-value'>{project.duration}</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                <div className='tech-tags'>
-                  {project.techTags.map((tech) => (
-                    <span key={tech} className='tech-tag'>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className='project-cta'>
-                  <span>View case study</span>
-                  <motion.span
-                    aria-hidden
-                    initial={{ x: 0 }}
-                    animate={{ x: shouldReduceMotion ? 0 : 4 }}
-                    transition={{ repeat: Infinity, repeatDelay: 2.4, duration: 0.9, ease: 'easeInOut' }}
-                  >
-                    →
-                  </motion.span>
-                </div>
-              </div>
+              <h2 className='project-card-title'>{project.title}</h2>
             </Link>
           </motion.article>
         ))}

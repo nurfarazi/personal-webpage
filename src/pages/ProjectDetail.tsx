@@ -77,12 +77,6 @@ const ProjectDetail: React.FC = () => {
                 <span className='meta-value'>{project.role}</span>
               </div>
             )}
-            {project.duration && (
-              <div className='project-detail-meta-item'>
-                <span className='meta-label'>Timeline</span>
-                <span className='meta-value'>{project.duration}</span>
-              </div>
-            )}
           </div>
 
           <div className='project-detail-description'>

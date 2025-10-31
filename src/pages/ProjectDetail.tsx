@@ -70,14 +70,7 @@ const ProjectDetail: React.FC = () => {
             {project.tagline}
           </motion.p>
 
-          <div className='project-detail-summary-meta'>
-            {project.role && (
-              <div className='project-detail-meta-item'>
-                <span className='meta-label'>My role</span>
-                <span className='meta-value'>{project.role}</span>
-              </div>
-            )}
-          </div>
+
 
           <div className='project-detail-description'>
             <h2>Project description.</h2>

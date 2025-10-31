@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import './Projects.css';
 import { projects } from './projectsData';
+import { getYouTubePoster } from '../utils/youtube';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -32,7 +33,7 @@ const Projects: React.FC = () => {
               <div className='project-preview'>
                 {project.preview.type === 'image' ? (
                   <img src={project.preview.src} alt={project.preview.alt} loading='lazy' />
-                ) : (
+                ) : project.preview.type === 'video' ? (
                   <video
                     src={project.preview.src}
                     poster={project.preview.poster}
@@ -41,6 +42,21 @@ const Projects: React.FC = () => {
                     playsInline
                     autoPlay={!shouldReduceMotion}
                   />
+                ) : (
+                  <div className='project-preview-youtube'>
+                    {(() => {
+                      const posterSrc = getYouTubePoster(
+                        project.preview.src,
+                        project.preview.poster,
+                      );
+                      return posterSrc ? (
+                        <img src={posterSrc} alt={project.preview.alt} loading='lazy' />
+                      ) : (
+                        <div className='project-preview-youtube-fallback' aria-hidden='true' />
+                      );
+                    })()}
+                    <span className='project-preview-youtube-icon' aria-hidden='true' />
+                  </div>
                 )}
               </div>
               <h2 className='project-card-title'>{project.title}</h2>

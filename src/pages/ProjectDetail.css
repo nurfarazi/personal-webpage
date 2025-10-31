@@ -2,27 +2,27 @@
 .project-detail-page {
   position: relative;
   min-height: 100vh;
-  padding: var(--spacing-3xl) var(--spacing-md) var(--spacing-5xl);
+  padding: clamp(1.25rem, 4vw, 2.25rem) var(--spacing-md) var(--spacing-5xl);
   margin: 0 auto;
   max-width: 1280px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 6vw, 4rem);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
 }
 
 .project-detail-hero {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(2rem, 6vw, 4rem);
-  padding: clamp(1.5rem, 3vw, 3rem) 0;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  padding: clamp(1rem, 2.5vw, 2.25rem) 0;
   align-items: flex-start;
 }
 
 .project-detail-summary {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  gap: clamp(1rem, 2vw, 2rem);
   grid-column: 1 / span 4;
   text-align: left;
 }
@@ -50,8 +50,8 @@
 .project-detail-description {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.9rem, 2vw, 1.25rem);
-  margin-top: var(--spacing-lg);
+  gap: clamp(0.75rem, 1.5vw, 1.1rem);
+  margin-top: var(--spacing-md);
   text-align: left;
 }
 
@@ -279,11 +279,95 @@
 }
 
 .project-detail-featured img,
-.project-detail-featured video {
+.project-detail-featured video,
+.project-detail-featured iframe {
   width: 100%;
   display: block;
   object-fit: cover;
   min-height: clamp(350px, 45vw, 600px);
+}
+
+.project-detail-youtube {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: rgba(12, 14, 28, 0.88);
+}
+
+.project-detail-youtube iframe {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.project-detail-youtube-trigger {
+  position: relative;
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.project-detail-youtube-trigger img,
+.project-detail-youtube-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+.project-detail-youtube-trigger:focus-visible {
+  outline: 3px solid rgba(160, 170, 255, 0.8);
+  outline-offset: 4px;
+}
+
+.project-detail-youtube-fallback {
+  background: linear-gradient(135deg, rgba(40, 44, 80, 0.9), rgba(28, 32, 56, 0.85));
+}
+
+.project-detail-featured .project-detail-youtube {
+  min-height: clamp(350px, 45vw, 600px);
+}
+
+.project-detail-gallery-card .project-detail-youtube {
+  height: clamp(220px, 40vw, 340px);
+}
+
+.project-detail-youtube-play-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(60px, 10vw, 90px);
+  height: clamp(60px, 10vw, 90px);
+  border-radius: 50%;
+  background: rgba(15, 16, 30, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+}
+
+.project-detail-youtube-play-icon::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid rgba(255, 255, 255, 0.85);
+}
+
+.project-detail-youtube-trigger:hover .project-detail-youtube-play-icon {
+  transform: scale(1.05);
+  background: rgba(26, 28, 48, 0.75);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 /* Body */
@@ -499,7 +583,8 @@
 }
 
 .project-detail-gallery-card img,
-.project-detail-gallery-card video {
+.project-detail-gallery-card video,
+.project-detail-gallery-card iframe {
   width: 100%;
   height: clamp(220px, 40vw, 340px);
   object-fit: cover;
@@ -507,7 +592,8 @@
 }
 
 .project-detail-gallery-card:hover img,
-.project-detail-gallery-card:hover video {
+.project-detail-gallery-card:hover video,
+.project-detail-gallery-card:hover iframe {
   transform: scale(1.05);
 }
 
@@ -764,7 +850,8 @@
   }
 
   .project-detail-featured img,
-  .project-detail-featured video {
+  .project-detail-featured video,
+  .project-detail-featured iframe {
     min-height: clamp(250px, 50vw, 400px);
   }
 
@@ -805,7 +892,8 @@
   }
 
   .project-detail-gallery-card img,
-  .project-detail-gallery-card video {
+  .project-detail-gallery-card video,
+  .project-detail-gallery-card iframe {
     height: clamp(180px, 50vw, 280px);
   }
 }

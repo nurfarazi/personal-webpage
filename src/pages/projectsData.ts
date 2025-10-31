@@ -1,4 +1,4 @@
-export type MediaType = 'image' | 'video';
+export type MediaType = 'image' | 'video' | 'youtube';
 
 export interface ProjectMedia {
   type: MediaType;
@@ -48,6 +48,12 @@ export const projects: Project[] = [
         type: 'image',
         src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
         alt: 'EVV data visualisations',
+      },
+      {
+        type: 'youtube',
+        src: 'https://www.youtube.com/watch?v=q7eaaCWpB7U',
+        alt: 'EVV platform walk-through on YouTube',
+        poster: 'https://i.ytimg.com/vi/q7eaaCWpB7U/hqdefault.jpg',
       },
       {
         type: 'video',

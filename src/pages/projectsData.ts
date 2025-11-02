@@ -45,22 +45,17 @@ export const projects: Project[] = [
     },
     mediaGallery: [
       {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-        alt: 'EVV data visualisations',
-      },
-      {
         type: 'youtube',
-        src: 'https://www.youtube.com/watch?v=q7eaaCWpB7U',
+        src: 'https://www.youtube.com/watch?v=3UM9NV9T4qQ',
         alt: 'EVV platform walk-through on YouTube',
-        poster: 'https://i.ytimg.com/vi/q7eaaCWpB7U/hqdefault.jpg',
+        poster: 'https://i.ytimg.com/vi/3UM9NV9T4qQ/hqdefault.jpg',
       },
       {
-        type: 'video',
-        src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
-        alt: 'EVV workflow demo',
-        poster: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+        type: 'image',
+        src: new URL('../assets/evv_img_0.png', import.meta.url).href,
+        alt: 'Mobile app visit verification screen',
       },
+
     ],
     description: [
       'Developed a full-featured Electronic Visit Verification (EVV) platform for healthcare agencies to manage caregiver scheduling, visit tracking, and billing. Built with .NET Core API and Angular web app, the solution ensures HIPAA compliance, role-based security, timezone-accurate scheduling, and automated invoice generation. The system improved caregiver compliance, reduced billing errors, and streamlined agency operations.',

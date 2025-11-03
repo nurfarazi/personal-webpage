@@ -100,11 +100,7 @@ export const projects: Project[] = [
         src: new URL('../assets/2.png', import.meta.url).href,
         alt: 'Atlas modular component builder',
       },
-      {
-        type: 'image',
-        src: new URL('../assets/2.png', import.meta.url).href,
-        alt: 'Hand tracking SDK dashboard',
-      },
+
     ],
     description: [
       'Hand Tracking SDK provides accurate and responsive hand tracking capabilities for AR/VR applications.',
@@ -128,27 +124,16 @@ export const projects: Project[] = [
     duration: 'May 2015 - Dec 2015',
   },
   {
-    id: 'tidelabs',
-    title: 'TideLabs Research Portal',
-    tagline: 'Knowledge base and experiment automation for data teams',
+    id: 'SurveillanceFootageConsolidator',
+    title: 'Surveillance Footage Consolidator',
+    tagline: 'Automated processing and analysis of surveillance footage',
     preview: {
-      type: 'video',
-      src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
-      alt: 'TideLabs walkthrough',
-      poster: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+      type: 'image',
+      src: new URL('../assets/SurveillanceFootageConsolidator_1.png', import.meta.url).href,
+      alt: 'Surveillance Footage Consolidator preview',
     },
     mediaGallery: [
-      {
-        type: 'video',
-        src: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
-        alt: 'Automated experiment timeline',
-        poster: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
-      },
-      {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
-        alt: 'Research documentation hub',
-      },
+
     ],
     description: [
       'TideLabs centralises experimental findings, datasets, and team rituals so data scientists can iterate quickly without losing context.',

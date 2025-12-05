@@ -19,6 +19,8 @@ interface WorkExperience {
   duration: string;
   description: string;
   achievements: string[];
+  logo?: string;
+  bgGradient?: string;
 }
 
 // Publication interface removed (was used by a publications array that's no longer in use)
@@ -138,6 +140,8 @@ const HomePage: React.FC = () => {
         "Conducted regular code reviews and mentorship sessions to elevate team performance",
         "Enforced best practices for software reliability, security, and scalability across the SDLC",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23646CFF' width='64' height='64' rx='12'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='28' font-weight='bold' fill='white' font-family='system-ui'%3EKZ%3C/text%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(147, 51, 234, 0.05))",
     },
     {
       company: "CholPori",
@@ -152,6 +156,8 @@ const HomePage: React.FC = () => {
         "Managed full SDLC using .NET Core, Angular, Firebase, and Docker",
         "Implemented a company-wide software engineer evaluation framework",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%2310B981' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 20 L40 28 L32 36 L24 28 Z M28 32 L32 36 L36 32'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.05))",
     },
     {
       company: "Jeeon Bangladesh Ltd",
@@ -166,6 +172,8 @@ const HomePage: React.FC = () => {
         "Established efficient build and testing pipelines using Docker and CI/CD",
         "Enhanced product workflows with real-time features using Socket.IO and RxJS",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23EF4444' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 20 L42 26 L42 42 L22 42 L22 26 Z M32 28 L28 34 L32 38 L36 34 Z'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(252, 165, 165, 0.05))",
     },
     {
       company: "AGD IT SOLUTION Sdn Bhd",
@@ -179,6 +187,8 @@ const HomePage: React.FC = () => {
         "Reduced deployment time by 50% through automated pipelines",
         "Integrated real-time tracking features using Ionic and Objective-C",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%233B82F6' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 22 C34.2 22 36 23.8 36 26 L36 38 C36 40.2 34.2 42 32 42 C29.8 42 28 40.2 28 38 L28 26 C28 23.8 29.8 22 32 22' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05))",
     },
     {
       company: "Dream71 Bangladesh Ltd",
@@ -191,6 +201,8 @@ const HomePage: React.FC = () => {
         "Led Unity3D game development with successful user retention",
         "Streamlined asset integration and build automation",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23F59E0B' width='64' height='64' rx='12'/%3E%3Ccircle cx='32' cy='24' r='4' fill='white'/%3E%3Cpath fill='white' d='M24 35 L32 42 L40 35 Z'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(253, 224, 71, 0.05))",
     },
     {
       company: "Independent Game Developer",
@@ -202,6 +214,8 @@ const HomePage: React.FC = () => {
         "Delivered high-quality solutions across multiple game genres",
         "Managed full development cycles independently",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238B5CF6' width='64' height='64' rx='12'/%3E%3Crect x='22' y='20' width='8' height='24' fill='white'/%3E%3Crect x='34' y='20' width='8' height='24' fill='white'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(196, 181, 253, 0.05))",
     },
     {
       company: "Rise Up Labs",
@@ -213,6 +227,8 @@ const HomePage: React.FC = () => {
         "Created engaging game mechanics and environments",
         "Delivered polished games on schedule",
       ],
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23EC4899' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 18 L42 26 L40 40 L24 40 L22 26 Z'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(244, 114, 182, 0.05))",
     },
   ];
 
@@ -445,22 +461,25 @@ const HomePage: React.FC = () => {
         </motion.h2>
         <motion.div className="work-experience-list" variants={sectionVariants}>
           {workExperiences.map((experience, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="bento-card"
               variants={cardVariants}
-              whileHover={shouldReduceMotion ? undefined : { 
+              whileHover={shouldReduceMotion ? undefined : {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
+              style={{
+                background: experience.bgGradient ? `${experience.bgGradient}, var(--bg-card)` : 'var(--bg-card)'
+              }}
             >
               <div className="bento-card-logo">
-                <motion.img 
-                  src="https://placehold.co/64x64" 
+                <motion.img
+                  src={experience.logo || "https://placehold.co/64x64"}
                   alt={experience.company + " logo"}
-                  whileHover={shouldReduceMotion ? undefined : { 
+                  whileHover={shouldReduceMotion ? undefined : {
                     rotate: 5,
-                    scale: 1.1 
+                    scale: 1.1
                   }}
                 />
               </div>

@@ -22,7 +22,9 @@ const Projects: React.FC = () => {
         viewport={{ once: true, amount: 0.1 }}
         transition={{ staggerChildren: 0.12 }}
       >
-        {projects.map((project) => (
+        {[...projects]
+          .sort((a, b) => (a.priority ?? 999) - (b.priority ?? 999))
+          .map((project) => (
           <motion.article
             key={project.id}
             className='project-card'

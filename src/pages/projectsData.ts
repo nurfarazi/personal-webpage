@@ -31,6 +31,7 @@ export interface Project {
   role?: string;
   duration?: string;
   challenges?: string[];
+  priority?: number;
 }
 
 const normalizeProjectId = (value: string) => value.trim().toLowerCase();
@@ -38,6 +39,7 @@ const normalizeProjectId = (value: string) => value.trim().toLowerCase();
 export const projects: Project[] = [
   {
     id: 'evv',
+    priority: 10,
     title: 'EVV (Electronic Visit Verification)',
     tagline: 'EVV (Electronic Visit Verification) platform for healthcare providers',
     preview: {
@@ -89,6 +91,7 @@ export const projects: Project[] = [
   },
   {
     id: 'Hand',
+    priority: 20,
     title: 'Hand Tracking SDK for AR/VR',
     tagline: 'Hand tracking solution for immersive experiences in AR/VR',
     preview: {
@@ -127,11 +130,12 @@ export const projects: Project[] = [
   },
   {
     id: 'SurveillanceFootageConsolidator',
+    priority: 30,
     title: 'Surveillance Footage Consolidator',
     tagline: 'Automated processing and analysis of surveillance footage',
     preview: {
       type: 'image',
-      src: new URL('../assets/SurveillanceFootageConsolidator_1.png', import.meta.url).href,
+      src: new URL('../assets/surveillance_preview.png', import.meta.url).href,
       alt: 'Surveillance Footage Consolidator preview',
     },
     mediaGallery: [
@@ -164,6 +168,7 @@ export const projects: Project[] = [
   },
   {
     id: 'poplin',
+    priority: 40,
     title: 'poplin (wash-dry-fold)',
     tagline: 'Scalable laundry service platform with app-based pickup and workflows',
     preview: {
@@ -202,6 +207,7 @@ export const projects: Project[] = [
   },
   {
     id: 'bandscore9',
+    priority: 50,
     title: 'Bandscore9',
     tagline: 'IELTS mock tests and skill evaluation platform',
     preview: {
@@ -241,6 +247,7 @@ export const projects: Project[] = [
   },
   {
     id: 'cholpori',
+    priority: 60,
     title: 'CholPori (LMS)',
     tagline: 'Interactive learning platform with multimedia lessons and quizzes',
     preview: {
@@ -289,6 +296,7 @@ export const projects: Project[] = [
   },
   {
     id: 'automated-data-pipeline',
+    priority: 70,
     title: 'Automated Data Pipeline',
     tagline: 'End-to-end Excel to Google Sheets data automation solution',
     preview: {

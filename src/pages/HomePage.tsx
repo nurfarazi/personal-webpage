@@ -101,7 +101,7 @@ const HomePage: React.FC = () => {
     mass: 0.8,
   });
   const glowBackground = useMotionTemplate`
-    radial-gradient(300px circle at ${glowXSpring}% ${glowYSpring}%, rgba(100, 108, 255, 0.15), transparent 70%)
+    radial-gradient(300px circle at ${glowXSpring}% ${glowYSpring}%, rgba(0, 217, 255, 0.15), transparent 70%)
   `;
 
   const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
@@ -141,7 +141,7 @@ const HomePage: React.FC = () => {
         "Enforced best practices for software reliability, security, and scalability across the SDLC",
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23646CFF' width='64' height='64' rx='12'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='28' font-weight='bold' fill='white' font-family='system-ui'%3EKZ%3C/text%3E%3C/svg%3E",
-      bgGradient: "linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(147, 51, 234, 0.05))",
+      bgGradient: "linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 180, 220, 0.05))",
     },
     {
       company: "CholPori",
@@ -214,8 +214,8 @@ const HomePage: React.FC = () => {
         "Delivered high-quality solutions across multiple game genres",
         "Managed full development cycles independently",
       ],
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%238B5CF6' width='64' height='64' rx='12'/%3E%3Crect x='22' y='20' width='8' height='24' fill='white'/%3E%3Crect x='34' y='20' width='8' height='24' fill='white'/%3E%3C/svg%3E",
-      bgGradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(196, 181, 253, 0.05))",
+      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%2300D9FF' width='64' height='64' rx='12'/%3E%3Crect x='22' y='20' width='8' height='24' fill='white'/%3E%3Crect x='34' y='20' width='8' height='24' fill='white'/%3E%3C/svg%3E",
+      bgGradient: "linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 180, 220, 0.05))",
     },
     {
       company: "Rise Up Labs",
@@ -434,13 +434,13 @@ const HomePage: React.FC = () => {
           style={{ marginTop: 'var(--spacing-xl)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}
         >
           <motion.img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=nurfarazi&theme=transparent&hide_border=true&stroke=646CFF&ring=646CFF&fire=9333EA&currStreakLabel=646CFF"
+            src="https://github-readme-streak-stats.herokuapp.com/?user=nurfarazi&theme=transparent&hide_border=true&stroke=00D9FF&ring=00D9FF&fire=00B4DC&currStreakLabel=00D9FF"
             alt="GitHub Streak Stats"
             style={{ width: '100%', maxWidth: '800px', margin: '0 auto', borderRadius: 'var(--radius-lg)' }}
             whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
           />
           <motion.img
-            src="https://github-readme-activity-graph.vercel.app/graph?username=nurfarazi&theme=github-compact&hide_border=true&bg_color=00000000&color=646CFF&line=9333EA&point=646CFF"
+            src="https://github-readme-activity-graph.vercel.app/graph?username=nurfarazi&theme=github-compact&hide_border=true&bg_color=00000000&color=00D9FF&line=00B4DC&point=00D9FF"
             alt="GitHub Activity Graph"
             style={{ width: '100%', borderRadius: 'var(--radius-lg)' }}
             whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}

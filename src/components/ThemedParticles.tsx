@@ -3,9 +3,16 @@ import type { Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { useTheme } from '../hooks/useTheme';
+import { colorOptions } from '../contexts/colorOptions';
 
 const ThemedParticles = () => {
-  const { theme } = useTheme();
+  const { theme, primaryColor } = useTheme();
+
+  // Get the actual hex color for the selected primary color
+  const accentColor = useMemo(() => {
+    const colorOption = colorOptions.find(opt => opt.name === primaryColor);
+    return colorOption?.primary || '#00d9ff';
+  }, [primaryColor]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
@@ -55,10 +62,10 @@ const ThemedParticles = () => {
     },
     particles: {
       color: {
-        value: "#646cff",
+        value: accentColor,
       },
       links: {
-        color: theme === 'dark' ? "#a259ff" : "#646cff",
+        color: accentColor,
         distance: 150,
         enable: true,
         opacity: theme === 'dark' ? 0.2 : 0.15,
@@ -92,7 +99,7 @@ const ThemedParticles = () => {
       },
     },
     detectRetina: true,
-  }), [theme]);
+  }), [theme, accentColor]);
 
   return (
     <Particles

@@ -5,10 +5,56 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Typography scale */
-  --font-family-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-family-display: "Inter", "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-family-mono: "SUSE Mono", "Fira Code", "Source Code Pro", monospace;
+  /* ========================================
+     DESIGN SYSTEM - Accent Color Tokens
+     These are set dynamically by ThemeContext.tsx
+     Default values shown here for fallback
+     ======================================== */
+  --accent-color: #00d9ff;
+  --accent-hover: #33e1ff;
+  --accent-rgb: 0, 217, 255;
+
+  /* Alpha variants (5% - 95%) */
+  --accent-5: rgba(var(--accent-rgb), 0.05);
+  --accent-8: rgba(var(--accent-rgb), 0.08);
+  --accent-10: rgba(var(--accent-rgb), 0.1);
+  --accent-12: rgba(var(--accent-rgb), 0.12);
+  --accent-14: rgba(var(--accent-rgb), 0.14);
+  --accent-15: rgba(var(--accent-rgb), 0.15);
+  --accent-18: rgba(var(--accent-rgb), 0.18);
+  --accent-20: rgba(var(--accent-rgb), 0.2);
+  --accent-25: rgba(var(--accent-rgb), 0.25);
+  --accent-30: rgba(var(--accent-rgb), 0.3);
+  --accent-35: rgba(var(--accent-rgb), 0.35);
+  --accent-40: rgba(var(--accent-rgb), 0.4);
+  --accent-45: rgba(var(--accent-rgb), 0.45);
+  --accent-50: rgba(var(--accent-rgb), 0.5);
+  --accent-60: rgba(var(--accent-rgb), 0.6);
+  --accent-70: rgba(var(--accent-rgb), 0.7);
+  --accent-80: rgba(var(--accent-rgb), 0.8);
+  --accent-90: rgba(var(--accent-rgb), 0.9);
+  --accent-95: rgba(var(--accent-rgb), 0.95);
+
+  /* Semantic tokens */
+  --accent-subtle: rgba(var(--accent-rgb), 0.08);
+  --accent-muted: rgba(var(--accent-rgb), 0.15);
+  --accent-soft: rgba(var(--accent-rgb), 0.25);
+  --accent-medium: rgba(var(--accent-rgb), 0.5);
+  --accent-strong: rgba(var(--accent-rgb), 0.85);
+
+  /* Glow and shadow tokens */
+  --accent-glow-sm: 0 4px 12px rgba(var(--accent-rgb), 0.15);
+  --accent-glow-md: 0 8px 24px rgba(var(--accent-rgb), 0.25);
+  --accent-glow-lg: 0 16px 48px rgba(var(--accent-rgb), 0.3);
+
+  /* Gradient tokens */
+  --accent-gradient: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  --accent-gradient-subtle: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.05));
+
+  /* Typography scale - Premium fonts */
+  --font-family-sans: "Sohne", "Helvetica Neue", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-display: "Poppins", "Space Grotesk", system-ui, sans-serif;
+  --font-family-mono: "JetBrains Mono", "Fira Code", "Source Code Pro", monospace;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;

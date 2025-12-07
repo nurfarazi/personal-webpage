@@ -24,13 +24,32 @@ const ProjectDetail: React.FC = () => {
   }, [projectId]);
 
   useEffect(() => {
-    if (!project) {
+    if (projectId && !project) {
       navigate('/projects', { replace: true });
     }
-  }, [project, navigate]);
+  }, [projectId, project, navigate]);
 
-  if (!project) {
-    return null;
+  useEffect(() => {
+    if (projectId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [projectId]);
+
+  if (!projectId || !project) {
+    return (
+      <article className='project-detail-page'>
+        <div className='project-detail-topbar'>
+          <Link to='/projects' className='project-detail-back'>
+            Back to projects
+          </Link>
+        </div>
+        {!project && projectId && (
+          <div className='project-detail-description'>
+            <p>We couldn&apos;t find that project. Please choose another from the projects page.</p>
+          </div>
+        )}
+      </article>
+    );
   }
 
   const heroMedia: ProjectMedia = project.mediaGallery[0] ?? project.preview;

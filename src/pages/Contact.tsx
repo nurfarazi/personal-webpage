@@ -229,7 +229,7 @@ const Contact = () => {
     mass: 0.6,
   });
   const glowBackground = useMotionTemplate`
-    radial-gradient(220px circle at ${glowXSpring}% ${glowYSpring}%, rgba(100, 108, 255, 0.2), transparent 75%)
+    radial-gradient(220px circle at ${glowXSpring}% ${glowYSpring}%, rgba(0, 217, 255, 0.2), transparent 75%)
   `;
   const sectionInitial = shouldReduceMotion ? false : 'hidden';
   const sectionAnimate = shouldReduceMotion ? false : 'show';

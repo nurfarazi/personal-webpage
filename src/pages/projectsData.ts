@@ -33,6 +33,8 @@ export interface Project {
   challenges?: string[];
 }
 
+const normalizeProjectId = (value: string) => value.trim().toLowerCase();
+
 export const projects: Project[] = [
   {
     id: 'evv',
@@ -163,4 +165,4 @@ export const projects: Project[] = [
 ];
 
 export const getProjectById = (projectId: string) =>
-  projects.find((project) => project.id === projectId) ?? null;
+  projects.find((project) => normalizeProjectId(project.id) === normalizeProjectId(projectId)) ?? null;

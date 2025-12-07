@@ -1,15 +1,16 @@
 import React, { useRef } from "react";
-import { 
-  motion, 
-  useReducedMotion, 
-  useMotionValue, 
-  useSpring, 
-  useMotionTemplate 
+import {
+  motion,
+  useReducedMotion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate
 } from "motion/react";
 import type { Variants } from "motion/react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 import "../App.css";
+import ToolsSection from "../components/ToolsSection";
 
 
 
@@ -21,6 +22,12 @@ interface WorkExperience {
   achievements: string[];
   logo?: string;
   bgGradient?: string;
+  keyMetric?: {
+    label: string;
+    value: string;
+  };
+  yearStart?: number;
+  yearEnd?: number;
 }
 
 // Publication interface removed (was used by a publications array that's no longer in use)
@@ -142,6 +149,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23646CFF' width='64' height='64' rx='12'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='28' font-weight='bold' fill='white' font-family='system-ui'%3EKZ%3C/text%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 180, 220, 0.05))",
+      keyMetric: { label: "Team Led", value: "12" },
+      yearStart: 2022,
+      yearEnd: 2025,
     },
     {
       company: "CholPori",
@@ -158,6 +168,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%2310B981' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 20 L40 28 L32 36 L24 28 Z M28 32 L32 36 L36 32'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.05))",
+      keyMetric: { label: "Team Led", value: "12" },
+      yearStart: 2020,
+      yearEnd: 2022,
     },
     {
       company: "Jeeon Bangladesh Ltd",
@@ -174,6 +187,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23EF4444' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 20 L42 26 L42 42 L22 42 L22 26 Z M32 28 L28 34 L32 38 L36 34 Z'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(252, 165, 165, 0.05))",
+      keyMetric: { label: "DAU Growth", value: "55%" },
+      yearStart: 2016,
+      yearEnd: 2020,
     },
     {
       company: "AGD IT SOLUTION Sdn Bhd",
@@ -189,6 +205,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%233B82F6' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 22 C34.2 22 36 23.8 36 26 L36 38 C36 40.2 34.2 42 32 42 C29.8 42 28 40.2 28 38 L28 26 C28 23.8 29.8 22 32 22' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05))",
+      keyMetric: { label: "Deployment Speed", value: "50% ↑" },
+      yearStart: 2015,
+      yearEnd: 2016,
     },
     {
       company: "Dream71 Bangladesh Ltd",
@@ -203,6 +222,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23F59E0B' width='64' height='64' rx='12'/%3E%3Ccircle cx='32' cy='24' r='4' fill='white'/%3E%3Cpath fill='white' d='M24 35 L32 42 L40 35 Z'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(253, 224, 71, 0.05))",
+      keyMetric: { label: "Real-time", value: "Gaming" },
+      yearStart: 2014,
+      yearEnd: 2015,
     },
     {
       company: "Independent Game Developer",
@@ -216,6 +238,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%2300D9FF' width='64' height='64' rx='12'/%3E%3Crect x='22' y='20' width='8' height='24' fill='white'/%3E%3Crect x='34' y='20' width='8' height='24' fill='white'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 180, 220, 0.05))",
+      keyMetric: { label: "Projects", value: "20+" },
+      yearStart: 2013,
+      yearEnd: 2014,
     },
     {
       company: "Rise Up Labs",
@@ -229,6 +254,9 @@ const HomePage: React.FC = () => {
       ],
       logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23EC4899' width='64' height='64' rx='12'/%3E%3Cpath fill='white' d='M32 18 L42 26 L40 40 L24 40 L22 26 Z'/%3E%3C/svg%3E",
       bgGradient: "linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(244, 114, 182, 0.05))",
+      keyMetric: { label: "Leadership", value: "3+ Teams" },
+      yearStart: 2011,
+      yearEnd: 2012,
     },
   ];
 
@@ -348,57 +376,7 @@ const HomePage: React.FC = () => {
         </motion.ul>
       </motion.section>
 
-      <motion.section 
-        className="section tools-methods"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2 className="section-title" variants={heroItemVariants}>
-          Tools & Methods
-        </motion.h2>
-        <motion.ul variants={sectionVariants}>
-          <motion.li variants={listItemVariants}>
-            <strong>Frontend & UI:</strong> <span className="highlight-text highlight-primary">Angular</span> (8 yrs), <span className="highlight-text highlight-dark">RxJS</span> (4 yrs),
-            <span className="highlight-text highlight-primary">TypeScript</span> (6 yrs), Bootstrap, SCSS, HTML5, Responsive Design
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Backend:</strong> <span className="highlight-text highlight-primary">.NET Core</span> (8 yrs), <span className="highlight-text highlight-dark">Node.js</span> (8 yrs), WebSocket, SignalR
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Mobile:</strong> Flutter (1 yr), Ionic (5 yrs)
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Databases:</strong> PostgreSQL (6 yrs), Redis (6 yrs),
-            MongoDB (4 yrs), MySQL (5 yrs), DynamoDB (1 yr)
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Cloud & DevOps:</strong> <span className="highlight-text highlight-primary">AWS</span> (10 yrs - Lambda, EC2, SAM,
-            Route 53, RDS, etc.), Firebase (7 yrs), Docker, CI/CD
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Architecture & Patterns:</strong> <span className="highlight-text highlight-dark">Clean Architecture</span>, CQRS,
-            Hexagonal, SOLID, <span className="highlight-text highlight-primary">Microservices</span>, gRPC
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>AI & Automation:</strong> ChatBot, Invoice Automation,
-            Workflow Automation
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Project & Collaboration Tools:</strong> Jira, YouTrack,
-            GitLab Board, GitHub, GitLab, Figma, Miro
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Agile Practices:</strong> <span className="highlight-text highlight-dark">Scrum</span>, Kanban, Sprint Planning,
-            Backlog Grooming
-          </motion.li>
-          <motion.li variants={listItemVariants}>
-            <strong>Other:</strong> SignalR, <span className="highlight-text highlight-dark">TDD</span>, Technical Writing,
-            Documentation Systems
-          </motion.li>
-        </motion.ul>
-      </motion.section>
+      <ToolsSection />
 
       <motion.section 
         className="section github-stats"
@@ -485,10 +463,22 @@ const HomePage: React.FC = () => {
               </div>
               <div className="bento-card-content">
                 <div className="experience-header">
-                  <h3>{experience.company}</h3>
-                  <div className="position-meta">
-                    <span className="position">{experience.position}</span>
-                    <span className="duration">{experience.duration}</span>
+                  <div className="header-top">
+                    <div>
+                      <h3>{experience.company}</h3>
+                      <span className="position">{experience.position}</span>
+                    </div>
+                    {experience.keyMetric && (
+                      <div className="key-metric-badge">
+                        <div className="metric-value">{experience.keyMetric.value}</div>
+                        <div className="metric-label">{experience.keyMetric.label}</div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="timeline-bar">
+                    <span className="year-start">{experience.yearStart}</span>
+                    <div className="bar-line"></div>
+                    <span className="year-end">{experience.yearEnd}</span>
                   </div>
                 </div>
                 <p className="experience-description">

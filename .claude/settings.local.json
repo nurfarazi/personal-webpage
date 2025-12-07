@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Skill(example-skills:frontend-design)"
+      "Skill(example-skills:frontend-design)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

@@ -73,11 +73,24 @@ This is a personal portfolio website built with **React 19 + TypeScript + Vite**
 - Type definitions collocated with context: `themeTypes.ts`
 - Vite env types: `src/vite-env.d.ts`
 
-### Styling
-- **Global scope:** All styles are global; avoid name collisions by prefixing class names with component name
-  - Example: `.contact-page`, `.contact-card`, `.contact-item__icon`
-- Page styles are sibling files: `HomePage.tsx` pairs with `HomePage.css`
-- CSS variables drive theming (defined in `src/App.css` and `src/index.css`)
+### Styling & Design System
+- **Unified Design System:** All styling is centralized in `src/design-system.css`
+  - Source of truth for colors, typography, spacing, borders, animations, and component patterns
+  - Imported first in `src/main.tsx` before all other styles
+  - Uses CSS variables exclusively — never hardcode colors, sizes, or spacing
+  - See `DESIGN_SYSTEM.md` and `DESIGN_SYSTEM_QUICK_REF.md` for complete documentation
+
+- **Component Styling:**
+  - Page styles are sibling files: `HomePage.tsx` pairs with `HomePage.css`
+  - Use established patterns from design system (card, button, badge, list-item, bento-card)
+  - Prefix class names with component name to avoid collisions: `.contact-page`, `.contact-card`, `.contact-item__icon`
+  - All CSS variables defined in design system — never define new hardcoded values
+
+- **Theme Variables:**
+  - Dynamic accent color controlled by `src/contexts/ThemeContext.tsx` and color picker
+  - Light/dark theme automatically handled by `[data-theme="dark"]` selector
+  - Typography scale with responsive `clamp()` for fluid sizing
+  - Spacing scale from `--spacing-xs` (4px) to `--spacing-xxl` (48px)
 
 ### React Patterns
 - **Lazy loading:** Pages imported via `React.lazy()` with `Suspense` boundaries (App.tsx:7-12, 27-35)

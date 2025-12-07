@@ -1,7 +1,5 @@
-import React from "react";
 import { motion, Variants } from "motion/react";
 import { skillCategories, parseYears } from "../data/toolsData";
-import type { Skill, SkillCategory } from "../data/toolsData";
 import "./ToolsSection.css";
 
 const sectionVariants: Variants = {

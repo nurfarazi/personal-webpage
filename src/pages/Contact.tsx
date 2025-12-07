@@ -15,7 +15,6 @@ import {
   LinkedInIcon,
   LocationIcon,
   MediumIcon,
-  PhoneIcon,
 } from '../components/icons';
 
 import './Contact.css';
@@ -36,14 +35,6 @@ const contactMethods: ContactMethod[] = [
     value: 'nur369188@gmail.com',
     href: 'mailto:nur369188@gmail.com',
     icon: <EnvelopeIcon aria-hidden="true" />,
-    copyable: true,
-  },
-  {
-    id: 'phone',
-    label: 'Phone',
-    value: '+8801717369188',
-    href: 'tel:+8801717369188',
-    icon: <PhoneIcon aria-hidden="true" />,
     copyable: true,
   },
   {

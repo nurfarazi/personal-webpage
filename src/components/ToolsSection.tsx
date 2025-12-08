@@ -57,7 +57,7 @@ const ToolsSection: React.FC = () => {
           Tools & Methods
         </motion.h2>
         <motion.p className="section-subtitle" variants={skillVariants}>
-          14+ years of expertise across full-stack development, cloud infrastructure, and team leadership
+          15+ years of expertise across full-stack development, cloud infrastructure, and team leadership
         </motion.p>
       </motion.div>
 

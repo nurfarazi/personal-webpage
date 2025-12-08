@@ -341,7 +341,7 @@ const HomePage: React.FC = () => {
         </motion.h2>
         <motion.p variants={heroItemVariants}>
           Experienced <span className="highlight-text highlight-primary">Backend Engineer</span> and <span className="highlight-text highlight-dark">Technical Project Manager</span>
-          with <span className="highlight-text highlight-primary">14+ years</span> delivering scalable software and cloud solutions.
+          with <span className="highlight-text highlight-primary">15+ years</span> delivering scalable software and cloud solutions.
           <span className="highlight-text highlight-dark">Backend-focused</span> with expertise in system design, optimization, and full-stack development using <span className="highlight-text highlight-primary">Angular</span> and <span className="highlight-text highlight-primary">TypeScript</span>.
           Proven track record leading <span className="highlight-text highlight-dark">cross-functional global teams</span>, managing
           complex IT projects across web, mobile, and cloud platforms. Skilled

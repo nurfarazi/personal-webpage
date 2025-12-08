@@ -14,16 +14,6 @@ interface KnowledgeArticle {
   link: string;
 }
 
-interface CertificateItem {
-  id: string;
-  title: string;
-  issuer: string;
-  issued: string;
-  credentialId?: string;
-  link: string;
-  skills: string[];
-}
-
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
@@ -109,36 +99,6 @@ const Knowledge: React.FC = () => {
       excerpt: 'Master thread-safe programming in C#. Explore concurrent collections, async/await patterns, parallel programming, and techniques for preventing race conditions and deadlocks in multithreaded applications.',
       tags: ['C#', 'Threading', 'Concurrency', 'Async/Await'],
       link: 'https://nur369188.medium.com/how-i-think-about-concurrency-and-threading-in-c-a99340d19eed'
-    }
-  ];
-
-  const certificates: CertificateItem[] = [
-    {
-      id: 'cert-1',
-      title: 'Microsoft Certified: Azure Solutions Architect Expert',
-      issuer: 'Microsoft',
-      issued: 'April 2024',
-      credentialId: 'MC-000123456',
-      skills: ['Azure Architecture', 'Security', 'DevOps'],
-      link: 'https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/'
-    },
-    {
-      id: 'cert-2',
-      title: 'AWS Certified Solutions Architect – Associate',
-      issuer: 'Amazon Web Services',
-      issued: 'January 2024',
-      credentialId: 'AWS-ASA-789654',
-      skills: ['AWS', 'Cloud Strategy', 'Cost Optimization'],
-      link: 'https://www.credly.com/badges/aws-certified-solutions-architect-associate'
-    },
-    {
-      id: 'cert-3',
-      title: 'Certified Kubernetes Administrator (CKA)',
-      issuer: 'Cloud Native Computing Foundation',
-      issued: 'July 2023',
-      credentialId: 'CKA-2023-4421',
-      skills: ['Kubernetes', 'Container Orchestration', 'Infra Automation'],
-      link: 'https://www.cncf.io/certification/cka/'
     }
   ];
 
@@ -233,50 +193,6 @@ const Knowledge: React.FC = () => {
             </motion.a>
           ))}
         </motion.div>
-
-        <motion.section
-          className="certificate-section"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div className="certificate-header" variants={cardVariants}>
-            <h2>Certificates</h2>
-            <p>Recognitions that validate hands-on expertise across cloud architecture, platform reliability, and automation.</p>
-          </motion.div>
-
-          <motion.div className="certificate-grid" variants={cardVariants}>
-            {certificates.map((certificate) => (
-              <motion.a
-                key={certificate.id}
-                href={certificate.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="certificate-card"
-                whileHover={shouldReduceMotion ? undefined : { y: -6 }}
-                whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-              >
-                <div className="certificate-card__header">
-                  <span className="certificate-issuer">{certificate.issuer}</span>
-                  <span className="certificate-issued">Issued {certificate.issued}</span>
-                </div>
-                <h3 className="certificate-title">{certificate.title}</h3>
-                {certificate.credentialId && (
-                  <div className="certificate-meta">
-                    Credential ID: <span>{certificate.credentialId}</span>
-                  </div>
-                )}
-                <div className="certificate-skills">
-                  {certificate.skills.map((skill) => (
-                    <span key={skill} className="certificate-skill">{skill}</span>
-                  ))}
-                </div>
-                <div className="certificate-cta">View Credential →</div>
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.section>
 
         <motion.div
           className="knowledge-cta"

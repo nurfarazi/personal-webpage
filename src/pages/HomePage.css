@@ -1024,26 +1024,28 @@
 }
 
 .highlight-primary {
-  background: linear-gradient(115deg, var(--accent-95), var(--accent-strong));
-  color: #0d0c0a;
+  background: var(--accent-15);
+  color: var(--accent-color);
   font-weight: 700;
 }
 
 .highlight-dark {
-  background-color: var(--accent-15);
-  color: var(--accent-90);
-  border-left: 3px solid var(--accent-50);
+  background-color: var(--accent-10);
+  color: var(--text-primary);
+  border-left: 3px solid var(--accent-color);
   padding-left: 8px !important;
+  font-weight: 600;
 }
 
 [data-theme="dark"] .highlight-primary {
-  background: linear-gradient(115deg, var(--accent-95), var(--accent-strong));
-  color: #0d0c0a;
+  background: var(--accent-15);
+  color: var(--accent-color);
 }
 
 [data-theme="dark"] .highlight-dark {
   background-color: var(--accent-12);
-  color: var(--accent-90);
+  color: var(--text-primary);
+  border-left-color: var(--accent-color);
 }
 
 /* Hover effects for highlighted text */

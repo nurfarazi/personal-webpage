@@ -17,13 +17,13 @@
   margin: 0 0 var(--spacing-md) 0;
   font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
-  color: var(--text-primary, #ffffff);
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   font-size: 1rem;
-  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
   font-weight: 400;
@@ -46,8 +46,8 @@
 /* Tool Card Styling */
 .tool-card {
   position: relative;
-  background: var(--bg-card, rgba(255, 255, 255, 0.03));
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 1.25rem;
   padding: var(--spacing-lg, 1.5rem);
   backdrop-filter: blur(10px);
@@ -64,7 +64,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--accent-5);
   opacity: 0;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
@@ -78,8 +78,8 @@
 
 .tool-card:hover {
   border-color: var(--card-color);
-  background: var(--bg-card, rgba(255, 255, 255, 0.04));
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  background: var(--surface);
+  box-shadow: 0 4px 16px var(--shadow);
 }
 
 /* Card Header */
@@ -128,7 +128,7 @@
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary, #ffffff);
+  color: var(--text-primary);
   letter-spacing: -0.01em;
   margin-bottom: var(--spacing-xs, 0.25rem);
 }
@@ -136,7 +136,7 @@
 .card-description {
   margin: 0;
   font-size: 0.875rem;
-  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+  color: var(--text-secondary);
   line-height: 1.4;
   font-weight: 400;
 }
@@ -155,12 +155,12 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--accent-8);
+  border: 1px solid var(--accent-15);
   border-radius: var(--radius-full, 9999px);
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
@@ -179,22 +179,22 @@
 
 .skill-tag:hover {
   border-color: var(--card-color);
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: var(--accent-12);
+  color: var(--text-primary);
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 /* Highlight special skills */
 .skill-tag.highlighted {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--accent-15);
   border-color: var(--card-color);
-  color: #ffffff;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .skill-tag.highlighted:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--accent-20);
   transform: translateY(-2px);
 }
 
@@ -223,7 +223,7 @@
   display: inline-flex;
   width: 40px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--accent-10);
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -297,27 +297,7 @@
   }
 }
 
-/* Dark mode considerations */
-@media (prefers-color-scheme: dark) {
-  .tool-card {
-    background: var(--bg-card, rgba(255, 255, 255, 0.02));
-    border-color: rgba(255, 255, 255, 0.08);
-  }
 
-  .tool-card:hover {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      rgba(255, 255, 255, 0.01) 100%
-    );
-    border-color: var(--card-color);
-  }
-
-  .skill-tag {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.08);
-  }
-}
 
 /* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {

@@ -37,7 +37,12 @@ const skillVariants: Variants = {
 
 const ToolsSection: React.FC = () => {
   // Use imported skill categories from data file
-  const categories = skillCategories;
+  const categories = skillCategories || [];
+
+  // Ensure we always have content to display
+  if (categories.length === 0) {
+    return null;
+  }
 
   return (
     <motion.section

@@ -20,12 +20,17 @@ const ProjectDetail: React.FC = () => {
       return null;
     }
 
-    return getProjectById(projectId);
+    const found = getProjectById(projectId);
+    return found;
   }, [projectId]);
 
   useEffect(() => {
     if (projectId && !project) {
-      navigate('/projects', { replace: true });
+      // Only redirect if we've confirmed the project doesn't exist
+      const timer = setTimeout(() => {
+        navigate('/projects', { replace: true });
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [projectId, project, navigate]);
 
@@ -33,6 +38,11 @@ const ProjectDetail: React.FC = () => {
     if (projectId) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }, [projectId]);
+
+  // Reset playing media when project changes
+  useEffect(() => {
+    setPlayingMedia({});
   }, [projectId]);
 
   if (!projectId || !project) {

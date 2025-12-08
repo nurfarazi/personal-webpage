@@ -114,18 +114,26 @@ const HomePage: React.FC = () => {
   const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (shouldReduceMotion || !sectionRef.current) return;
     
-    const bounds = sectionRef.current.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
-    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
-    
-    glowX.set(Math.min(100, Math.max(0, x)));
-    glowY.set(Math.min(100, Math.max(0, y)));
+    try {
+      const bounds = sectionRef.current.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+      const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+      
+      glowX.set(Math.min(100, Math.max(0, x)));
+      glowY.set(Math.min(100, Math.max(0, y)));
+    } catch (e) {
+      // Silently handle any pointer tracking errors
+    }
   };
 
   const handlePointerLeave = () => {
     if (shouldReduceMotion) return;
-    glowX.set(50);
-    glowY.set(50);
+    try {
+      glowX.set(50);
+      glowY.set(50);
+    } catch (e) {
+      // Silently handle any pointer tracking errors
+    }
   };
 
 

@@ -90,7 +90,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'Hand',
+    id: 'hand',
     priority: 20,
     title: 'Hand Tracking SDK for AR/VR',
     tagline: 'Hand tracking solution for immersive experiences in AR/VR',
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     duration: 'May 2015 - Dec 2015',
   },
   {
-    id: 'SurveillanceFootageConsolidator',
+    id: 'surveillance-footage-consolidator',
     priority: 30,
     title: 'Surveillance Footage Consolidator',
     tagline: 'Automated processing and analysis of surveillance footage',

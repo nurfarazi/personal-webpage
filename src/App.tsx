@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, Component, ReactNode } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Navbar from './components/Navbar'
@@ -17,12 +17,38 @@ const RouteFallback = () => (
   </div>
 );
 
+const ParticlesFallback = () => null;
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch() {
+    // Silently catch errors in ThemedParticles
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
+
 const AppContent = () => {
   return (
     <Router>
-      <Suspense fallback={null}>
-        <ThemedParticles />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<ParticlesFallback />}>
+          <ThemedParticles />
+        </Suspense>
+      </ErrorBoundary>
       <Navbar key="navbar"/>
       <Suspense fallback={<RouteFallback />}>
         <Routes key="routes">

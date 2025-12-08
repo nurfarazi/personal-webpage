@@ -73,6 +73,7 @@
   /* Global .container adds padding-top for layout; reduce it on the home page
      because the header and particles already create vertical spacing. */
   padding-top: 40px; /* smaller than global 80px in App.css */
+  min-height: 100vh;
 }
 
 .home-page .header {

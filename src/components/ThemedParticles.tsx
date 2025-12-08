@@ -10,12 +10,21 @@ const ThemedParticles = () => {
 
   // Get the actual hex color for the selected primary color
   const accentColor = useMemo(() => {
-    const colorOption = colorOptions.find(opt => opt.name === primaryColor);
-    return colorOption?.primary || '#00d9ff';
+    try {
+      const colorOption = colorOptions.find(opt => opt.name === primaryColor);
+      return colorOption?.primary || '#00d9ff';
+    } catch {
+      return '#00d9ff';
+    }
   }, [primaryColor]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
+    try {
+      await loadSlim(engine);
+    } catch {
+      // Silently fail if particles fail to initialize
+      console.debug('Particles initialization skipped');
+    }
   }, []);
 
   const particlesLoaded = useCallback(async () => {

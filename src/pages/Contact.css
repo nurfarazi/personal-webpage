@@ -12,8 +12,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  padding: 3rem 0 4rem;
+  min-height: 40vh;
+  padding: 1rem 0 3rem;
 }
 
 .contact {
@@ -333,11 +333,11 @@
 
 @media (max-width: 900px) {
   .contact-center-wrapper {
-    padding: 2.5rem 0 3.5rem;
+    padding: 1rem 0 2rem;
   }
 
   .contact-card {
-    padding: clamp(1.35rem, 4vw, 1.75rem);
+    padding: clamp(1rem, 4vw, 1.5rem);
   }
 }
 

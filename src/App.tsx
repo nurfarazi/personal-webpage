@@ -6,6 +6,7 @@ import './App.css'
 
 const Contact = lazy(() => import('./pages/Contact'));
 const HomePage = lazy(() => import('./pages/HomePage'));
+const Career = lazy(() => import('./pages/Career'));
 const Knowledge = lazy(() => import('./pages/Knowledge'));
 const Projects = lazy(() => import('./pages/Projects'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
@@ -54,6 +55,7 @@ const AppContent = () => {
         <Routes key="routes">
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/career" element={<Career />} />
           <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:projectId" element={<ProjectDetail />} />

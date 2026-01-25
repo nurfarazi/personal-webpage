@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
-import type { Engine, ISourceOptions } from "tsparticles-engine";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
+import type { Engine, ISourceOptions } from '@tsparticles/engine';
+import Particles from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import { useTheme } from '../hooks/useTheme';
 import { colorOptions } from '../contexts/colorOptions';
 

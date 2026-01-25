@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import "../App.css";
 import ToolsSection from "../components/ToolsSection";
+import { getTopAchievements } from '../data/achievementsData';
 
 
 
@@ -239,6 +240,65 @@ const HomePage: React.FC = () => {
       </motion.section>
 
       <ToolsSection />
+
+      <motion.section
+        className="section achievements"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 className="section-title" variants={heroItemVariants}>
+          Notable Project Achievements
+        </motion.h2>
+
+        <motion.div className="achievements-grid" variants={sectionVariants}>
+          {getTopAchievements(3).map((achievement) => (
+            <motion.div
+              key={achievement.id}
+              className="achievement-card"
+              variants={cardVariants}
+            >
+              <div className="achievement-header">
+                <h3>{achievement.title}</h3>
+                <span className="company-badge">{achievement.company}</span>
+              </div>
+
+              <div className="role-badge">{achievement.role}</div>
+
+              <div className="detail-block">
+                <h4>Challenge</h4>
+                <p>{achievement.challenge}</p>
+              </div>
+
+              <div className="detail-block">
+                <h4>Solution</h4>
+                <p>{achievement.solution}</p>
+              </div>
+
+              <div className="tech-stack">
+                <h4>Tech Stack</h4>
+                <div className="tech-badges">
+                  {achievement.techStack.map((tech, i) => (
+                    <span key={i} className="tech-badge">{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="outcomes-section">
+                <h4>Outcomes</h4>
+                <motion.ul variants={sectionVariants}>
+                  {achievement.outcomes.map((outcome, i) => (
+                    <motion.li key={i} variants={listItemVariants}>
+                      {outcome}
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
 
       <motion.section 
         className="section github-stats"

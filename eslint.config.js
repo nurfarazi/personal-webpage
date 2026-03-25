@@ -8,7 +8,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist'] },                                                        
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

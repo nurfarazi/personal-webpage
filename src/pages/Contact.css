@@ -82,7 +82,7 @@
   background: var(--accent-14);
 }
 
-.contact-header h1 {
+.contact-header h2 {
   margin: 0;
   font-family: var(--font-family-display);
   font-size: var(--font-size-h1);

@@ -119,9 +119,29 @@
   letter-spacing: var(--tracking-tight);
 }
 
+.hero-summary {
+  max-width: 42rem;
+  margin: 0.25rem 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.contact-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: min(100%, 260px);
+}
+
 /* Enhanced contact button */
 .header .contact-btn {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   overflow: hidden;
   background: linear-gradient(
     135deg,
@@ -137,6 +157,19 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header .contact-btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--accent-35);
+  box-shadow: none;
+}
+
+.header .contact-btn--secondary:hover {
+  background: var(--accent-8);
+  border-color: var(--accent-50);
+  box-shadow: 0 12px 24px var(--accent-15);
 }
 
 .header .contact-btn::before {
@@ -215,6 +248,12 @@
       0 0 0 4px var(--accent-60),
       0 20px 40px var(--accent-35),
       0 10px 26px var(--accent-30);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-cta-group {
+    width: 100%;
   }
 }
 

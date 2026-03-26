@@ -106,13 +106,17 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "ai",
     title: "AI & Automation",
-    description: "Intelligent systems and workflow automation",
+    description: "AI app development, workflow automation, and intelligent product experiments",
     color: "#EC4899",
     icon: "🤖",
     skills: [
-      { name: "ChatBot" },
-      { name: "Invoice Automation" },
+      { name: "AI app development", highlight: true },
+      { name: "Claude" },
+      { name: "Codex" },
+      { name: "OpenAI API" },
+      { name: "LLM integrations" },
       { name: "Workflow Automation" },
+      { name: "Invoice Automation" },
     ],
   },
   {

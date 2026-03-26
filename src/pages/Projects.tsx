@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { Target, Lightbulb, Code2, Trophy } from 'lucide-react';
+import Seo from '../components/Seo';
+import { getAbsoluteUrl, siteConfig } from '../config/site';
 import './Projects.css';
 import { projects } from './projectsData';
 import { getYouTubePoster } from '../utils/youtube';
@@ -36,6 +38,26 @@ const sectionVariants: Variants = {
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
+};
+
+const projectsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'AI App Development Projects',
+  description: 'Selected AI app development, full-stack SaaS, and automation projects.',
+  url: `${siteConfig.siteUrl}/projects`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: projects
+      .slice()
+      .sort((a, b) => (a.priority ?? 999) - (b.priority ?? 999))
+      .map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: getAbsoluteUrl(`/projects/${project.id}`),
+        name: project.title,
+      })),
+  },
 };
 
 const projectAchievements: ProjectAchievement[] = [
@@ -105,7 +127,44 @@ const Projects: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className='projects-page'>
+    <>
+      <Seo
+        title="AI App Development Projects"
+        description="Selected AI app development, SaaS, and automation projects by Nur Mohammad Farazi."
+        path="/projects"
+        keywords={[
+          'AI app development projects',
+          'full-stack SaaS portfolio',
+          'workflow automation projects',
+          'freelance AI developer',
+        ]}
+        jsonLd={projectsJsonLd}
+      />
+      <div className='projects-page'>
+      <header className='projects-header'>
+        <span className='projects-kicker'>Selected work</span>
+        <h1 className='projects-title'>AI app development projects</h1>
+        <p className='projects-subtitle'>
+          A small set of product builds, SaaS platforms, and automation systems that
+          show how I ship real work across frontend, backend, and cloud.
+        </p>
+      </header>
+
+      <section className='projects-insights' aria-label='Service focus'>
+        <div className='projects-insight'>
+          <span className='insight-label'>Primary focus</span>
+          <span className='insight-value'>AI app development</span>
+        </div>
+        <div className='projects-insight'>
+          <span className='insight-label'>Delivery style</span>
+          <span className='insight-value'>Full-stack SaaS and automation</span>
+        </div>
+        <div className='projects-insight'>
+          <span className='insight-label'>Support tools</span>
+          <span className='insight-value'>Claude, Codex, Angular, TypeScript</span>
+        </div>
+      </section>
+
       <motion.div
         className='projects-grid'
         initial='hidden'
@@ -155,7 +214,7 @@ const Projects: React.FC = () => {
               <h2 className='project-card-title'>{project.title}</h2>
             </Link>
           </motion.article>
-        ))}
+          ))}
       </motion.div>
 
       <motion.section
@@ -263,7 +322,8 @@ const Projects: React.FC = () => {
           ))}
         </motion.div>
       </motion.section>
-    </div>
+      </div>
+    </>
   );
 };
 

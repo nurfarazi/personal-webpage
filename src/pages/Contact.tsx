@@ -16,6 +16,8 @@ import {
   LocationIcon,
   MediumIcon,
 } from '../components/icons';
+import Seo from '../components/Seo';
+import { siteConfig } from '../config/site';
 
 import './Contact.css';
 
@@ -67,10 +69,30 @@ const socialLinks = [
 ];
 
 const availabilityTags = [
-  'Backend Engineering',
-  'Angular & TypeScript',
-  'System Design & Optimization',
+  'AI App Development',
+  'Full-Stack SaaS',
+  'Workflow Automation',
+  'Claude + Codex',
 ];
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: `${siteConfig.name} Freelance Services`,
+  description: siteConfig.description,
+  url: siteConfig.siteUrl,
+  provider: {
+    '@type': 'Person',
+    name: siteConfig.name,
+  },
+  areaServed: 'Worldwide',
+  serviceType: 'AI app development and full-stack web development',
+  sameAs: [
+    siteConfig.social.linkedin,
+    siteConfig.social.github,
+    siteConfig.social.medium,
+  ],
+};
 
 const contactSectionVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -296,20 +318,36 @@ const Contact = () => {
   };
 
   return (
-    <motion.main
-      className="contact-page"
-      initial={
-        shouldReduceMotion
-          ? undefined
-          : { opacity: 0, y: 18 }
-      }
-      animate={
-        shouldReduceMotion
-          ? undefined
-          : { opacity: 1, y: 0 }
-      }
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
+    <>
+      <Seo
+        title="Contact Freelance AI App Developer"
+        description="Contact Nur Mohammad Farazi about AI app development, full-stack SaaS, workflow automation, and remote web app projects."
+        path="/contact"
+        type="profile"
+        keywords={[
+          'contact AI app developer',
+          'freelance AI app development',
+          'full-stack SaaS developer',
+          'workflow automation',
+          'Claude developer',
+          'Codex developer',
+        ]}
+        jsonLd={contactJsonLd}
+      />
+      <motion.main
+        className="contact-page"
+        initial={
+          shouldReduceMotion
+            ? undefined
+            : { opacity: 0, y: 18 }
+        }
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : { opacity: 1, y: 0 }
+        }
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
       <div className="contact-center-wrapper">
         <div className="container">
           <motion.section
@@ -337,12 +375,12 @@ const Contact = () => {
 
             <motion.header className="contact-header" variants={headerContainerVariants}>
               <motion.span className="contact-eyebrow" variants={headerItemVariants}>
-                Let&apos;s collaborate
+                Available for remote work
               </motion.span>
-              <motion.h2 variants={headerItemVariants}>Say hello 👋</motion.h2>
+              <motion.h1 variants={headerItemVariants}>AI app development and full-stack SaaS</motion.h1>
               <motion.p variants={headerItemVariants}>
-                I&apos;d love to hear about projects, opportunities, or ideas worth
-                exploring. Drop a message and I&apos;ll respond within a day.
+                If you need a partner for AI apps, web apps, SaaS products, or
+                workflow automation, send a note and I&apos;ll respond within a day.
               </motion.p>
             </motion.header>
 
@@ -404,8 +442,8 @@ const Contact = () => {
               >
                 <h3>Currently open for</h3>
                 <p>
-                  Remote-friendly roles, product design sprints, and collaborative
-                  problem solving. Let&apos;s build human-centered experiences together.
+                  Remote-friendly projects, AI-driven product builds, and practical
+                  automation work. Let&apos;s build something useful together.
                 </p>
                 <motion.div
                   className="contact-tags"
@@ -425,7 +463,7 @@ const Contact = () => {
                 variants={cardVariants}
               >
                 <h3>Connect elsewhere</h3>
-                <p>Follow along for updates, experiments, and case studies.</p>
+                <p>Follow along for updates, experiments, and project notes.</p>
                 <motion.div
                   className="contact-social-links"
                   variants={socialContainerVariants}
@@ -452,13 +490,14 @@ const Contact = () => {
             </motion.div>
 
             <motion.footer className="contact-footer" variants={footerVariants}>
-              Prefer async? Send a quick note and I&apos;ll schedule a follow-up that
-              works in your timezone.
+              Prefer async? Send a quick note and I&apos;ll follow up with a time
+              that works in your timezone.
             </motion.footer>
           </motion.section>
         </div>
       </div>
-    </motion.main>
+      </motion.main>
+    </>
   );
 };
 

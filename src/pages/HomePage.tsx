@@ -8,8 +8,6 @@ import {
 } from "motion/react";
 import type { Variants } from "motion/react";
 import { Link } from "react-router-dom";
-import Seo from "../components/Seo";
-import { siteConfig } from "../config/site";
 import "./HomePage.css";
 import "../App.css";
 import ToolsSection from "../components/ToolsSection";
@@ -19,53 +17,6 @@ import ToolsSection from "../components/ToolsSection";
 // Publication interface removed (was used by a publications array that's no longer in use)
 
 // Motion variants for staggered animations
-
-const homeJsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: siteConfig.name,
-    jobTitle: siteConfig.role,
-    description: siteConfig.description,
-    url: siteConfig.siteUrl,
-    email: siteConfig.email,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Dhaka',
-      addressCountry: 'Bangladesh',
-    },
-    sameAs: [
-      siteConfig.social.linkedin,
-      siteConfig.social.github,
-      siteConfig.social.medium,
-    ],
-    knowsAbout: [
-      'AI app development',
-      'full-stack development',
-      'Claude',
-      'Codex',
-      'workflow automation',
-      'SaaS development',
-      'Angular',
-      'TypeScript',
-      'Node.js',
-      '.NET',
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: `${siteConfig.name} Freelance Services`,
-    description: siteConfig.description,
-    url: siteConfig.siteUrl,
-    provider: {
-      '@type': 'Person',
-      name: siteConfig.name,
-    },
-    areaServed: 'Worldwide',
-    serviceType: 'AI app development and full-stack web development',
-  },
-];
 
 const heroVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -154,7 +105,7 @@ const HomePage: React.FC = () => {
       
       glowX.set(Math.min(100, Math.max(0, x)));
       glowY.set(Math.min(100, Math.max(0, y)));
-    } catch {
+    } catch (e) {
       // Silently handle any pointer tracking errors
     }
   };
@@ -164,7 +115,7 @@ const HomePage: React.FC = () => {
     try {
       glowX.set(50);
       glowY.set(50);
-    } catch {
+    } catch (e) {
       // Silently handle any pointer tracking errors
     }
   };
@@ -177,34 +128,15 @@ const HomePage: React.FC = () => {
   const sectionAnimate = shouldReduceMotion ? false : 'show';
 
   return (
-    <>
-      <Seo
-        title="AI Developer for Hire | Freelance AI App Developer, Claude & Codex"
-        description="Nur Mohammad Farazi is a freelance AI developer and full-stack engineer building SaaS products, workflow automation, Claude and Codex integrations, and AI-powered web apps for remote clients worldwide."
-        path="/"
-        type="profile"
-        keywords={[
-          'AI developer for hire',
-          'AI developer',
-          'freelance AI app developer',
-          'AI app development',
-          'full-stack developer',
-          'Claude developer',
-          'Codex developer',
-          'SaaS development',
-          'workflow automation',
-        ]}
-        jsonLd={homeJsonLd}
-      />
-      <motion.div
-        className="container home-page"
-        ref={sectionRef}
-        onPointerMove={handlePointerMove}
-        onPointerLeave={handlePointerLeave}
-        initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-        animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
+    <motion.div 
+      className="container home-page"
+      ref={sectionRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       {/* Interactive glow effect */}
       {!shouldReduceMotion && (
         <motion.span
@@ -232,40 +164,22 @@ const HomePage: React.FC = () => {
       >
         <div className="header-left">
           <motion.h1 className="hero-title" variants={heroItemVariants}>
-            AI Developer for Hire
+            Nur Mohammad Farazi
           </motion.h1>
           <motion.h2 className="hero-subtitle" variants={heroItemVariants}>
-            Freelance AI App Developer
+            Principal Software Engineer
           </motion.h2>
-          <motion.p className="hero-summary" variants={heroItemVariants}>
-            Need a Claude developer, Codex developer, or full-stack AI developer?
-            I build SaaS products, AI app development projects, and workflow
-            automation for remote clients worldwide. My work connects Angular,
-            TypeScript, .NET, Node.js, Claude, and Codex into practical software
-            that ships.
-          </motion.p>
         </div>
         <motion.div className="header-right" variants={heroItemVariants}>
-          <div className="contact-cta-group">
-            <motion.div
-              className="contact-cta"
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-            >
-              <Link to="/contact" className="contact-btn">
-                Hire Me for AI Development
-              </Link>
-            </motion.div>
-            <motion.div
-              className="contact-cta contact-cta--secondary"
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
-              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-            >
-              <Link to="/projects" className="contact-btn contact-btn--secondary">
-                See Projects
-              </Link>
-            </motion.div>
-          </div>
+          <motion.div
+            className="contact-cta"
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+          >
+            <Link to="/contact" className="contact-btn">
+              Contact Me
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.header>
 
@@ -280,18 +194,13 @@ const HomePage: React.FC = () => {
           About Me
         </motion.h2>
         <motion.p variants={heroItemVariants}>
-          Experienced <span className="highlight-text highlight-primary">AI app developer</span>,
-          <span className="highlight-text highlight-dark">full-stack engineer</span>, and
-          <span className="highlight-text highlight-primary">technical project manager</span> with
-          <span className="highlight-text highlight-dark">15+ years</span> delivering scalable software and cloud solutions.
-          I focus on <span className="highlight-text highlight-primary">AI app development</span>,
-          full-stack SaaS delivery, and practical automation using
-          <span className="highlight-text highlight-dark">Angular</span>,
-          <span className="highlight-text highlight-dark">TypeScript</span>,
-          <span className="highlight-text highlight-dark">.NET</span>,
-          <span className="highlight-text highlight-dark">Node.js</span>,
-          <span className="highlight-text highlight-dark">Claude</span>, and
-          <span className="highlight-text highlight-dark">Codex</span>.
+          Experienced <span className="highlight-text highlight-primary">Backend Engineer</span> and <span className="highlight-text highlight-dark">Technical Project Manager</span>
+          with <span className="highlight-text highlight-primary">15+ years</span> delivering scalable software and cloud solutions.
+          <span className="highlight-text highlight-dark">Backend-focused</span> with expertise in system design, optimization, and full-stack development using <span className="highlight-text highlight-primary">Angular</span> and <span className="highlight-text highlight-primary">TypeScript</span>.
+          Proven track record leading <span className="highlight-text highlight-dark">cross-functional global teams</span>, managing
+          complex IT projects across web, mobile, and cloud platforms. Skilled
+          in stakeholder alignment, crisis resolution, and project recovery,
+          with a <span className="highlight-text highlight-primary">hands-on</span> approach to solving real-world problems at scale.
         </motion.p>
       </motion.section>
 
@@ -400,8 +309,7 @@ const HomePage: React.FC = () => {
           </motion.li>
         </motion.ul>
       </motion.section>
-      </motion.div>
-    </>
+    </motion.div>
   );
 };
 

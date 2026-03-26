@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import type { Variants } from 'motion/react';
-import Seo from '../components/Seo';
-import { siteConfig } from '../config/site';
 import './Knowledge.css';
 
-interface FaqItem {
+interface KnowledgeArticle {
   id: string;
-  question: string;
-  answer: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  excerpt: string;
   tags: string[];
+  link: string;
 }
 
 const sectionVariants: Variants = {
@@ -35,160 +36,189 @@ const cardVariants: Variants = {
   },
 };
 
-const faqs: FaqItem[] = [
-  {
-    id: 'what-do-you-build',
-    question: 'What kinds of AI projects do you take on?',
-    answer:
-      'I build AI app development projects, full-stack SaaS features, workflow automations, and product experiences that connect frontend, backend, and intelligent tooling into one useful system.',
-    tags: ['AI app development', 'SaaS', 'Automation'],
-  },
-  {
-    id: 'what-stack',
-    question: 'What stack do you usually use?',
-    answer:
-      'I work across Angular, TypeScript, .NET, Node.js, and cloud services. When a project needs AI assistance, I also use Claude- and Codex-assisted workflows to move faster without losing engineering discipline.',
-    tags: ['Angular', 'TypeScript', '.NET', 'Node.js'],
-  },
-  {
-    id: 'how-do-you-work',
-    question: 'How do you approach a new freelance project?',
-    answer:
-      'I start with scope, architecture, and success criteria. Then I break the work into delivery steps, ship the riskiest part first, and keep communication focused on progress, blockers, and outcomes instead of vague status updates.',
-    tags: ['Discovery', 'Delivery', 'Communication'],
-  },
-  {
-    id: 'what-ai-tools',
-    question: 'Do you work with Claude and Codex?',
-    answer:
-      'Yes. I use Claude and Codex as practical development tools for planning, implementation support, and code review assistance. They help speed up delivery, but the product direction and quality standards still come from real engineering judgment.',
-    tags: ['Claude', 'Codex', 'AI tools'],
-  },
-  {
-    id: 'what-results',
-    question: 'What should a client expect from working with you?',
-    answer:
-      'A clean build, a clear delivery path, and a product that is tied to measurable outcomes. I care about the implementation, but I also care about whether the project helps users, saves time, or creates revenue.',
-    tags: ['Outcomes', 'Product focus', 'Quality'],
-  },
-];
-
-const knowledgeJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-};
-
 const Knowledge: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  return (
-    <>
-      <Seo
-        title="AI App Development FAQ"
-        description="Answers about freelance AI app development, full-stack SaaS delivery, workflow automation, Claude, and Codex from Nur Mohammad Farazi."
-        path="/knowledge"
-        type="article"
-        keywords={[
-          'AI app development FAQ',
-          'freelance AI developer',
-          'Claude developer',
-          'Codex developer',
-          'workflow automation',
-          'full-stack SaaS',
-        ]}
-        jsonLd={knowledgeJsonLd}
-      />
-      <motion.main
-        className="knowledge-page"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="container">
-          <motion.header
-            className="knowledge-header"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.span className="knowledge-eyebrow" variants={cardVariants}>
-              How I work
-            </motion.span>
-            <motion.h1 variants={cardVariants}>AI App Development FAQ</motion.h1>
-            <motion.p className="knowledge-subtitle" variants={cardVariants}>
-              Straight answers about freelance AI app development, full-stack SaaS,
-              workflow automation, and the way I use Claude and Codex on real projects.
-            </motion.p>
-          </motion.header>
+  const articles: KnowledgeArticle[] = [
+    {
+      id: '1',
+      title: 'Building Scalable Microservices with .NET 8 and gRPC',
+      category: 'Architecture',
+      date: 'December 2024',
+      readTime: '12 min read',
+      excerpt: 'Learn how to architect and implement a production-ready microservices system using .NET 8, gRPC for inter-service communication, and RabbitMQ for event-driven patterns. This comprehensive guide covers service design, API gateways, and deployment strategies.',
+      tags: ['.NET 8', 'Microservices', 'gRPC', 'RabbitMQ', 'Docker'],
+      link: 'https://nur369188.medium.com/when-grpc-is-and-isnt-the-right-call-88beb208ed37'
+    },
+    {
+      id: '2',
+      title: 'Mastering CQRS Pattern in C#',
+      category: 'Design Patterns',
+      date: 'November 2024',
+      readTime: '10 min read',
+      excerpt: 'Deep dive into Command Query Responsibility Segregation (CQRS) pattern implementation in C#. Explore real-world scenarios, performance benefits, and best practices for separating read and write operations in complex applications.',
+      tags: ['C#', 'CQRS', 'Design Patterns', 'System Design'],
+      link: 'https://nur369188.medium.com/cqrs-pattern-in-c-with-net-8-common-pitfalls-and-how-to-avoid-them-026a49969bc3?sk=3bf4f5216555281b0af59b4f23c7802d'
+    },
+    {
+      id: '3',
+      title: 'Angular Performance Optimization Techniques',
+      category: 'Frontend',
+      date: 'October 2024',
+      readTime: '15 min read',
+      excerpt: 'Comprehensive guide to optimizing Angular applications for production. Covers change detection strategies, lazy loading, bundle optimization, and advanced RxJS patterns for building high-performance web applications.',
+      tags: ['Angular', 'TypeScript', 'RxJS', 'Performance'],
+      link: 'https://nur369188.medium.com/20-angular-performance-optimization-techniques-268900d779ef?sk=33a6f859f375e039725380d5a469a830 '
+    },
+    {
+      id: '4',
+      title: 'System Design: Building Fault-Tolerant Email Systems',
+      category: 'System Design',
+      date: 'September 2024',
+      readTime: '18 min read',
+      excerpt: 'Case study on designing a resilient email delivery system with automatic failover across multiple providers. Discusses circuit breaker patterns, retry strategies, and monitoring for distributed systems.',
+      tags: ['System Design', 'Resilience', 'C#', 'Architecture'],
+      link: 'https://medium.com/@nur369188'
+    },
+    {
+      id: '5',
+      title: 'Clean Architecture in .NET: A Practical Guide',
+      category: 'Architecture',
+      date: 'August 2024',
+      readTime: '14 min read',
+      excerpt: 'Implementing Clean Architecture principles in .NET applications. Learn about dependency inversion, domain-driven design, and creating maintainable, testable codebases that stand the test of time.',
+      tags: ['.NET', 'Clean Architecture', 'DDD', 'SOLID'],
+      link: 'https://medium.com/@nur369188'
+    },
+    {
+      id: '6',
+      title: 'Concurrency and Threading Best Practices in C#',
+      category: 'Performance',
+      date: 'July 2024',
+      readTime: '16 min read',
+      excerpt: 'Master thread-safe programming in C#. Explore concurrent collections, async/await patterns, parallel programming, and techniques for preventing race conditions and deadlocks in multithreaded applications.',
+      tags: ['C#', 'Threading', 'Concurrency', 'Async/Await'],
+      link: 'https://nur369188.medium.com/how-i-think-about-concurrency-and-threading-in-c-a99340d19eed'
+    }
+  ];
 
-          <motion.div
-            className="faq-grid"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="show"
-          >
-            {faqs.map((faq) => (
-              <motion.article
-                key={faq.id}
-                className="faq-card"
-                variants={cardVariants}
-                whileHover={shouldReduceMotion ? undefined : { y: -6 }}
-              >
-                <span className="faq-category">FAQ</span>
-                <h2 className="faq-question">{faq.question}</h2>
-                <p className="faq-answer">{faq.answer}</p>
-                <div className="faq-tags" aria-label={`${faq.question} topics`}>
-                  {faq.tags.map((tag) => (
-                    <span key={tag} className="faq-tag">
-                      {tag}
-                    </span>
+  const categories = ['All', 'Architecture', 'Design Patterns', 'Frontend', 'System Design', 'Performance'];
+  const [selectedCategory, setSelectedCategory] = React.useState('All');
+
+  const filteredArticles = selectedCategory === 'All'
+    ? articles
+    : articles.filter(article => article.category === selectedCategory);
+
+  return (
+    <motion.div
+      className="knowledge-page"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="container">
+        <motion.header
+          className="knowledge-header"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.h1 variants={cardVariants}>
+            Knowledge Base
+          </motion.h1>
+          <motion.p className="knowledge-subtitle" variants={cardVariants}>
+            Technical articles, insights, and lessons learned from building scalable software systems
+          </motion.p>
+        </motion.header>
+
+        <motion.div
+          className="category-filter"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(category)}
+              variants={cardVariants}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+            >
+              {category}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="articles-grid"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {filteredArticles.map((article) => (
+            <motion.a
+              key={article.id}
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="article-card-link"
+              variants={cardVariants}
+              whileHover={shouldReduceMotion ? undefined : {
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <article className="article-card">
+                <div className="article-header">
+                  <span className="article-category">{article.category}</span>
+                  <div className="article-meta">
+                    <span>{article.date}</span>
+                    <span>•</span>
+                    <span>{article.readTime}</span>
+                  </div>
+                </div>
+                <h2 className="article-title">{article.title}</h2>
+                <p className="article-excerpt">{article.excerpt}</p>
+                <div className="article-tags">
+                  {article.tags.map((tag, index) => (
+                    <span key={index} className="article-tag">{tag}</span>
                   ))}
                 </div>
-              </motion.article>
-            ))}
-          </motion.div>
+                <div className="article-link">
+                  Read Article →
+                </div>
+              </article>
+            </motion.a>
+          ))}
+        </motion.div>
 
-          <motion.section
-            className="knowledge-cta"
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.5 }}
+        <motion.div
+          className="knowledge-cta"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <h2>Want to stay updated?</h2>
+          <p>Follow me on Medium for regular updates on software engineering, system design, and best practices.</p>
+          <motion.a
+            href="https://medium.com/@nur369188"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-btn"
+            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           >
-            <h2>Want a tailored answer for your project?</h2>
-            <p>
-              Send me a note if you want to talk through an AI app, SaaS build, or
-              automation idea before you commit to a scope.
-            </p>
-            <motion.div
-              className="knowledge-cta__actions"
-              variants={cardVariants}
-            >
-              <Link to="/contact" className="cta-btn">
-                Contact me
-              </Link>
-              <a
-                href={siteConfig.social.medium}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-btn cta-btn--secondary"
-              >
-                Read on Medium
-              </a>
-            </motion.div>
-          </motion.section>
-        </div>
-      </motion.main>
-    </>
+            Follow on Medium
+          </motion.a>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 
 export default Knowledge;
+
+

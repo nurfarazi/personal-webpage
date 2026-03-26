@@ -4,7 +4,6 @@ import {
   useReducedMotion
 } from 'motion/react';
 import type { Variants } from 'motion/react';
-import Seo from '../components/Seo';
 import './Career.css';
 
 interface WorkExperience {
@@ -212,25 +211,12 @@ const Career: React.FC = () => {
   const sectionAnimate = shouldReduceMotion ? false : 'show';
 
   return (
-    <>
-      <Seo
-        title="Career & Experience"
-        description="Career highlights from Nur Mohammad Farazi across AI app development, SaaS delivery, platform engineering, and team leadership."
-        path="/career"
-        keywords={[
-          'career',
-          'experience',
-          'AI app development',
-          'full-stack engineering',
-          'SaaS delivery',
-        ]}
-      />
-      <motion.div
-        className="container career-page"
-        initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
-        animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
+    <motion.div
+      className="container career-page"
+      initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
+      animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <motion.header
         className="career-header"
         variants={headerVariants}
@@ -241,8 +227,7 @@ const Career: React.FC = () => {
           Career
         </motion.h1>
         <motion.p className="career-subtitle" variants={headerItemVariants}>
-          Work experience and leadership highlights across AI app development, SaaS delivery,
-          platform engineering, and team growth.
+          Work experience and leadership highlights across product, platform, and team growth.
         </motion.p>
       </motion.header>
 
@@ -315,8 +300,7 @@ const Career: React.FC = () => {
           ))}
         </motion.div>
       </motion.section>
-      </motion.div>
-    </>
+    </motion.div>
   );
 };
 
